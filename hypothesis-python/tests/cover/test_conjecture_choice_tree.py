@@ -51,3 +51,11 @@ def test_can_enumerate_a_nested_set():
         return (i, j)
 
     assert sorted(nested) == [(i, j) for i in hrange(10) for j in hrange(i + 1, 10)]
+
+
+def test_can_enumerate_empty():
+    @exhaust
+    def empty(chooser):
+        return 1
+
+    assert empty == [1]
