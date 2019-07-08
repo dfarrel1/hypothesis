@@ -273,7 +273,6 @@ class Shrinker(object):
         """
         self.__engine = engine
         self.__predicate = predicate
-        self.__shrinking_prefixes = set()
         self.__derived_values = {}
         self.__pending_shrink_explanation = None
 
@@ -362,7 +361,6 @@ class Shrinker(object):
             self.shrink_target.buffer
         ):
             self.update_shrink_target(data)
-            self.__shrinking_block_cache = {}
             return True
         return False
 
@@ -643,25 +641,6 @@ class Shrinker(object):
             + self.buffer[ancestor.end :]
         )
 
-    def is_shrinking_block(self, i):
-        """Checks whether block i has been previously marked as a shrinking
-        block.
-
-        If the shrink target has changed since i was last checked, will
-        attempt to calculate if an equivalent block in a previous shrink
-        target was marked as shrinking.
-        """
-        if not self.__shrinking_prefixes:
-            return False
-        try:
-            return self.__shrinking_block_cache[i]
-        except KeyError:
-            pass
-        t = self.shrink_target
-        return self.__shrinking_block_cache.setdefault(
-            i, t.buffer[: t.blocks[i].start] in self.__shrinking_prefixes
-        )
-
     def lower_common_block_offset(self):
         """Sometimes we find ourselves in a situation where changes to one part
         of the byte stream unlock changes to other parts. Sometimes this is
@@ -727,17 +706,6 @@ class Shrinker(object):
         Integer.shrink(offset, reoffset, random=self.random)
         self.clear_change_tracking()
 
-    def mark_shrinking(self, blocks):
-        """Mark each of these blocks as a shrinking block: That is, lowering
-        its value lexicographically may cause less data to be drawn after."""
-        t = self.shrink_target
-        for i in blocks:
-            if self.__shrinking_block_cache.get(i) is True:
-                continue
-            self.__shrinking_block_cache[i] = True
-            prefix = t.buffer[: t.blocks[i].start]
-            self.__shrinking_prefixes.add(prefix)
-
     def clear_change_tracking(self):
         self.__last_checked_changed_at = self.shrink_target
         self.__all_changed_blocks = set()
@@ -801,15 +769,12 @@ class Shrinker(object):
             self.__last_checked_changed_at = new_target
 
         self.shrink_target = new_target
-        self.__shrinking_block_cache = {}
         self.__derived_values = {}
 
     def try_shrinking_blocks(self, blocks, b):
         """Attempts to replace each block in the blocks list with b. Returns
         True if it succeeded (which may include some additional modifications
         to shrink_target).
-
-        May call mark_shrinking with b if this causes a reduction in size.
 
         In current usage it is expected that each of the blocks currently have
         the same value, although this is not essential. Note that b must be
@@ -858,8 +823,6 @@ class Shrinker(object):
         # the remainder.
         if lost_data <= 0:
             return False
-
-        self.mark_shrinking(blocks)
 
         # We now look for contiguous regions to delete that might help fix up
         # this failed shrink. We only look for contiguous regions of the right
@@ -1208,7 +1171,18 @@ class Shrinker(object):
         example and every block not inside that example it tries deleting the
         example and modifying the block's value by one in either direction.
         """
-        block = chooser.choose(self.blocks, lambda b: self.is_shrinking_block(b.index))
+        block = chooser.choose(self.blocks)
+
+        if block.trivial:
+            return
+        else:
+            predecessor = int_to_bytes(
+                int_from_bytes(self.buffer[block.start:block.end]) - 1,
+                block.length,
+            )
+            attempt = self.cached_test_function(self.buffer[:block.start] + predecessor + self.buffer[block.end:])
+            if attempt.status < Status.VALID or len(attempt.buffer) == len(self.buffer):
+                return
 
         lo = 0
         hi = len(self.examples)
