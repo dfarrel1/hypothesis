@@ -1181,7 +1181,7 @@ class Shrinker(object):
                 block.length,
             )
             attempt = self.cached_test_function(self.buffer[:block.start] + predecessor + self.buffer[block.end:])
-            if attempt.status < Status.VALID or len(attempt.buffer) == len(self.buffer):
+            if attempt.status < Status.VALID or len(attempt.buffer) == len(self.buffer) or attempt is self.shrink_target:
                 return
 
         lo = 0
