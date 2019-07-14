@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.internal.entropy &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.internal.entropy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.internal.entropy</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="n">InvalidArgument</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.compat</span> <span class="k">import</span> <span class="n">integer_types</span>
+
+<span class="n">RANDOMS_TO_MANAGE</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="p">]</span>  <span class="c1"># type: list</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpy.random</span> <span class="k">as</span> <span class="nn">npr</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="k">class</span> <span class="nc">NumpyRandomWrapper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;A shim to remove those darn underscores.&quot;&quot;&quot;</span>
+
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">seed</span>
+        <span class="n">getstate</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">get_state</span>
+        <span class="n">setstate</span> <span class="o">=</span> <span class="n">npr</span><span class="o">.</span><span class="n">set_state</span>
+
+    <span class="n">RANDOMS_TO_MANAGE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NumpyRandomWrapper</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="register_random"><a class="viewcode-back" href="../../../details.html#hypothesis.register_random">[docs]</a><span class="k">def</span> <span class="nf">register_random</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="c1"># type: (random.Random) -&gt; None</span>
+    <span class="sd">&quot;&quot;&quot;Register the given Random instance for management by Hypothesis.</span>
+
+<span class="sd">    You can pass ``random.Random`` instances (or other objects with seed,</span>
+<span class="sd">    getstate, and setstate methods) to ``register_random(r)`` to have their</span>
+<span class="sd">    states seeded and restored in the same way as the global PRNGs from the</span>
+<span class="sd">    ``random`` and ``numpy.random`` modules.</span>
+
+<span class="sd">    All global PRNGs, from e.g. simulation or scheduling frameworks, should</span>
+<span class="sd">    be registered to prevent flaky tests.  Hypothesis will ensure that the</span>
+<span class="sd">    PRNG state is consistent for all test runs, or reproducibly varied if you</span>
+<span class="sd">    choose to use the :func:`~hypothesis.strategies.random_module` strategy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;seed&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;getstate&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s2">&quot;setstate&quot;</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;r=</span><span class="si">%r</span><span class="s2"> does not have all the required methods&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,))</span>
+    <span class="k">if</span> <span class="n">r</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">RANDOMS_TO_MANAGE</span><span class="p">:</span>
+        <span class="n">RANDOMS_TO_MANAGE</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_seeder_and_restorer</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a pair of functions which respectively seed all and restore</span>
+<span class="sd">    the state of all registered PRNGs.</span>
+
+<span class="sd">    This is used by the core engine via `deterministic_PRNG`, and by users</span>
+<span class="sd">    via `register_random`.  We support registration of additional random.Random</span>
+<span class="sd">    instances (or other objects with seed, getstate, and setstate methods)</span>
+<span class="sd">    to force determinism on simulation or scheduling frameworks which avoid</span>
+<span class="sd">    using the global random state.  See e.g. #1709.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">integer_types</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">seed</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">32</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># type: list</span>
+
+    <span class="k">def</span> <span class="nf">seed_all</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">states</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">RANDOMS_TO_MANAGE</span><span class="p">:</span>
+            <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">getstate</span><span class="p">())</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">restore_all</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">RANDOMS_TO_MANAGE</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">RANDOMS_TO_MANAGE</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">setstate</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">states</span><span class="p">[:]</span>
+
+    <span class="k">return</span> <span class="n">seed_all</span><span class="p">,</span> <span class="n">restore_all</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">deterministic_PRNG</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Context manager that handles random.seed without polluting global state.</span>
+
+<span class="sd">    See issue #1255 and PR #1295 for details and motivation - in short,</span>
+<span class="sd">    leaving the global pseudo-random number generator (PRNG) seeded is a very</span>
+<span class="sd">    bad idea in principle, and breaks all kinds of independence assumptions</span>
+<span class="sd">    in practice.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">seed_all</span><span class="p">,</span> <span class="n">restore_all</span> <span class="o">=</span> <span class="n">get_seeder_and_restorer</span><span class="p">()</span>
+    <span class="n">seed_all</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">restore_all</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

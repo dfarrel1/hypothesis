@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>First-party extensions &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hypothesis for Django users" href="django.html" />
+    <link rel="prev" title="What you can generate and how" href="data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">First-party extensions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-dpcontracts">hypothesis[dpcontracts]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-lark">hypothesis[lark]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-pytz">hypothesis[pytz]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-dateutil">hypothesis[dateutil]</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>First-party extensions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/extras.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="first-party-extensions">
+<h1>First-party extensions<a class="headerlink" href="#first-party-extensions" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis has minimal dependencies (just <a class="reference external" href="https://pypi.org/project/attrs">attrs</a>), to maximise
+compatibility and make installing Hypothesis as easy as possible.</p>
+<p>Our integrations with specific packages are therefore provided by <code class="docutils literal notranslate"><span class="pre">extra</span></code>
+modules that need their individual dependencies installed in order to work.
+You can install these dependencies using the setuptools extra feature as e.g.
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hypothesis[django]</span></code>. This will check installation of compatible versions.</p>
+<p>You can also just install hypothesis into a project using them, ignore the version
+constraints, and hope for the best.</p>
+<p>In general “Which version is Hypothesis compatible with?” is a hard question to answer
+and even harder to regularly test. Hypothesis is always tested against the latest
+compatible version and each package will note the expected compatibility range. If
+you run into a bug with any of these please specify the dependency version.</p>
+<p>There are separate pages for <a class="reference internal" href="django.html"><span class="doc">Hypothesis for Django users</span></a> and <a class="reference internal" href="numpy.html"><span class="doc">Hypothesis for the Scientific Stack</span></a>.</p>
+<span class="target" id="module-hypothesis.extra.dpcontracts"></span><div class="section" id="hypothesis-dpcontracts">
+<h2>hypothesis[dpcontracts]<a class="headerlink" href="#hypothesis-dpcontracts" title="Permalink to this headline">¶</a></h2>
+<p>This module provides tools for working with the <a class="reference external" href="https://pypi.org/project/dpcontracts">dpcontracts</a> library,
+because <a class="reference external" href="https://hillelwayne.com/talks/beyond-unit-tests/">combining contracts and property-based testing works really well</a>.</p>
+<p>It requires <code class="docutils literal notranslate"><span class="pre">dpcontracts</span> <span class="pre">&gt;=</span> <span class="pre">0.4</span></code>.</p>
+<dl class="function">
+<dt id="hypothesis.extra.dpcontracts.fulfill">
+<code class="sig-prename descclassname">hypothesis.extra.dpcontracts.</code><code class="sig-name descname">fulfill</code><span class="sig-paren">(</span><em class="sig-param">contract_func</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/dpcontracts.html#fulfill"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.dpcontracts.fulfill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorate <code class="docutils literal notranslate"><span class="pre">contract_func</span></code> to reject calls which violate preconditions,
+and retry them with different arguments.</p>
+<p>This is a convenience function for testing internal code that uses
+:pypi:dpcontracts`, to automatically filter out arguments that would be
+rejected by the public interface before triggering a contract error.</p>
+<p>This can be used as <code class="docutils literal notranslate"><span class="pre">builds(fulfill(func),</span> <span class="pre">...)</span></code> or in the body of the
+test e.g. <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">fulfill(func)(*args)</span></code>.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-hypothesis.extra.lark"></span><div class="section" id="hypothesis-lark">
+<h2>hypothesis[lark]<a class="headerlink" href="#hypothesis-lark" title="Permalink to this headline">¶</a></h2>
+<p>This extra can be used to generate strings matching any context-free grammar,
+using the <a class="reference external" href="https://github.com/lark-parser/lark">Lark parser library</a>.</p>
+<p>It currently only supports Lark’s native EBNF syntax, but we plan to extend
+this to support other common syntaxes such as ANTLR and <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc5234.html"><strong>RFC 5234</strong></a> ABNF.
+Lark already <a class="reference external" href="https://github.com/lark-parser/lark#how-to-use-nearley-grammars-in-lark">supports loading grammars</a>
+from <a class="reference external" href="https://nearley.js.org/">nearley.js</a>, so you may not have to write
+your own at all.</p>
+<p>Note that as Lark is at version 0.x, this module <em>may</em> break API compatibility
+in minor releases if supporting the latest version of Lark would otherwise be
+infeasible.  We may also be quite aggressive in bumping the minimum version of
+Lark, unless someone volunteers to either fund or do the maintainence.</p>
+<dl class="function">
+<dt id="hypothesis.extra.lark.from_lark">
+<code class="sig-prename descclassname">hypothesis.extra.lark.</code><code class="sig-name descname">from_lark</code><span class="sig-paren">(</span><em class="sig-param">grammar</em>, <em class="sig-param">start=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/lark.html#from_lark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.lark.from_lark" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for strings accepted by the given context-free grammar.</p>
+<p><code class="docutils literal notranslate"><span class="pre">grammar</span></code> must be a <code class="docutils literal notranslate"><span class="pre">Lark</span></code> object, which wraps an EBNF specification.
+The Lark EBNF grammar reference can be found
+<a class="reference external" href="https://lark-parser.readthedocs.io/en/latest/grammar/">here</a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">from_lark</span></code> will automatically generate strings matching the
+nonterminal <code class="docutils literal notranslate"><span class="pre">start</span></code> symbol in the grammar, which was supplied as an
+argument to the Lark class.  To generate strings matching a different
+symbol, including terminals, you can override this by passing the
+<code class="docutils literal notranslate"><span class="pre">start</span></code> argument to <code class="docutils literal notranslate"><span class="pre">from_lark</span></code>.</p>
+<p>Currently <code class="docutils literal notranslate"><span class="pre">from_lark</span></code> does not support grammars that need custom lexing.
+Any lexers will be ignored, and any undefined terminals from the use of
+<code class="docutils literal notranslate"><span class="pre">%declare</span></code> will result in generation errors. We hope to support more of
+these features in future.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-hypothesis.extra.pytz"></span><div class="section" id="hypothesis-pytz">
+<h2>hypothesis[pytz]<a class="headerlink" href="#hypothesis-pytz" title="Permalink to this headline">¶</a></h2>
+<p>This module provides <a class="reference external" href="https://pypi.org/project/pytz">pytz</a> timezones.</p>
+<p>You can use this strategy to make
+<a class="reference internal" href="data.html#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.strategies.datetimes()</span></code></a> and
+<a class="reference internal" href="data.html#hypothesis.strategies.times" title="hypothesis.strategies.times"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.strategies.times()</span></code></a> produce timezone-aware values.</p>
+<dl class="function">
+<dt id="hypothesis.extra.pytz.timezones">
+<code class="sig-prename descclassname">hypothesis.extra.pytz.</code><code class="sig-name descname">timezones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pytz.html#timezones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pytz.timezones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any timezone in the Olsen database, as a pytz tzinfo object.</p>
+<p>This strategy minimises to UTC, or the smallest possible fixed
+offset, and is designed for use with
+<a class="reference internal" href="data.html#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.strategies.datetimes()</span></code></a>.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-hypothesis.extra.dateutil"></span><div class="section" id="hypothesis-dateutil">
+<h2>hypothesis[dateutil]<a class="headerlink" href="#hypothesis-dateutil" title="Permalink to this headline">¶</a></h2>
+<p>This module provides <code class="docutils literal notranslate"><span class="pre">dateutil</span></code> timezones.</p>
+<p>You can use this strategy to make
+<a class="reference internal" href="data.html#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.strategies.datetimes()</span></code></a> and
+<a class="reference internal" href="data.html#hypothesis.strategies.times" title="hypothesis.strategies.times"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.strategies.times()</span></code></a> produce timezone-aware values.</p>
+<dl class="function">
+<dt id="hypothesis.extra.dateutil.timezones">
+<code class="sig-prename descclassname">hypothesis.extra.dateutil.</code><code class="sig-name descname">timezones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/dateutil.html#timezones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.dateutil.timezones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any timezone in dateutil.</p>
+<p>This strategy minimises to UTC, or the timezone with the smallest offset
+from UTC as of 2000-01-01, and is designed for use with
+<a class="reference internal" href="data.html#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">datetimes()</span></code></a>.</p>
+<p>Note that the timezones generated by the strategy may vary depending on the
+configuration of your machine. See the dateutil documentation for more
+information.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="django.html" class="btn btn-neutral float-right" title="Hypothesis for Django users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data.html" class="btn btn-neutral float-left" title="What you can generate and how" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quick start guide &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Details and advanced features" href="details.html" />
+    <link rel="prev" title="Welcome to Hypothesis!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick start guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#an-example">An example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-tests">Writing tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-start">Where to start</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Quick start guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/quickstart.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-start-guide">
+<h1>Quick start guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>This document should talk you through everything you need to get started with
+Hypothesis.</p>
+<div class="section" id="an-example">
+<h2>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we’ve written a <a class="reference external" href="https://en.wikipedia.org/wiki/Run-length_encoding">run length encoding</a> system and we want to test
+it out.</p>
+<p>We have the following code which I took straight from the
+<a class="reference external" href="https://rosettacode.org/wiki/Run-length_encoding">Rosetta Code</a> wiki (OK, I
+removed some commented out code and fixed the formatting, but there are no
+functional modifications):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">prev</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">input_string</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">character</span> <span class="o">!=</span> <span class="n">prev</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">prev</span><span class="p">:</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+                <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">character</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">character</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lst</span>
+
+
+<span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">character</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">+=</span> <span class="n">character</span> <span class="o">*</span> <span class="n">count</span>
+    <span class="k">return</span> <span class="n">q</span>
+</pre></div>
+</div>
+<p>We want to write a test for this that will check some invariant of these
+functions.</p>
+<p>The invariant one tends to try when you’ve got this sort of encoding /
+decoding is that if you encode something and then decode it then you get the same
+value back.</p>
+<p>Lets see how you’d do that with Hypothesis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">text</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">text</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_decode_inverts_encode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">decode</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>(For this example we’ll just let pytest discover and run the test. We’ll cover
+other ways you could have run it later).</p>
+<p>The text function returns what Hypothesis calls a search strategy. An object
+with methods that describe how to generate and simplify certain kinds of
+values. The <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> decorator then takes our test
+function and turns it into a
+parametrized one which, when called, will run the test function over a wide
+range of matching data from that strategy.</p>
+<p>Anyway, this test immediately finds a bug in the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">test_decode_inverts_encode</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="ne">UnboundLocalError</span><span class="p">:</span> <span class="n">local</span> <span class="n">variable</span> <span class="s1">&#39;character&#39;</span> <span class="n">referenced</span> <span class="n">before</span> <span class="n">assignment</span>
+</pre></div>
+</div>
+<p>Hypothesis correctly points out that this code is simply wrong if called on
+an empty string.</p>
+<p>If we fix that by just adding the following code to the beginning of the function
+then Hypothesis tells us the code is correct (by doing nothing as you’d expect
+a passing test to).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">input_string</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>If we wanted to make sure this example was always checked we could add it in
+explicitly by using the <a class="reference internal" href="reproducing.html#hypothesis.example" title="hypothesis.example"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;example</span></code></a> decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">example</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">text</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">text</span><span class="p">())</span>
+<span class="nd">@example</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_decode_inverts_encode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">decode</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>This can be useful to show other developers (or your future self) what kinds
+of data are valid inputs, or to ensure that particular edge cases such as
+<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> are tested every time.  It’s also great for regression tests because
+although Hypothesis will <a class="reference internal" href="database.html"><span class="doc">remember failing examples</span></a>,
+we don’t recommend distributing that database.</p>
+<p>It’s also worth noting that both example and given support keyword arguments as
+well as positional. The following would have worked just as well:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">text</span><span class="p">())</span>
+<span class="nd">@example</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_decode_inverts_encode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">decode</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">s</span><span class="p">))</span> <span class="o">==</span> <span class="n">s</span>
+</pre></div>
+</div>
+<p>Suppose we had a more interesting bug and forgot to reset the count
+each time. Say we missed a line in our <code class="docutils literal notranslate"><span class="pre">encode</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">prev</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">character</span> <span class="ow">in</span> <span class="n">input_string</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">character</span> <span class="o">!=</span> <span class="n">prev</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">prev</span><span class="p">:</span>
+              <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+              <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+          <span class="c1"># count = 1  # Missing reset operation</span>
+          <span class="n">prev</span> <span class="o">=</span> <span class="n">character</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="n">entry</span> <span class="o">=</span> <span class="p">(</span><span class="n">character</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+  <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">lst</span>
+</pre></div>
+</div>
+<p>Hypothesis quickly informs us of the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">test_decode_inverts_encode</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the example provided is really quite simple. Hypothesis doesn’t just
+find <em>any</em> counter-example to your tests, it knows how to simplify the examples
+it finds to produce small easy to understand ones. In this case, two identical
+values are enough to set the count to a number different from one, followed by
+another distinct value which should have reset the count but in this case
+didn’t.</p>
+<p>The examples Hypothesis provides are valid Python code you can run. Any
+arguments that you explicitly provide when calling the function are not
+generated by Hypothesis, and if you explicitly provide <em>all</em> the arguments
+Hypothesis will just call the underlying function once rather than
+running it multiple times.</p>
+</div>
+<div class="section" id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis is <a class="reference external" href="https://pypi.org/project/hypothesis">available on PyPI as “hypothesis”</a>. You can install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install hypothesis
+</pre></div>
+</div>
+<p>You can install the dependencies for <a class="reference internal" href="extras.html"><span class="doc">optional extensions</span></a> with
+e.g. <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">hypothesis[pandas,django]</span></code>.</p>
+<p>If you want to install directly from the source code (e.g. because you want to
+make changes and install the changed version), check out the instructions in
+<a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/CONTRIBUTING.rst">CONTRIBUTING.rst</a>.</p>
+</div>
+<div class="section" id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
+<p>In our example above we just let pytest discover and run our tests, but we could
+also have run it explicitly ourselves:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">test_decode_inverts_encode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We could also have done this as a <a class="reference external" href="https://docs.python.org/3/library/unittest.html#unittest.TestCase" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">TestEncoding</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">text</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">test_decode_inverts_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">decode</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">s</span><span class="p">)),</span> <span class="n">s</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A detail: This works because Hypothesis ignores any arguments it hasn’t been
+told to provide (positional arguments start from the right), so the self
+argument to the test is simply ignored and works as normal. This also means
+that Hypothesis will play nicely with other ways of parameterizing tests. e.g
+it works fine if you use pytest fixtures for some arguments and Hypothesis for
+others.</p>
+</div>
+<div class="section" id="writing-tests">
+<h2>Writing tests<a class="headerlink" href="#writing-tests" title="Permalink to this headline">¶</a></h2>
+<p>A test in Hypothesis consists of two parts: A function that looks like a normal
+test in your test framework of choice but with some additional arguments, and
+a <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> decorator that specifies
+how to provide those arguments.</p>
+<p>Here are some other examples of how you could use that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="kn">as</span> <span class="nn">st</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_ints_are_commutative</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y</span> <span class="o">+</span> <span class="n">x</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_ints_cancel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span> <span class="o">==</span> <span class="n">x</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_reversing_twice_gives_same_list</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="c1"># This will generate lists of arbitrary length (usually between 0 and</span>
+    <span class="c1"># 100 elements) whose elements are integers.</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">ys</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">xs</span> <span class="o">==</span> <span class="n">ys</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">text</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_look_tuples_work_too</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># A tuple is generated as the one you provided, with the corresponding</span>
+    <span class="c1"># types in those positions.</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">bool</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that as we saw in the above example you can pass arguments to <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>
+either as positional or as keywords.</p>
+</div>
+<div class="section" id="where-to-start">
+<h2>Where to start<a class="headerlink" href="#where-to-start" title="Permalink to this headline">¶</a></h2>
+<p>You should now know enough of the basics to write some tests for your code
+using Hypothesis. The best way to learn is by doing, so go have a try.</p>
+<p>If you’re stuck for ideas for how to use this sort of test for your code, here
+are some good starting points:</p>
+<ol class="arabic simple">
+<li><p>Try just calling functions with appropriate arbitrary data and see if they
+crash. You may be surprised how often this works. e.g. note that the first
+bug we found in the encoding example didn’t even get as far as our
+assertion: It crashed because it couldn’t handle the data we gave it, not
+because it did the wrong thing.</p></li>
+<li><p>Look for duplication in your tests. Are there any cases where you’re testing
+the same thing with multiple different examples? Can you generalise that to
+a single test using Hypothesis?</p></li>
+<li><p><a class="reference external" href="https://fsharpforfunandprofit.com/posts/property-based-testing-2/">This piece is designed for an F# implementation</a>, but
+is still very good advice which you may find helps give you good ideas for
+using Hypothesis.</p></li>
+</ol>
+<p>If you have any trouble getting started, don’t feel shy about
+<a class="reference internal" href="community.html"><span class="doc">asking for help</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="details.html" class="btn btn-neutral float-right" title="Details and advanced features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Hypothesis!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

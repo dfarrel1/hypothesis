@@ -1,0 +1,1129 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.extra.numpy &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.extra.numpy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.extra.numpy</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">hypothesis._strategies</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">hypothesis.internal.conjecture.utils</span> <span class="k">as</span> <span class="nn">cu</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="k">import</span> <span class="n">Verbosity</span>
+<span class="kn">from</span> <span class="nn">hypothesis._settings</span> <span class="k">import</span> <span class="n">note_deprecation</span>
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="n">InvalidArgument</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.compat</span> <span class="k">import</span> <span class="n">hrange</span><span class="p">,</span> <span class="n">integer_types</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.coverage</span> <span class="k">import</span> <span class="n">check_function</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.reflection</span> <span class="k">import</span> <span class="n">proxies</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.validation</span> <span class="k">import</span> <span class="n">check_type</span><span class="p">,</span> <span class="n">check_valid_interval</span>
+<span class="kn">from</span> <span class="nn">hypothesis.reporting</span> <span class="k">import</span> <span class="n">current_verbosity</span>
+<span class="kn">from</span> <span class="nn">hypothesis.searchstrategy</span> <span class="k">import</span> <span class="n">SearchStrategy</span>
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>  <span class="c1"># noqa</span>
+    <span class="kn">from</span> <span class="nn">hypothesis.searchstrategy.strategies</span> <span class="k">import</span> <span class="n">T</span>  <span class="c1"># noqa</span>
+
+    <span class="n">Shape</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>  <span class="c1"># noqa</span>
+
+<span class="n">TIME_RESOLUTIONS</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s2">&quot;Y  M  D  h  m  s  ms  us  ns  ps  fs  as&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+
+<div class="viewcode-block" id="from_dtype"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.from_dtype">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy_with_reusable_values</span>
+<span class="k">def</span> <span class="nf">from_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+    <span class="c1"># type: (np.dtype) -&gt; st.SearchStrategy[Any]</span>
+    <span class="sd">&quot;&quot;&quot;Creates a strategy which can generate any value of the given dtype.&quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">)</span>
+    <span class="c1"># Compound datatypes, eg &#39;f4,f4,f4&#39;</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># mapping np.void.type over a strategy is nonsense, so return now.</span>
+        <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">from_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dtype</span><span class="o">.</span><span class="n">names</span><span class="p">])</span>
+
+    <span class="c1"># Subarray datatypes, eg &#39;(2, 3)i4&#39;</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">subdtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">subtype</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">subdtype</span>
+        <span class="k">return</span> <span class="n">arrays</span><span class="p">(</span><span class="n">subtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+
+    <span class="c1"># Scalar datatypes</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;b&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">()</span>  <span class="c1"># type: SearchStrategy[Any]</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;f&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;c&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">float32</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span><span class="nb">complex</span><span class="p">,</span> <span class="n">float32</span><span class="p">,</span> <span class="n">float32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">complex_numbers</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+        <span class="c1"># Numpy strings are null-terminated; only allow round-trippable values.</span>
+        <span class="c1"># `itemsize == 0` means &#39;fixed length determined at array creation&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">binary</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;u&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;i&quot;</span><span class="p">:</span>
+        <span class="n">overflow</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=-</span><span class="n">overflow</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="n">overflow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;U&quot;</span><span class="p">:</span>
+        <span class="c1"># Encoded in UTF-32 (four bytes/codepoint) and null-terminated</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">max_size</span><span class="o">=</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">//</span> <span class="mi">4</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">b</span><span class="p">:</span> <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;M&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;[&quot;</span> <span class="ow">in</span> <span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">TIME_RESOLUTIONS</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">63</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">res</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;No strategy inference for </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">)</span></div>
+
+
+<span class="nd">@check_function</span>
+<span class="k">def</span> <span class="nf">check_argument</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">fail_message</span><span class="p">,</span> <span class="o">*</span><span class="n">f_args</span><span class="p">,</span> <span class="o">**</span><span class="n">f_kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">condition</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="n">fail_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">f_args</span><span class="p">,</span> <span class="o">**</span><span class="n">f_kwargs</span><span class="p">))</span>
+
+
+<span class="nd">@check_function</span>
+<span class="k">def</span> <span class="nf">order_check</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">floor</span><span class="p">,</span> <span class="n">small</span><span class="p">,</span> <span class="n">large</span><span class="p">):</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">floor</span> <span class="o">&lt;=</span> <span class="n">small</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;min_</span><span class="si">{name}</span><span class="s2"> must be at least </span><span class="si">{}</span><span class="s2"> but was </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">floor</span><span class="p">,</span>
+        <span class="n">small</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">small</span> <span class="o">&lt;=</span> <span class="n">large</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;min_</span><span class="si">{name}</span><span class="s2">=</span><span class="si">{}</span><span class="s2"> is larger than max_</span><span class="si">{name}</span><span class="s2">=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">small</span><span class="p">,</span>
+        <span class="n">large</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ArrayStrategy</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element_strategy</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">fill</span><span class="p">,</span> <span class="n">unique</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="n">fill</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_strategy</span> <span class="o">=</span> <span class="n">element_strategy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique</span> <span class="o">=</span> <span class="n">unique</span>
+
+        <span class="c1"># Used by self.insert_element to check that the value can be stored</span>
+        <span class="c1"># in the array without e.g. overflowing.  See issues #1385 and #1591.</span>
+        <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;u&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">can_cast</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;safe&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;f&quot;</span> <span class="ow">and</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">max_f2</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">15</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="o">-</span><span class="n">max_f2</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">max_f2</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;f&quot;</span> <span class="ow">and</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">max_f4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">-</span><span class="mi">23</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">127</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="o">-</span><span class="n">max_f4</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">max_f4</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;c&quot;</span> <span class="ow">and</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="n">max_f4</span> <span class="o">=</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">-</span><span class="mi">23</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">127</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="o">-</span><span class="n">max_f4</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span> <span class="o">&lt;=</span> <span class="n">max_f4</span> <span class="ow">and</span> <span class="o">-</span><span class="n">max_f4</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span> <span class="o">&lt;=</span> <span class="n">max_f4</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="sa">u</span><span class="s2">&quot;U&quot;</span><span class="p">:</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">//</span> <span class="mi">4</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">length</span> <span class="ow">and</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="n">length</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="sa">u</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="ow">and</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="p">:]</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">set_element</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">strategy</span> <span class="o">=</span> <span class="n">strategy</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_strategy</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">strategy</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_report_overflow</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_cast</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+            <span class="n">note_deprecation</span><span class="p">(</span>
+                <span class="s2">&quot;Generated array element </span><span class="si">%r</span><span class="s2"> from </span><span class="si">%r</span><span class="s2"> cannot be represented as &quot;</span>
+                <span class="s2">&quot;dtype </span><span class="si">%r</span><span class="s2"> - instead it becomes </span><span class="si">%r</span><span class="s2"> .  Consider using a more &quot;</span>
+                <span class="s2">&quot;precise strategy, as this will be an error in a future &quot;</span>
+                <span class="s2">&quot;version.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">strategy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="n">since</span><span class="o">=</span><span class="s2">&quot;2018-10-25&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="c1"># Because the message includes the value of the generated element,</span>
+            <span class="c1"># it would be easy to spam users with thousands of warnings.</span>
+            <span class="c1"># We therefore only warn once per draw, unless in verbose mode.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_report_overflow</span> <span class="o">=</span> <span class="n">current_verbosity</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="c1"># Reset this flag for each test case to emit warnings from set_element</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_report_overflow</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># This could legitimately be a np.empty, but the performance gains for</span>
+        <span class="c1"># that would be so marginal that there&#39;s really not much point risking</span>
+        <span class="c1"># undefined behaviour shenanigans.</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fill</span><span class="o">.</span><span class="n">is_empty</span><span class="p">:</span>
+            <span class="c1"># We have no fill value (either because the user explicitly</span>
+            <span class="c1"># disabled it or because the default behaviour was used and our</span>
+            <span class="c1"># elements strategy does not produce reusable values), so we must</span>
+            <span class="c1"># generate a fully dense array with a freshly drawn value for each</span>
+            <span class="c1"># entry.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique</span><span class="p">:</span>
+                <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+                <span class="n">elements</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">many</span><span class="p">(</span>
+                    <span class="n">data</span><span class="p">,</span>
+                    <span class="n">min_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span>
+                    <span class="n">max_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span>
+                    <span class="n">average_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">while</span> <span class="n">elements</span><span class="o">.</span><span class="n">more</span><span class="p">():</span>
+                    <span class="c1"># We assign first because this means we check for</span>
+                    <span class="c1"># uniqueness after numpy has converted it to the relevant</span>
+                    <span class="c1"># type for us. Because we don&#39;t increment the counter on</span>
+                    <span class="c1"># a duplicate we will overwrite it on the next draw.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">set_element</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">elements</span><span class="o">.</span><span class="n">reject</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">hrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">set_element</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># We draw numpy arrays as &quot;sparse with an offset&quot;. We draw a</span>
+            <span class="c1"># collection of index assignments within the array and assign</span>
+            <span class="c1"># fresh values from our elements strategy to those indices. If at</span>
+            <span class="c1"># the end we have not assigned every element then we draw a single</span>
+            <span class="c1"># value from our fill strategy and use that to populate the</span>
+            <span class="c1"># remaining positions with that strategy.</span>
+
+            <span class="n">elements</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">many</span><span class="p">(</span>
+                <span class="n">data</span><span class="p">,</span>
+                <span class="n">min_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">max_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span>
+                <span class="c1"># sqrt isn&#39;t chosen for any particularly principled reason. It</span>
+                <span class="c1"># just grows reasonably quickly but sublinearly, and for small</span>
+                <span class="c1"># arrays it represents a decent fraction of the array size.</span>
+                <span class="n">average_size</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">),</span>
+            <span class="p">)</span>
+
+            <span class="n">needs_fill</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">array_size</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+            <span class="k">while</span> <span class="n">elements</span><span class="o">.</span><span class="n">more</span><span class="p">():</span>
+                <span class="n">i</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">integer_range</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">needs_fill</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">elements</span><span class="o">.</span><span class="n">reject</span><span class="p">()</span>
+                    <span class="k">continue</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_element</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                        <span class="n">elements</span><span class="o">.</span><span class="n">reject</span><span class="p">()</span>
+                        <span class="k">continue</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">needs_fill</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">needs_fill</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                <span class="c1"># We didn&#39;t fill all of the indices in the early loop, so we</span>
+                <span class="c1"># put a fill value into the rest.</span>
+
+                <span class="c1"># We have to do this hilarious little song and dance to work</span>
+                <span class="c1"># around numpy&#39;s special handling of iterable values. If the</span>
+                <span class="c1"># value here were e.g. a tuple then neither array creation</span>
+                <span class="c1"># nor putmask would do the right thing. But by creating an</span>
+                <span class="c1"># array of size one and then assigning the fill value as a</span>
+                <span class="c1"># single element, we both get an array with the right value in</span>
+                <span class="c1"># it and putmask will do the right thing by repeating the</span>
+                <span class="c1"># values of the array across the mask.</span>
+                <span class="n">one_element</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_element</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">one_element</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fill</span><span class="p">)</span>
+                <span class="n">fill_value</span> <span class="o">=</span> <span class="n">one_element</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique</span><span class="p">:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">is_nan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">fill_value</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                        <span class="n">is_nan</span> <span class="o">=</span> <span class="kc">False</span>
+
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_nan</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                            <span class="s2">&quot;Cannot fill unique array with non-NaN &quot;</span>
+                            <span class="s2">&quot;value </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fill_value</span><span class="p">,)</span>
+                        <span class="p">)</span>
+
+                <span class="n">np</span><span class="o">.</span><span class="n">putmask</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">needs_fill</span><span class="p">,</span> <span class="n">one_element</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="nd">@check_function</span>
+<span class="k">def</span> <span class="nf">fill_for</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">unique</span><span class="p">,</span> <span class="n">fill</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">fill</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">unique</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">elements</span><span class="o">.</span><span class="n">has_reusable_values</span><span class="p">:</span>
+            <span class="n">fill</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">nothing</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fill</span> <span class="o">=</span> <span class="n">elements</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">check_strategy</span><span class="p">(</span><span class="n">fill</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.fill&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,)</span> <span class="k">if</span> <span class="n">name</span> <span class="k">else</span> <span class="s2">&quot;fill&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fill</span>
+
+
+<div class="viewcode-block" id="arrays"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.arrays">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">arrays</span><span class="p">(</span>
+    <span class="n">dtype</span><span class="p">,</span>  <span class="c1"># type: Any</span>
+    <span class="n">shape</span><span class="p">,</span>  <span class="c1"># type: Union[int, Shape, st.SearchStrategy[Shape]]</span>
+    <span class="n">elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: st.SearchStrategy[Any]</span>
+    <span class="n">fill</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: st.SearchStrategy[Any]</span>
+    <span class="n">unique</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># type: bool</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; st.SearchStrategy[np.ndarray]</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a strategy for generating :class:`numpy:numpy.ndarray`\ s.</span>
+
+<span class="sd">    * ``dtype`` may be any valid input to :class:`~numpy:numpy.dtype`</span>
+<span class="sd">      (this includes :class:`~numpy:numpy.dtype` objects), or a strategy that</span>
+<span class="sd">      generates such values.</span>
+<span class="sd">    * ``shape`` may be an integer &gt;= 0, a tuple of such integers, or a</span>
+<span class="sd">      strategy that generates such values.</span>
+<span class="sd">    * ``elements`` is a strategy for generating values to put in the array.</span>
+<span class="sd">      If it is None a suitable value will be inferred based on the dtype,</span>
+<span class="sd">      which may give any legal value (including eg ``NaN`` for floats).</span>
+<span class="sd">      If you have more specific requirements, you should supply your own</span>
+<span class="sd">      elements strategy.</span>
+<span class="sd">    * ``fill`` is a strategy that may be used to generate a single background</span>
+<span class="sd">      value for the array. If None, a suitable default will be inferred</span>
+<span class="sd">      based on the other arguments. If set to</span>
+<span class="sd">      :func:`~hypothesis.strategies.nothing` then filling</span>
+<span class="sd">      behaviour will be disabled entirely and every element will be generated</span>
+<span class="sd">      independently.</span>
+<span class="sd">    * ``unique`` specifies if the elements of the array should all be</span>
+<span class="sd">      distinct from one another. Note that in this case multiple NaN values</span>
+<span class="sd">      may still be allowed. If fill is also set, the only valid values for</span>
+<span class="sd">      it to return are NaN values (anything for which :obj:`numpy:numpy.isnan`</span>
+<span class="sd">      returns True. So e.g. for complex numbers (nan+1j) is also a valid fill).</span>
+<span class="sd">      Note that if unique is set to True the generated values must be hashable.</span>
+
+<span class="sd">    Arrays of specified ``dtype`` and ``shape`` are generated for example</span>
+<span class="sd">    like this:</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">      &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">      &gt;&gt;&gt; arrays(np.int8, (2, 3)).example()</span>
+<span class="sd">      array([[-8,  6,  3],</span>
+<span class="sd">             [-6,  4,  6]], dtype=int8)</span>
+
+<span class="sd">    - See :doc:`What you can generate and how &lt;data&gt;`.</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">      &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">      &gt;&gt;&gt; from hypothesis.strategies import floats</span>
+<span class="sd">      &gt;&gt;&gt; arrays(np.float, 3, elements=floats(0, 1)).example()</span>
+<span class="sd">      array([ 0.88974794,  0.77387938,  0.1977879 ])</span>
+
+<span class="sd">    Array values are generated in two parts:</span>
+
+<span class="sd">    1. Some subset of the coordinates of the array are populated with a value</span>
+<span class="sd">       drawn from the elements strategy (or its inferred form).</span>
+<span class="sd">    2. If any coordinates were not assigned in the previous step, a single</span>
+<span class="sd">       value is drawn from the fill strategy and is assigned to all remaining</span>
+<span class="sd">       places.</span>
+
+<span class="sd">    You can set fill to :func:`~hypothesis.strategies.nothing` if you want to</span>
+<span class="sd">    disable this behaviour and draw a value for every element.</span>
+
+<span class="sd">    If fill is set to None then it will attempt to infer the correct behaviour</span>
+<span class="sd">    automatically: If unique is True, no filling will occur by default.</span>
+<span class="sd">    Otherwise, if it looks safe to reuse the values of elements across</span>
+<span class="sd">    multiple coordinates (this will be the case for any inferred strategy, and</span>
+<span class="sd">    for most of the builtins, but is not the case for mutable values or</span>
+<span class="sd">    strategies built with flatmap, map, composite, etc) then it will use the</span>
+<span class="sd">    elements strategy as the fill, else it will default to having no fill.</span>
+
+<span class="sd">    Having a fill helps Hypothesis craft high quality examples, but its</span>
+<span class="sd">    main importance is when the array generated is large: Hypothesis is</span>
+<span class="sd">    primarily designed around testing small examples. If you have arrays with</span>
+<span class="sd">    hundreds or more elements, having a fill value is essential if you want</span>
+<span class="sd">    your tests to run in reasonable time.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># We support passing strategies as arguments for convenience, or at least</span>
+    <span class="c1"># for legacy reasons, but don&#39;t want to pay the perf cost of a composite</span>
+    <span class="c1"># strategy (i.e. repeated argument handling and validation) when it&#39;s not</span>
+    <span class="c1"># needed.  So we get the best of both worlds by recursing with flatmap,</span>
+    <span class="c1"># but only when it&#39;s actually needed.</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">SearchStrategy</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">dtype</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">arrays</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="n">unique</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">SearchStrategy</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">shape</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">arrays</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="n">unique</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="c1"># From here on, we&#39;re only dealing with values and it&#39;s relatively simple.</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">elements</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">from_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">integer_types</span><span class="p">):</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">shape</span><span class="p">,)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">integer_types</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">),</span>
+        <span class="s2">&quot;Array shape must be integer in each dimension, provided shape was </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">shape</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fill</span> <span class="o">=</span> <span class="n">fill_for</span><span class="p">(</span><span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="n">unique</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fill</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ArrayStrategy</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">fill</span><span class="p">,</span> <span class="n">unique</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="array_shapes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.array_shapes">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">array_shapes</span><span class="p">(</span><span class="n">min_dims</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_side</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_side</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># type: (int, int, int, int) -&gt; st.SearchStrategy[Shape]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for array shapes (tuples of int &gt;= 1).&quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">min_dims</span><span class="p">,</span> <span class="s2">&quot;min_dims&quot;</span><span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="s2">&quot;min_side&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_dims</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Got min_dims=</span><span class="si">%r</span><span class="s2">, but numpy does not support arrays greater than 32 dimensions&quot;</span>
+            <span class="o">%</span> <span class="n">min_dims</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_dims</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_dims</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">max_dims</span><span class="p">,</span> <span class="s2">&quot;max_dims&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_dims</span> <span class="o">&gt;</span> <span class="mi">32</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Got max_dims=</span><span class="si">%r</span><span class="s2">, but numpy does not support arrays greater than 32 dimensions&quot;</span>
+            <span class="o">%</span> <span class="n">max_dims</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">max_side</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_side</span> <span class="o">=</span> <span class="n">min_side</span> <span class="o">+</span> <span class="mi">5</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">max_side</span><span class="p">,</span> <span class="s2">&quot;max_side&quot;</span><span class="p">)</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;dims&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_dims</span><span class="p">,</span> <span class="n">max_dims</span><span class="p">)</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;side&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">),</span> <span class="n">min_size</span><span class="o">=</span><span class="n">min_dims</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">max_dims</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="scalar_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.scalar_dtypes">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">scalar_dtypes</span><span class="p">():</span>
+    <span class="c1"># type: () -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy that can return any non-flexible scalar dtype.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">one_of</span><span class="p">(</span>
+        <span class="n">boolean_dtypes</span><span class="p">(),</span>
+        <span class="n">integer_dtypes</span><span class="p">(),</span>
+        <span class="n">unsigned_integer_dtypes</span><span class="p">(),</span>
+        <span class="n">floating_dtypes</span><span class="p">(),</span>
+        <span class="n">complex_number_dtypes</span><span class="p">(),</span>
+        <span class="n">datetime64_dtypes</span><span class="p">(),</span>
+        <span class="n">timedelta64_dtypes</span><span class="p">(),</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">defines_dtype_strategy</span><span class="p">(</span><span class="n">strat</span><span class="p">):</span>
+    <span class="c1"># type: (T) -&gt; T</span>
+    <span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+    <span class="nd">@proxies</span><span class="p">(</span><span class="n">strat</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">strategy</span> <span class="o">=</span> <span class="n">strat</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">convert_to_dtype</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Helper to debug issue #1798.&quot;&quot;&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span>
+                    <span class="s2">&quot;Got invalid dtype value=</span><span class="si">%r</span><span class="s2"> from strategy=</span><span class="si">%r</span><span class="s2">, function=</span><span class="si">%r</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">strategy</span><span class="p">,</span> <span class="n">strat</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">strategy</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">convert_to_dtype</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">inner</span>
+
+
+<span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">boolean_dtypes</span><span class="p">():</span>
+    <span class="c1"># type: () -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">dtype_factory</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">valid_sizes</span><span class="p">,</span> <span class="n">endianness</span><span class="p">):</span>
+    <span class="c1"># Utility function, shared logic for most integer and string types</span>
+    <span class="n">valid_endian</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">endianness</span> <span class="ow">in</span> <span class="n">valid_endian</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;Unknown endianness: was </span><span class="si">{}</span><span class="s2">, must be in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">endianness</span><span class="p">,</span>
+        <span class="n">valid_endian</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">valid_sizes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">sizes</span> <span class="o">=</span> <span class="p">(</span><span class="n">sizes</span><span class="p">,)</span>
+        <span class="n">check_argument</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="s2">&quot;Dtype must have at least one possible size.&quot;</span><span class="p">)</span>
+        <span class="n">check_argument</span><span class="p">(</span>
+            <span class="nb">all</span><span class="p">(</span><span class="n">s</span> <span class="ow">in</span> <span class="n">valid_sizes</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">),</span>
+            <span class="sa">u</span><span class="s2">&quot;Invalid sizes: was </span><span class="si">{}</span><span class="s2"> must be an item or sequence &quot;</span> <span class="sa">u</span><span class="s2">&quot;in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">sizes</span><span class="p">,</span>
+            <span class="n">valid_sizes</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">):</span>
+            <span class="n">sizes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">({</span><span class="n">s</span> <span class="o">//</span> <span class="mi">8</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">})</span>
+    <span class="n">strat</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kind</span><span class="p">:</span>
+        <span class="n">kind</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">endianness</span> <span class="o">==</span> <span class="s2">&quot;?&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">strat</span><span class="o">.</span><span class="n">map</span><span class="p">((</span><span class="s2">&quot;&lt;&quot;</span> <span class="o">+</span> <span class="n">kind</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">)</span> <span class="o">|</span> <span class="n">strat</span><span class="o">.</span><span class="n">map</span><span class="p">((</span><span class="s2">&quot;&gt;&quot;</span> <span class="o">+</span> <span class="n">kind</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">strat</span><span class="o">.</span><span class="n">map</span><span class="p">((</span><span class="n">endianness</span> <span class="o">+</span> <span class="n">kind</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="unsigned_integer_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.unsigned_integer_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">unsigned_integer_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)):</span>
+    <span class="c1"># type: (str, Sequence[int]) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for unsigned integer dtypes.</span>
+
+<span class="sd">    endianness may be ``&lt;`` for little-endian, ``&gt;`` for big-endian,</span>
+<span class="sd">    ``=`` for native byte order, or ``?`` to allow either byte order.</span>
+<span class="sd">    This argument only applies to dtypes of more than one byte.</span>
+
+<span class="sd">    sizes must be a collection of integer sizes in bits.  The default</span>
+<span class="sd">    (8, 16, 32, 64) covers the full range of sizes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="integer_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.integer_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">integer_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)):</span>
+    <span class="c1"># type: (str, Sequence[int]) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for signed integer dtypes.</span>
+
+<span class="sd">    endianness and sizes are treated as for</span>
+<span class="sd">    :func:`unsigned_integer_dtypes`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="floating_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.floating_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">floating_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">)):</span>
+    <span class="c1"># type: (str, Sequence[int]) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for floating-point dtypes.</span>
+
+<span class="sd">    sizes is the size in bits of floating-point number.  Some machines support</span>
+<span class="sd">    96- or 128-bit floats, but these are not generated by default.</span>
+
+<span class="sd">    Larger floats (96 and 128 bit real parts) are not supported on all</span>
+<span class="sd">    platforms and therefore disabled by default.  To generate these dtypes,</span>
+<span class="sd">    include these values in the sizes argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="complex_number_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.complex_number_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">complex_number_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">)):</span>
+    <span class="c1"># type: (str, Sequence[int]) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for complex-number dtypes.</span>
+
+<span class="sd">    sizes is the total size in bits of a complex number, which consists</span>
+<span class="sd">    of two floats.  Complex halfs (a 16-bit real part) are not supported</span>
+<span class="sd">    by numpy and will not be generated by this strategy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<span class="nd">@check_function</span>
+<span class="k">def</span> <span class="nf">validate_time_slice</span><span class="p">(</span><span class="n">max_period</span><span class="p">,</span> <span class="n">min_period</span><span class="p">):</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">max_period</span> <span class="ow">in</span> <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;max_period </span><span class="si">{}</span><span class="s2"> must be a valid resolution in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">max_period</span><span class="p">,</span>
+        <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">min_period</span> <span class="ow">in</span> <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;min_period </span><span class="si">{}</span><span class="s2"> must be a valid resolution in </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">min_period</span><span class="p">,</span>
+        <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">TIME_RESOLUTIONS</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">max_period</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">TIME_RESOLUTIONS</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">min_period</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s2">&quot;max_period </span><span class="si">{}</span><span class="s2"> must be earlier in sequence </span><span class="si">{}</span><span class="s2"> than &quot;</span> <span class="sa">u</span><span class="s2">&quot;min_period </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">max_period</span><span class="p">,</span>
+        <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+        <span class="n">min_period</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">TIME_RESOLUTIONS</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="datetime64_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.datetime64_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">datetime64_dtypes</span><span class="p">(</span><span class="n">max_period</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">min_period</span><span class="o">=</span><span class="s2">&quot;ns&quot;</span><span class="p">,</span> <span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">):</span>
+    <span class="c1"># type: (str, str, str) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for datetime64 dtypes, with various precisions from</span>
+<span class="sd">    year to attosecond.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span>
+        <span class="s2">&quot;datetime64[</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="p">,</span>
+        <span class="n">validate_time_slice</span><span class="p">(</span><span class="n">max_period</span><span class="p">,</span> <span class="n">min_period</span><span class="p">),</span>
+        <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+        <span class="n">endianness</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="timedelta64_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.timedelta64_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">timedelta64_dtypes</span><span class="p">(</span><span class="n">max_period</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">min_period</span><span class="o">=</span><span class="s2">&quot;ns&quot;</span><span class="p">,</span> <span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">):</span>
+    <span class="c1"># type: (str, str, str) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for timedelta64 dtypes, with various precisions from</span>
+<span class="sd">    year to attosecond.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span>
+        <span class="s2">&quot;timedelta64[</span><span class="si">{}</span><span class="s2">]&quot;</span><span class="p">,</span>
+        <span class="n">validate_time_slice</span><span class="p">(</span><span class="n">max_period</span><span class="p">,</span> <span class="n">min_period</span><span class="p">),</span>
+        <span class="n">TIME_RESOLUTIONS</span><span class="p">,</span>
+        <span class="n">endianness</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="byte_string_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.byte_string_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">byte_string_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">min_len</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="c1"># type: (str, int, int) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for generating bytestring dtypes, of various lengths</span>
+<span class="sd">    and byteorder.&quot;&quot;&quot;</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;len&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_len</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">min_len</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="unicode_string_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.unicode_string_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">unicode_string_dtypes</span><span class="p">(</span><span class="n">endianness</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">min_len</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="c1"># type: (str, int, int) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for generating unicode string dtypes, of various</span>
+<span class="sd">    lengths and byteorder.&quot;&quot;&quot;</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;len&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_len</span><span class="p">,</span> <span class="n">max_len</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dtype_factory</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">min_len</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="kc">None</span><span class="p">,</span> <span class="n">endianness</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="array_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.array_dtypes">[docs]</a><span class="nd">@defines_dtype_strategy</span>
+<span class="k">def</span> <span class="nf">array_dtypes</span><span class="p">(</span>
+    <span class="n">subtype_strategy</span><span class="o">=</span><span class="n">scalar_dtypes</span><span class="p">(),</span>  <span class="c1"># type: st.SearchStrategy[np.dtype]</span>
+    <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># type: int</span>
+    <span class="n">max_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># type: int</span>
+    <span class="n">allow_subarrays</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># type: bool</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for generating array (compound) dtypes, with members</span>
+<span class="sd">    drawn from the given subtype strategy.&quot;&quot;&quot;</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span>
+    <span class="n">native_strings</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">from_type</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>  <span class="c1"># See issue #1798 re: filter!</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">native_strings</span><span class="p">,</span> <span class="n">subtype_strategy</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">allow_subarrays</span><span class="p">:</span>
+        <span class="n">elements</span> <span class="o">|=</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span>
+            <span class="n">native_strings</span><span class="p">,</span> <span class="n">subtype_strategy</span><span class="p">,</span> <span class="n">array_shapes</span><span class="p">(</span><span class="n">max_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_side</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span>
+        <span class="n">elements</span><span class="o">=</span><span class="n">elements</span><span class="p">,</span>
+        <span class="n">min_size</span><span class="o">=</span><span class="n">min_size</span><span class="p">,</span>
+        <span class="n">max_size</span><span class="o">=</span><span class="n">max_size</span><span class="p">,</span>
+        <span class="n">unique_by</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="nested_dtypes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.nested_dtypes">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">nested_dtypes</span><span class="p">(</span>
+    <span class="n">subtype_strategy</span><span class="o">=</span><span class="n">scalar_dtypes</span><span class="p">(),</span>  <span class="c1"># type: st.SearchStrategy[np.dtype]</span>
+    <span class="n">max_leaves</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>  <span class="c1"># type: int</span>
+    <span class="n">max_itemsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: int</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; st.SearchStrategy[np.dtype]</span>
+    <span class="sd">&quot;&quot;&quot;Return the most-general dtype strategy.</span>
+
+<span class="sd">    Elements drawn from this strategy may be simple (from the</span>
+<span class="sd">    subtype_strategy), or several such values drawn from</span>
+<span class="sd">    :func:`array_dtypes` with ``allow_subarrays=True``. Subdtypes in an</span>
+<span class="sd">    array dtype may be nested to any depth, subject to the max_leaves</span>
+<span class="sd">    argument.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">recursive</span><span class="p">(</span>
+        <span class="n">subtype_strategy</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">array_dtypes</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">allow_subarrays</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">max_leaves</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">max_itemsize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">d</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">&lt;=</span> <span class="n">max_itemsize</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="valid_tuple_axes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.valid_tuple_axes">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">valid_tuple_axes</span><span class="p">(</span><span class="n">ndim</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># type: (int, int, int) -&gt; st.SearchStrategy[Shape]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for generating permissible tuple-values for the</span>
+<span class="sd">    ``axis`` argument for a numpy sequential function (e.g.</span>
+<span class="sd">    :func:`numpy:numpy.sum`), given an array of the specified</span>
+<span class="sd">    dimensionality.</span>
+
+<span class="sd">    All tuples will have an length &gt;= min_size and &lt;= max_size. The default</span>
+<span class="sd">    value for max_size is ``ndim``.</span>
+
+<span class="sd">    Examples from this strategy shrink towards an empty tuple, which render</span>
+<span class="sd">    most sequential functions as no-ops.</span>
+
+<span class="sd">    The following are some examples drawn from this strategy.</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">        &gt;&gt;&gt; [valid_tuple_axes(3).example() for i in range(4)]</span>
+<span class="sd">        [(-3, 1), (0, 1, -1), (0, 2), (0, -2, 2)]</span>
+
+<span class="sd">    ``valid_tuple_axes`` can be joined with other strategies to generate</span>
+<span class="sd">    any type of valid axis object, i.e. integers, tuples, and ``None``:</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">        any_axis_strategy = none() | integers(-ndim, ndim - 1) | valid_tuple_axes(ndim)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">max_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_size</span> <span class="o">=</span> <span class="n">ndim</span>
+
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="s2">&quot;ndim&quot;</span><span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="s2">&quot;min_size&quot;</span><span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="s2">&quot;max_size&quot;</span><span class="p">)</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span>
+    <span class="n">check_valid_interval</span><span class="p">(</span><span class="n">max_size</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="s2">&quot;max_size&quot;</span><span class="p">,</span> <span class="s2">&quot;ndim&quot;</span><span class="p">)</span>
+
+    <span class="c1"># shrink axis values from negative to positive</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">ndim</span> <span class="k">else</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ndim</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">unique_by</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="n">ndim</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span></div>
+
+
+<span class="k">class</span> <span class="nc">BroadcastShapeStrategy</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">min_dims</span><span class="p">,</span> <span class="n">max_dims</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">min_side</span> <span class="o">&lt;=</span> <span class="n">max_side</span>
+        <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">min_dims</span> <span class="o">&lt;=</span> <span class="n">max_dims</span> <span class="o">&lt;=</span> <span class="mi">32</span>
+        <span class="n">SearchStrategy</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side_strat</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span> <span class="o">=</span> <span class="n">min_dims</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_dims</span> <span class="o">=</span> <span class="n">max_dims</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_side</span> <span class="o">=</span> <span class="n">min_side</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_side</span> <span class="o">=</span> <span class="n">max_side</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">elements</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">many</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span>
+            <span class="n">min_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span><span class="p">,</span>
+            <span class="n">max_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_dims</span><span class="p">,</span>
+            <span class="n">average_size</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span>
+                <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span> <span class="o">+</span> <span class="mi">5</span><span class="p">),</span>
+                <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dims</span><span class="p">),</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">reversed_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">while</span> <span class="n">elements</span><span class="o">.</span><span class="n">more</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+                <span class="c1"># Shrinks towards original shape</span>
+                <span class="k">if</span> <span class="n">reversed_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_side</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">()):</span>
+                        <span class="n">side</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">side</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">side_strat</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_side</span> <span class="o">&gt;=</span> <span class="n">reversed_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)]</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_side</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_side</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">())</span>
+                <span class="p">):</span>
+                    <span class="n">side</span> <span class="o">=</span> <span class="n">reversed_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">side</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">side</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">side_strat</span><span class="p">)</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">side</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_dims</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dims</span>
+        <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">min_side</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_side</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="broadcastable_shapes"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.broadcastable_shapes">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">broadcastable_shapes</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">min_dims</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_side</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_side</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># type: (Shape, int, int, int, int) -&gt; st.SearchStrategy[Shape]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for generating shapes that are broadcast-compatible</span>
+<span class="sd">    with the provided shape.</span>
+
+<span class="sd">    Examples from this strategy shrink towards a shape with length ``min_dims``.</span>
+<span class="sd">    The size of an aligned dimension shrinks towards being a singleton. The</span>
+<span class="sd">    size of an unaligned dimension shrink towards ``min_side``.</span>
+
+<span class="sd">    * ``shape`` a tuple of integers</span>
+<span class="sd">    * ``min_dims`` The smallest length that the generated shape can possess.</span>
+<span class="sd">    * ``max_dims`` The largest length that the generated shape can possess.</span>
+<span class="sd">      shape can possess. Cannot exceed 32. The default-value for ``max_dims``</span>
+<span class="sd">      is ``2 + max(len(shape), min_dims)``.</span>
+<span class="sd">    * ``min_side`` The smallest size that an unaligned dimension can possess.</span>
+<span class="sd">    * ``max_side`` The largest size that an unaligned dimension can possess.</span>
+<span class="sd">      The default value is 2 + &#39;size-of-largest-aligned-dimension&#39;.</span>
+
+<span class="sd">    The following are some examples drawn from this strategy.</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">        &gt;&gt;&gt; [broadcastable_shapes(shape=(2, 3)).example() for i in range(5)]</span>
+<span class="sd">        [(1, 3), (), (2, 3), (2, 1), (4, 1, 3), (3, )]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+    <span class="n">strict_check</span> <span class="o">=</span> <span class="n">max_side</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">max_dims</span> <span class="ow">is</span> <span class="kc">None</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="s2">&quot;min_side&quot;</span><span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">min_dims</span><span class="p">,</span> <span class="s2">&quot;min_dims&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">max_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_dims</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">min_dims</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">max_dims</span><span class="p">,</span> <span class="s2">&quot;max_dims&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">max_side</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_side</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="n">max_dims</span><span class="p">:])</span> <span class="o">+</span> <span class="p">(</span><span class="n">min_side</span><span class="p">,))</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">check_type</span><span class="p">(</span><span class="n">integer_types</span><span class="p">,</span> <span class="n">max_side</span><span class="p">,</span> <span class="s2">&quot;max_side&quot;</span><span class="p">)</span>
+
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;dims&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_dims</span><span class="p">,</span> <span class="n">max_dims</span><span class="p">)</span>
+    <span class="n">order_check</span><span class="p">(</span><span class="s2">&quot;side&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="mi">32</span> <span class="o">&lt;</span> <span class="n">max_dims</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;max_dims cannot exceed 32&quot;</span><span class="p">)</span>
+
+    <span class="n">dims</span><span class="p">,</span> <span class="n">bnd_name</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_dims</span><span class="p">,</span> <span class="s2">&quot;max_dims&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">strict_check</span> <span class="k">else</span> <span class="p">(</span><span class="n">min_dims</span><span class="p">,</span> <span class="s2">&quot;min_dims&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check for unsatisfiable min_side</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">min_side</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">dims</span><span class="p">]</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Given shape=</span><span class="si">%r</span><span class="s2">, there are no broadcast-compatible &quot;</span>
+            <span class="s2">&quot;shapes that satisfy: </span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2"> and min_side=</span><span class="si">%s</span><span class="s2">&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">bnd_name</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">min_side</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># check for unsatisfiable [min_side, max_side]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+        <span class="n">min_side</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">max_side</span> <span class="ow">or</span> <span class="nb">all</span><span class="p">(</span><span class="n">s</span> <span class="o">&lt;=</span> <span class="n">max_side</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">dims</span><span class="p">])</span>
+    <span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Given shape=</span><span class="si">%r</span><span class="s2">, there are no broadcast-compatible shapes &quot;</span>
+            <span class="s2">&quot;that satisfy: </span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2"> and [min_side=</span><span class="si">%s</span><span class="s2">, max_side=</span><span class="si">%s</span><span class="s2">]&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">bnd_name</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">min_side</span><span class="p">,</span> <span class="n">max_side</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">strict_check</span><span class="p">:</span>
+        <span class="c1"># reduce max_dims to exclude unsatisfiable dimensions</span>
+        <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">max_dims</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">shape</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">min_side</span> <span class="ow">and</span> <span class="n">s</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">max_dims</span> <span class="o">=</span> <span class="n">n</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="p">(</span><span class="n">min_side</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">max_side</span> <span class="ow">or</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">max_side</span><span class="p">):</span>
+                <span class="n">max_dims</span> <span class="o">=</span> <span class="n">n</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">BroadcastShapeStrategy</span><span class="p">(</span>
+        <span class="n">shape</span><span class="p">,</span>
+        <span class="n">min_dims</span><span class="o">=</span><span class="n">min_dims</span><span class="p">,</span>
+        <span class="n">max_dims</span><span class="o">=</span><span class="n">max_dims</span><span class="p">,</span>
+        <span class="n">min_side</span><span class="o">=</span><span class="n">min_side</span><span class="p">,</span>
+        <span class="n">max_side</span><span class="o">=</span><span class="n">max_side</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="integer_array_indices"><a class="viewcode-back" href="../../../numpy.html#hypothesis.extra.numpy.integer_array_indices">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">integer_array_indices</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">result_shape</span><span class="o">=</span><span class="n">array_shapes</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">):</span>
+    <span class="c1"># type: (Shape, SearchStrategy[Shape], np.dtype) -&gt; st.SearchStrategy[Tuple[np.ndarray, ...]]</span>
+    <span class="sd">&quot;&quot;&quot;Return a search strategy for tuples of integer-arrays that, when used</span>
+<span class="sd">    to index into an array of shape ``shape``, given an array whose shape</span>
+<span class="sd">    was drawn from ``result_shape``.</span>
+
+<span class="sd">    Examples from this strategy shrink towards the tuple of index-arrays::</span>
+
+<span class="sd">        len(shape) * (np.zeros(drawn_result_shape, dtype), )</span>
+
+<span class="sd">    * ``shape`` a tuple of integers that indicates the shape of the array,</span>
+<span class="sd">      whose indices are being generated.</span>
+<span class="sd">    * ``result_shape`` a strategy for generating tuples of integers, which</span>
+<span class="sd">      describe the shape of the resulting index arrays. The default is</span>
+<span class="sd">      :func:`~hypothesis.extra.numpy.array_shapes`.  The shape drawn from</span>
+<span class="sd">      this strategy determines the shape of the array that will be produced</span>
+<span class="sd">      when the corresponding example from ``integer_array_indices`` is used</span>
+<span class="sd">      as an index.</span>
+<span class="sd">    * ``dtype`` the integer data type of the generated index-arrays. Negative</span>
+<span class="sd">      integer indices can be generated if a signed integer type is specified.</span>
+
+<span class="sd">    Recall that an array can be indexed using a tuple of integer-arrays to</span>
+<span class="sd">    access its members in an arbitrary order, producing an array with an</span>
+<span class="sd">    arbitrary shape. For example:</span>
+
+<span class="sd">    .. code-block:: pycon</span>
+
+<span class="sd">        &gt;&gt;&gt; from numpy import array</span>
+<span class="sd">        &gt;&gt;&gt; x = array([-0, -1, -2, -3, -4])</span>
+<span class="sd">        &gt;&gt;&gt; ind = (array([[4, 0], [0, 1]]),)  # a tuple containing a 2D integer-array</span>
+<span class="sd">        &gt;&gt;&gt; x[ind]  # the resulting array is commensurate with the indexing array(s)</span>
+<span class="sd">        array([[-4,  0],</span>
+<span class="sd">               [0, -1]])</span>
+
+<span class="sd">    Note that this strategy does not accommodate all variations of so-called</span>
+<span class="sd">    &#39;advanced indexing&#39;, as prescribed by NumPy&#39;s nomenclature.  Combinations</span>
+<span class="sd">    of basic and advanced indexes are too complex to usefully define in a</span>
+<span class="sd">    standard strategy; we leave application-specific strategies to the user.</span>
+<span class="sd">    Advanced-boolean indexing can be defined as ``arrays(shape=..., dtype=bool)``,</span>
+<span class="sd">    and is similarly left to the user.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">shape</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">integer_types</span><span class="p">)</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">),</span>
+        <span class="s2">&quot;shape=</span><span class="si">%r</span><span class="s2"> must be a non-empty tuple of integers &gt; 0&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">shape</span><span class="p">,),</span>
+    <span class="p">)</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">,</span> <span class="n">result_shape</span><span class="p">,</span> <span class="s2">&quot;result_shape&quot;</span><span class="p">)</span>
+    <span class="n">check_argument</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">),</span> <span class="s2">&quot;dtype=</span><span class="si">%r</span><span class="s2"> must be an integer dtype&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dtype</span><span class="p">,)</span>
+    <span class="p">)</span>
+    <span class="n">signed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">signedinteger</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">array_for</span><span class="p">(</span><span class="n">index_shape</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">arrays</span><span class="p">(</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="n">index_shape</span><span class="p">,</span>
+            <span class="n">elements</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="o">-</span><span class="n">size</span> <span class="k">if</span> <span class="n">signed</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result_shape</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">index_shape</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">array_for</span><span class="p">(</span><span class="n">index_shape</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">])</span>
+    <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

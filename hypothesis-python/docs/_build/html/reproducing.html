@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reproducing Failures &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Packaging Guidelines" href="packaging.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reproducing Failures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#providing-explicit-examples">Providing explicit examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reproducing-a-test-run-with-seed">Reproducing a test run with <code class="docutils literal notranslate"><span class="pre">&#64;seed</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reproducing-an-example-with-reproduce-failure">Reproducing an example with <code class="docutils literal notranslate"><span class="pre">&#64;reproduce_failure</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Reproducing Failures</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/reproducing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="reproducing-failures">
+<h1>Reproducing Failures<a class="headerlink" href="#reproducing-failures" title="Permalink to this headline">¶</a></h1>
+<p>One of the things that is often concerning for people using randomized testing
+is the question of how to reproduce failing test cases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is better to think about the data Hypothesis generates as being
+<em>arbitrary</em>, rather than <em>random</em>.  We deliberately generate any valid
+data that seems likely to cause errors, so you shouldn’t rely on any
+expected distribution of or relationships between generated data.
+You can read about “swarm testing” and “coverage guided fuzzing” if
+you’re interested, because you don’t need to know for Hypothesis!</p>
+</div>
+<p>Fortunately Hypothesis has a number of features to support reproducing test failures. The one you
+will use most commonly when developing locally is <a class="reference internal" href="database.html"><span class="doc">the example database</span></a>,
+which means that you shouldn’t have to think about the problem at all for local
+use - test failures will just automatically reproduce without you having to do
+anything.</p>
+<p>The example database is perfectly suitable for sharing between machines, but
+there currently aren’t very good work flows for that, so Hypothesis provides a
+number of ways to make examples reproducible by adding them to the source code
+of your tests. This is particularly useful when e.g. you are trying to run an
+example that has failed on your CI, or otherwise share them between machines.</p>
+<div class="section" id="providing-explicit-examples">
+<span id="id1"></span><h2>Providing explicit examples<a class="headerlink" href="#providing-explicit-examples" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to reproduce a failed test is to ask Hypothesis to run the
+failing example it printed.  For example, if <code class="docutils literal notranslate"><span class="pre">Falsifying</span> <span class="pre">example:</span> <span class="pre">test(n=1)</span></code>
+was printed you can decorate <code class="docutils literal notranslate"><span class="pre">test</span></code> with <code class="docutils literal notranslate"><span class="pre">&#64;example(n=1)</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;example</span></code> can also be used to ensure a specific example is <em>always</em> executed
+as a regression test or to cover some edge case - basically combining a
+Hypothesis test and a traditional parametrized test.</p>
+<dl class="function">
+<dt id="hypothesis.example">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">example</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/core.html#example"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.example" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator which ensures a specific example is always tested.</p>
+</dd></dl>
+
+<p>Hypothesis will run all examples you’ve asked for first. If any of them fail it
+will not go on to look for more examples.</p>
+<p>It doesn’t matter whether you put the example decorator before or after given.
+Any permutation of the decorators in the above will do the same thing.</p>
+<p>Note that examples can be positional or keyword based. If they’re positional then
+they will be filled in from the right when calling, so either of the following
+styles will work as expected:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">text</span><span class="p">())</span>
+<span class="nd">@example</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+<span class="nd">@example</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Some very long string&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_some_code</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">True</span>
+
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="k">class</span> <span class="nc">TestThings</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">text</span><span class="p">())</span>
+    <span class="nd">@example</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+    <span class="nd">@example</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Some very long string&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_some_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>As with <code class="docutils literal notranslate"><span class="pre">&#64;given</span></code>, it is not permitted for a single example to be a mix of
+positional and keyword arguments.
+Either are fine, and you can use one in one example and the other in another
+example if for some reason you really want to, but a single example must be
+consistent.</p>
+</div>
+<div class="section" id="reproducing-a-test-run-with-seed">
+<span id="reproducing-with-seed"></span><h2>Reproducing a test run with <code class="docutils literal notranslate"><span class="pre">&#64;seed</span></code><a class="headerlink" href="#reproducing-a-test-run-with-seed" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="hypothesis.seed">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">seed</code><span class="sig-paren">(</span><em class="sig-param">seed</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/core.html#seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>seed: Start the test execution from a specific seed.</p>
+<p>May be any hashable object. No exact meaning for seed is provided
+other than that for a fixed seed value Hypothesis will try the same
+actions (insofar as it can given external sources of non-
+determinism. e.g. timing and hash randomization).</p>
+<p>Overrides the derandomize setting, which is designed to enable
+deterministic builds rather than reproducing observed failures.</p>
+</dd></dl>
+
+<p>When a test fails unexpectedly, usually due to a health check failure,
+Hypothesis will print out a seed that led to that failure, if the test is not
+already running with a fixed seed. You can then recreate that failure using either
+the <code class="docutils literal notranslate"><span class="pre">&#64;seed</span></code> decorator or (if you are running <a class="reference external" href="https://pypi.org/project/pytest">pytest</a>) with
+<code class="docutils literal notranslate"><span class="pre">--hypothesis-seed</span></code>.</p>
+<p>The seed will not be printed if you could simply use <code class="docutils literal notranslate"><span class="pre">&#64;example</span></code> instead.</p>
+</div>
+<div class="section" id="reproducing-an-example-with-reproduce-failure">
+<span id="reproduce-failure"></span><h2>Reproducing an example with <code class="docutils literal notranslate"><span class="pre">&#64;reproduce_failure</span></code><a class="headerlink" href="#reproducing-an-example-with-reproduce-failure" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis has an opaque binary representation that it uses for all examples it
+generates. This representation is not intended to be stable across versions or
+with respect to changes in the test, but can be used to to reproduce failures
+with the <code class="docutils literal notranslate"><span class="pre">&#64;reproduce_example</span></code> decorator.</p>
+<dl class="function">
+<dt id="hypothesis.reproduce_failure">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">reproduce_failure</code><span class="sig-paren">(</span><em class="sig-param">version</em>, <em class="sig-param">blob</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/core.html#reproduce_failure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.reproduce_failure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the example that corresponds to this data blob in order to reproduce
+a failure.</p>
+<p>A test with this decorator <em>always</em> runs only one example and always fails.
+If the provided example does not cause a failure, or is in some way invalid
+for this test, then this will fail with a DidNotReproduce error.</p>
+<p>This decorator is not intended to be a permanent addition to your test
+suite. It’s simply some code you can add to ease reproduction of a problem
+in the event that you don’t have access to the test database. Because of
+this, <em>no</em> compatibility guarantees are made between different versions of
+Hypothesis - its API may change arbitrarily from version to version.</p>
+</dd></dl>
+
+<p>The intent is that you should never write this decorator by hand, but it is
+instead provided by Hypothesis.
+When a test fails with a falsifying example, Hypothesis may print out a
+suggestion to use <code class="docutils literal notranslate"><span class="pre">&#64;reproduce_failure</span></code> on the test to recreate the problem
+as follows:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">given</span><span class="p">,</span> <span class="n">PrintSettings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="kn">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">())</span>
+<span class="gp">... </span><span class="nd">@settings</span><span class="p">(</span><span class="n">print_blob</span><span class="o">=</span><span class="n">PrintSettings</span><span class="o">.</span><span class="n">ALWAYS</span><span class="p">)</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="n">f</span> <span class="o">==</span> <span class="n">f</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">test</span><span class="p">()</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">pass</span>
+<span class="go">Falsifying example: test(f=nan)</span>
+
+<span class="go">You can reproduce this example by temporarily adding @reproduce_failure(..., b&#39;AAAA//AAAAAAAAEA&#39;) as a decorator on your test case</span>
+</pre></div>
+</div>
+<p>Adding the suggested decorator to the test should reproduce the failure (as
+long as everything else is the same - changing the versions of Python or
+anything else involved, might of course affect the behaviour of the test! Note
+that changing the version of Hypothesis will result in a different error -
+each <code class="docutils literal notranslate"><span class="pre">&#64;reproduce_failure</span></code> invocation is specific to a Hypothesis version).</p>
+<p>When to do this is controlled by the <a class="reference internal" href="settings.html#hypothesis.settings.print_blob" title="hypothesis.settings.print_blob"><code class="xref py py-attr docutils literal notranslate"><span class="pre">print_blob</span></code></a>
+setting, which may be one of the following values:</p>
+<dl class="class">
+<dt id="hypothesis.PrintSettings">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">PrintSettings</code><a class="reference internal" href="_modules/hypothesis/_settings.html#PrintSettings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.PrintSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flags to determine whether or not to print a detailed example blob to
+use with <a class="reference internal" href="#hypothesis.reproduce_failure" title="hypothesis.reproduce_failure"><code class="xref py py-func docutils literal notranslate"><span class="pre">reproduce_failure()</span></code></a> for failing test cases.</p>
+<dl class="attribute">
+<dt id="hypothesis.PrintSettings.NEVER">
+<code class="sig-name descname">NEVER</code><em class="property"> = 0</em><a class="headerlink" href="#hypothesis.PrintSettings.NEVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Never print a blob.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.PrintSettings.INFER">
+<code class="sig-name descname">INFER</code><em class="property"> = 1</em><a class="headerlink" href="#hypothesis.PrintSettings.INFER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make an educated guess as to whether it would be appropriate to print
+the blob.</p>
+<p>The current rules are that this will print if:</p>
+<ol class="arabic simple">
+<li><p>The output from Hypothesis appears to be unsuitable for use with
+<a class="reference internal" href="#hypothesis.example" title="hypothesis.example"><code class="xref py py-func docutils literal notranslate"><span class="pre">example()</span></code></a>, and</p></li>
+<li><p>The output is not too long, and</p></li>
+<li><p>Verbosity is at least normal.</p></li>
+</ol>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.PrintSettings.ALWAYS">
+<code class="sig-name descname">ALWAYS</code><em class="property"> = 2</em><a class="headerlink" href="#hypothesis.PrintSettings.ALWAYS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always print a blob on failure.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="packaging.html" class="btn btn-neutral float-left" title="Packaging Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

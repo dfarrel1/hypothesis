@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.extra.django._impl &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.extra.django._impl</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.extra.django._impl</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+
+<span class="kn">import</span> <span class="nn">django.db.models</span> <span class="k">as</span> <span class="nn">dm</span>
+<span class="kn">import</span> <span class="nn">django.forms</span> <span class="k">as</span> <span class="nn">df</span>
+<span class="kn">import</span> <span class="nn">django.test</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="k">import</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="k">import</span> <span class="n">IntegrityError</span>
+
+<span class="kn">import</span> <span class="nn">hypothesis._strategies</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="k">import</span> <span class="n">reject</span>
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="n">InvalidArgument</span>
+<span class="kn">from</span> <span class="nn">hypothesis.extra.django._fields</span> <span class="k">import</span> <span class="n">from_field</span>
+<span class="kn">from</span> <span class="nn">hypothesis.utils.conventions</span> <span class="k">import</span> <span class="n">infer</span>
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">tzinfo</span>  <span class="c1"># noqa</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Text</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span>  <span class="c1"># noqa</span>
+    <span class="kn">from</span> <span class="nn">hypothesis.utils.conventions</span> <span class="k">import</span> <span class="n">InferType</span>  <span class="c1"># noqa</span>
+
+
+<span class="k">class</span> <span class="nc">HypothesisTestCase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setup_example</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pre_setup</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">teardown_example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">example</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_teardown</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">testMethod</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_testMethodName</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">testMethod</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;is_hypothesis_test&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">SimpleTestCase</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">TestCase</span><span class="p">(</span><span class="n">HypothesisTestCase</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">TransactionTestCase</span><span class="p">(</span><span class="n">HypothesisTestCase</span><span class="p">,</span> <span class="n">dt</span><span class="o">.</span><span class="n">TransactionTestCase</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="from_model"><a class="viewcode-back" href="../../../../django.html#hypothesis.extra.django.from_model">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">from_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>  <span class="c1"># type: Type[dm.Model]</span>
+    <span class="o">**</span><span class="n">field_strategies</span>  <span class="c1"># type: Union[st.SearchStrategy[Any], InferType]</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; st.SearchStrategy[Any]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for examples of ``model``.</span>
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        Hypothesis creates saved models. This will run inside your testing</span>
+<span class="sd">        transaction when using the test runner, but if you use the dev console</span>
+<span class="sd">        this will leave debris in your database.</span>
+
+<span class="sd">    ``model`` must be an subclass of :class:`~django:django.db.models.Model`.</span>
+<span class="sd">    Strategies for fields may be passed as keyword arguments, for example</span>
+<span class="sd">    ``is_staff=st.just(False)``.</span>
+
+<span class="sd">    Hypothesis can often infer a strategy based the field type and validators,</span>
+<span class="sd">    and will attempt to do so for any required fields.  No strategy will be</span>
+<span class="sd">    inferred for an :class:`~django:django.db.models.AutoField`, nullable field,</span>
+<span class="sd">    foreign key, or field for which a keyword</span>
+<span class="sd">    argument is passed to ``from_model()``.  For example,</span>
+<span class="sd">    a Shop type with a foreign key to Company could be generated with::</span>
+
+<span class="sd">        shop_strategy = from_model(Shop, company=from_model(Company))</span>
+
+<span class="sd">    Like for :func:`~hypothesis.strategies.builds`, you can pass</span>
+<span class="sd">    :obj:`~hypothesis.infer` as a keyword argument to infer a strategy for</span>
+<span class="sd">    a field which has a default value instead of using the default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dm</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;model=</span><span class="si">%r</span><span class="s2"> must be a subtype of Model&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">model</span><span class="p">,))</span>
+
+    <span class="n">fields_by_name</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">concrete_fields</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">field_strategies</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">infer</span><span class="p">:</span>
+            <span class="n">field_strategies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_field</span><span class="p">(</span><span class="n">fields_by_name</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fields_by_name</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">field_strategies</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">auto_created</span>
+            <span class="ow">and</span> <span class="n">field</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">dm</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">NOT_PROVIDED</span>
+        <span class="p">):</span>
+            <span class="n">field_strategies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_field</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">field_strategies</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="n">field</span><span class="p">)</span><span class="o">.</span><span class="n">primary_key</span><span class="p">:</span>
+            <span class="c1"># The primary key is generated as part of the strategy. We</span>
+            <span class="c1"># want to find any existing row with this primary key and</span>
+            <span class="c1"># overwrite its contents.</span>
+            <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">field</span><span class="p">:</span> <span class="n">field_strategies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">field</span><span class="p">)}</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;defaults&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">(</span><span class="n">field_strategies</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+            <span class="k">return</span> <span class="n">_models_impl</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">update_or_create</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+
+    <span class="c1"># The primary key is not generated as part of the strategy, so we</span>
+    <span class="c1"># just match against any row that has the same value for all</span>
+    <span class="c1"># fields.</span>
+    <span class="k">return</span> <span class="n">_models_impl</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">,</span> <span class="o">**</span><span class="n">field_strategies</span><span class="p">))</span></div>
+
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
+<span class="k">def</span> <span class="nf">_models_impl</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">strat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handle the nasty part of drawing a value for models()&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">strat</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="n">IntegrityError</span><span class="p">:</span>
+        <span class="n">reject</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="from_form"><a class="viewcode-back" href="../../../../django.html#hypothesis.extra.django.from_form">[docs]</a><span class="nd">@st</span><span class="o">.</span><span class="n">defines_strategy</span>
+<span class="k">def</span> <span class="nf">from_form</span><span class="p">(</span>
+    <span class="n">form</span><span class="p">,</span>  <span class="c1"># type: Type[dm.Model]</span>
+    <span class="n">form_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: dict</span>
+    <span class="o">**</span><span class="n">field_strategies</span>  <span class="c1"># type: Union[st.SearchStrategy[Any], InferType]</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; st.SearchStrategy[Any]</span>
+    <span class="sd">&quot;&quot;&quot;Return a strategy for examples of ``form``.</span>
+
+<span class="sd">    ``form`` must be an subclass of :class:`~django:django.forms.Form`.</span>
+<span class="sd">    Strategies for fields may be passed as keyword arguments, for example</span>
+<span class="sd">    ``is_staff=st.just(False)``.</span>
+
+<span class="sd">    Hypothesis can often infer a strategy based the field type and validators,</span>
+<span class="sd">    and will attempt to do so for any required fields.  No strategy will be</span>
+<span class="sd">    inferred for a disabled field or field for which a keyword argument</span>
+<span class="sd">    is passed to ``from_form()``.</span>
+
+<span class="sd">    This function uses the fields of an unbound ``form`` instance to determine</span>
+<span class="sd">    field strategies, any keyword arguments needed to instantiate the unbound</span>
+<span class="sd">    ``form`` instance can be passed into ``from_form()`` as a dict with the</span>
+<span class="sd">    keyword ``form_kwargs``. E.g.::</span>
+
+<span class="sd">        shop_strategy = from_form(Shop, form_kwargs={&quot;company_id&quot;: 5})</span>
+
+<span class="sd">    Like for :func:`~hypothesis.strategies.builds`, you can pass</span>
+<span class="sd">    :obj:`~hypothesis.infer` as a keyword argument to infer a strategy for</span>
+<span class="sd">    a field which has a default value instead of using the default.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># currently unsupported:</span>
+    <span class="c1"># ComboField</span>
+    <span class="c1"># FilePathField</span>
+    <span class="c1"># FileField</span>
+    <span class="c1"># ImageField</span>
+    <span class="n">form_kwargs</span> <span class="o">=</span> <span class="n">form_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">BaseForm</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;form=</span><span class="si">%r</span><span class="s2"> must be a subtype of Form&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">form</span><span class="p">,))</span>
+
+    <span class="c1"># Forms are a little bit different from models. Model classes have</span>
+    <span class="c1"># all their fields defined, whereas forms may have different fields</span>
+    <span class="c1"># per-instance. So, we ought to instantiate the form and get the</span>
+    <span class="c1"># fields from the instance, thus we need to accept the kwargs for</span>
+    <span class="c1"># instantiation as well as the explicitly defined strategies</span>
+
+    <span class="n">unbound_form</span> <span class="o">=</span> <span class="n">form</span><span class="p">(</span><span class="o">**</span><span class="n">form_kwargs</span><span class="p">)</span>
+    <span class="n">fields_by_name</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">unbound_form</span><span class="o">.</span><span class="n">fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">MultiValueField</span><span class="p">):</span>
+            <span class="c1"># PS: So this is a little strange, but MultiValueFields must</span>
+            <span class="c1"># have their form data encoded in a particular way for the</span>
+            <span class="c1"># values to actually be picked up by the widget instances&#39;</span>
+            <span class="c1"># ``value_from_datadict``.</span>
+            <span class="c1"># E.g. if a MultiValueField named &#39;mv_field&#39; has 3</span>
+            <span class="c1"># sub-fields then the ``value_from_datadict`` will look for</span>
+            <span class="c1"># &#39;mv_field_0&#39;, &#39;mv_field_1&#39;, and &#39;mv_field_2&#39;. Here I&#39;m</span>
+            <span class="c1"># decomposing the individual sub-fields into the names that</span>
+            <span class="c1"># the form validation process expects</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_field</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">fields</span><span class="p">):</span>
+                <span class="n">fields_by_name</span><span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">_field</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">fields_by_name</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">field_strategies</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">infer</span><span class="p">:</span>
+            <span class="n">field_strategies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_field</span><span class="p">(</span><span class="n">fields_by_name</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">field</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fields_by_name</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">field_strategies</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">field</span><span class="o">.</span><span class="n">disabled</span><span class="p">:</span>
+            <span class="n">field_strategies</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_field</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_forms_impl</span><span class="p">(</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span>
+            <span class="n">partial</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="o">**</span><span class="n">form_kwargs</span><span class="p">),</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">(</span><span class="n">field_strategies</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+        <span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">composite</span>
+<span class="k">def</span> <span class="nf">_forms_impl</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">strat</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handle the nasty part of drawing a value for from_form()&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">strat</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
+        <span class="n">reject</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

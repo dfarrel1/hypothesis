@@ -20,9 +20,9 @@ venv*
 .cache
 .pytest_cache
 .mypy_cache
-docs/_build
+# docs/_build
 *.egg-info
-_build
+# _build
 .tox
 .coverage
 .pypirc

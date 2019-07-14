@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Health checks &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Hypothesis Example Database" href="database.html" />
+    <link rel="prev" title="Hypothesis for the Scientific Stack" href="numpy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Health checks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deprecations">Deprecations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Health checks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/healthchecks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="health-checks">
+<h1>Health checks<a class="headerlink" href="#health-checks" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis tries to detect common mistakes and things that will cause difficulty
+at run time in the form of a number of ‘health checks’.</p>
+<p>These include detecting and warning about:</p>
+<ul class="simple">
+<li><p>Strategies with very slow data generation</p></li>
+<li><p>Strategies which filter out too much</p></li>
+<li><p>Recursive strategies which branch too much</p></li>
+<li><p>Tests that are unlikely to complete in a reasonable amount of time.</p></li>
+</ul>
+<p>If any of these scenarios are detected, Hypothesis will emit a warning about them.</p>
+<p>The general goal of these health checks is to warn you about things that you are doing that might
+appear to work but will either cause Hypothesis to not work correctly or to perform badly.</p>
+<p>To selectively disable health checks, use the
+<a class="reference internal" href="settings.html#hypothesis.settings.suppress_health_check" title="hypothesis.settings.suppress_health_check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">suppress_health_check</span></code></a> setting.
+The argument for this parameter is a list with elements drawn from any of
+the class-level attributes of the HealthCheck class.
+Using a value of <code class="docutils literal notranslate"><span class="pre">HealthCheck.all()</span></code> will disable all health checks.</p>
+<span class="target" id="module-hypothesis"></span><dl class="class">
+<dt id="hypothesis.HealthCheck">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">HealthCheck</code><a class="reference internal" href="_modules/hypothesis/_settings.html#HealthCheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.HealthCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arguments for <a class="reference internal" href="settings.html#hypothesis.settings.suppress_health_check" title="hypothesis.settings.suppress_health_check"><code class="xref py py-attr docutils literal notranslate"><span class="pre">suppress_health_check</span></code></a>.</p>
+<p>Each member of this enum is a type of health check to suppress.</p>
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.all">
+<code class="sig-name descname">all</code><em class="property"> = &lt;bound method HealthCheck.all of &lt;enum 'HealthCheck'&gt;&gt;</em><a class="reference internal" href="_modules/hypothesis/_settings.html#HealthCheck.all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.HealthCheck.all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.data_too_large">
+<code class="sig-name descname">data_too_large</code><em class="property"> = 1</em><a class="headerlink" href="#hypothesis.HealthCheck.data_too_large" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for when the typical size of the examples you are generating
+exceeds the maximum allowed size too often.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.filter_too_much">
+<code class="sig-name descname">filter_too_much</code><em class="property"> = 2</em><a class="headerlink" href="#hypothesis.HealthCheck.filter_too_much" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for when the test is filtering out too many examples, either
+through use of <a class="reference internal" href="details.html#hypothesis.assume" title="hypothesis.assume"><code class="xref py py-func docutils literal notranslate"><span class="pre">assume()</span></code></a> or <a class="reference internal" href="data.html#filtering"><span class="std std-ref">filter()</span></a>,
+or occasionally for Hypothesis internal reasons.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.too_slow">
+<code class="sig-name descname">too_slow</code><em class="property"> = 3</em><a class="headerlink" href="#hypothesis.HealthCheck.too_slow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check for when your data generation is extremely slow and likely to hurt
+testing.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.return_value">
+<code class="sig-name descname">return_value</code><em class="property"> = 5</em><a class="headerlink" href="#hypothesis.HealthCheck.return_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if your tests return a non-None value (which will be ignored and
+is unlikely to do what you want).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.hung_test">
+<code class="sig-name descname">hung_test</code><em class="property"> = 6</em><a class="headerlink" href="#hypothesis.HealthCheck.hung_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>This health check is deprecated and no longer has any effect.
+You can use the <code class="docutils literal notranslate"><span class="pre">max_examples</span></code> and <code class="docutils literal notranslate"><span class="pre">deadline</span></code> settings together to cap
+the total runtime of your tests, rather than the previous fixed limit.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.large_base_example">
+<code class="sig-name descname">large_base_example</code><em class="property"> = 7</em><a class="headerlink" href="#hypothesis.HealthCheck.large_base_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the natural example to shrink towards is very large.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.HealthCheck.not_a_test_method">
+<code class="sig-name descname">not_a_test_method</code><em class="property"> = 8</em><a class="headerlink" href="#hypothesis.HealthCheck.not_a_test_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> has been applied to a
+method of <a class="reference external" href="https://docs.python.org/3/library/unittest.html#unittest.TestCase" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">unittest.TestCase</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="deprecations">
+<span id="deprecation-policy"></span><h2>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<p>We also use a range of custom exception and warning types, so you can see
+exactly where an error came from - or turn only our warnings into errors.</p>
+<dl class="class">
+<dt id="hypothesis.errors.HypothesisDeprecationWarning">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.errors.</code><code class="sig-name descname">HypothesisDeprecationWarning</code><a class="reference internal" href="_modules/hypothesis/errors.html#HypothesisDeprecationWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.errors.HypothesisDeprecationWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>A deprecation warning issued by Hypothesis.</p>
+<p>Actually inherits from FutureWarning, because DeprecationWarning is
+hidden by the default warnings filter.</p>
+<p>You can configure the Python <a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">warnings</span></code></a> to handle these
+warnings differently to others, either turning them into errors or
+suppressing them entirely.  Obviously we would prefer the former!</p>
+</dd></dl>
+
+<p>Deprecated features will be continue to emit warnings for at least six
+months, and then be removed in the following major release.
+Note however that not all warnings are subject to this grace period;
+sometimes we strengthen validation by adding a warning and these may
+become errors immediately at a major release.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="database.html" class="btn btn-neutral float-right" title="The Hypothesis Example Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="numpy.html" class="btn btn-neutral float-left" title="Hypothesis for the Scientific Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Compatibility &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Some more examples" href="examples.html" />
+    <link rel="prev" title="Stateful testing" href="stateful.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Compatibility</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-versions">Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operating-systems">Operating systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-frameworks">Testing frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-packages">Optional Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#regularly-verifying-this">Regularly verifying this</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-versions">Hypothesis versions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Compatibility</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/supported.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="compatibility">
+<h1>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis does its level best to be compatible with everything you could
+possibly need it to be compatible with. Generally you should just try it and
+expect it to work. If it doesn’t, you can be surprised and check this document
+for the details.</p>
+<div class="section" id="python-versions">
+<h2>Python versions<a class="headerlink" href="#python-versions" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis is supported and tested on CPython 2.7 and CPython 3.5+, i.e.
+<a class="reference external" href="https://devguide.python.org/#status-of-python-branches">all versisions of CPython with upstream support</a>,</p>
+<p>Hypothesis also supports the latest PyPy for both Python 2 (until 2020) and Python 3.
+Hypothesis does not currently work on Jython,
+though it probably could (<a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/issues/174">issue #174</a>). IronPython might work but hasn’t been
+tested.  32-bit and narrow builds should work, though this is currently only
+tested on Windows.</p>
+<p>In general Hypothesis does not officially support anything except the latest
+patch release of any version of Python it supports. Earlier releases should work
+and bugs in them will get fixed if reported, but they’re not tested in CI and
+no guarantees are made.</p>
+</div>
+<div class="section" id="operating-systems">
+<h2>Operating systems<a class="headerlink" href="#operating-systems" title="Permalink to this headline">¶</a></h2>
+<p>In theory Hypothesis should work anywhere that Python does. In practice it is
+only known to work and regularly tested on OS X, Windows and Linux, and you may
+experience issues running it elsewhere.</p>
+<p>If you’re using something else and it doesn’t work, do get in touch and I’ll try
+to help, but unless you can come up with a way for me to run a CI server on that
+operating system it probably won’t stay fixed due to the inevitable march of time.</p>
+</div>
+<div class="section" id="testing-frameworks">
+<span id="framework-compatibility"></span><h2>Testing frameworks<a class="headerlink" href="#testing-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>In general Hypothesis goes to quite a lot of effort to generate things that
+look like normal Python test functions that behave as closely to the originals
+as possible, so it should work sensibly out of the box with every test framework.</p>
+<p>If your testing relies on doing something other than calling a function and seeing
+if it raises an exception then it probably <em>won’t</em> work out of the box. In particular
+things like tests which return generators and expect you to do something with them
+(e.g. nose’s yield based tests) will not work. Use a decorator or similar to wrap the
+test to take this form, or ask the framework maintainer to support our
+<a class="reference internal" href="details.html#custom-function-execution"><span class="std std-ref">hooks for inserting such a wrapper later</span></a>.</p>
+<p>In terms of what’s actually <em>known</em> to work:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Hypothesis integrates as smoothly with pytest and unittest as we can make it,
+and this is verified as part of the CI.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/pytest">pytest</a> fixtures work in the usual way for tests that have been decorated
+with <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> - just avoid passing a strategy for
+each argument that will be supplied by a fixture.  However, each fixture
+will run once for the whole function, not once per example.  Decorating a
+fixture function with <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> is meaningless.</p></li>
+<li><p>The <a class="reference external" href="https://docs.python.org/3/library/unittest.mock.html#unittest.mock.patch" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">unittest.mock.patch()</span></code></a> decorator works with
+<a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>, but we recommend using it as a context
+manager within the decorated test to ensure that the mock is per-test-case
+and avoid poor interactions with Pytest fixtures.</p></li>
+<li><p>Nose works fine with Hypothesis, and this is tested as part of the CI. <code class="docutils literal notranslate"><span class="pre">yield</span></code> based
+tests simply won’t work.</p></li>
+<li><p>Integration with Django’s testing requires use of the <a class="reference internal" href="django.html#hypothesis-django"><span class="std std-ref">Hypothesis for Django users</span></a> package.
+The issue is that in Django’s tests’ normal mode of execution it will reset the
+database once per test rather than once per example, which is not what you want.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/Coverage">Coverage</a> works out of the box with Hypothesis; our own test suite has
+100% branch coverage.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="optional-packages">
+<h2>Optional Packages<a class="headerlink" href="#optional-packages" title="Permalink to this headline">¶</a></h2>
+<p>The supported versions of optional packages, for strategies in <code class="docutils literal notranslate"><span class="pre">hypothesis.extra</span></code>,
+are listed in the documentation for that extra.  Our general goal is to support
+all versions that are supported upstream.</p>
+</div>
+<div class="section" id="regularly-verifying-this">
+<h2>Regularly verifying this<a class="headerlink" href="#regularly-verifying-this" title="Permalink to this headline">¶</a></h2>
+<p>Everything mentioned above as explicitly supported is checked on every commit
+with <a class="reference external" href="https://travis-ci.org/HypothesisWorks/hypothesis">Travis</a>, and
+<a class="reference external" href="https://dev.azure.com/HypothesisWorks/Hypothesis/">Azure Pipelines</a>.
+Our continous delivery pipeline runs all of these checks before publishing
+each release, so when we say they’re supported we really mean it.</p>
+</div>
+<div class="section" id="hypothesis-versions">
+<h2>Hypothesis versions<a class="headerlink" href="#hypothesis-versions" title="Permalink to this headline">¶</a></h2>
+<p>Backwards compatibility is better than backporting fixes, so we use
+<a class="reference internal" href="development.html#release-policy"><span class="std std-ref">semantic versioning</span></a> and only support the most recent
+version of Hypothesis.  See <a class="reference internal" href="support.html"><span class="doc">Help and Support</span></a> for more information.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="Some more examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="stateful.html" class="btn btn-neutral float-left" title="Stateful testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

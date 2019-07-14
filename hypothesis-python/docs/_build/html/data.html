@@ -1,0 +1,1159 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>What you can generate and how &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="First-party extensions" href="extras.html" />
+    <link rel="prev" title="Settings" href="settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What you can generate and how</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#shrinking">Shrinking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adapting-strategies">Adapting strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mapping">Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chaining-strategies-together">Chaining strategies together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recursive-data">Recursive data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#composite-strategies">Composite strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drawing-interactively-in-tests">Drawing interactively in tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>What you can generate and how</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="what-you-can-generate-and-how">
+<h1>What you can generate and how<a class="headerlink" href="#what-you-can-generate-and-how" title="Permalink to this headline">¶</a></h1>
+<p><em>Most things should be easy to generate and everything should be possible.</em></p>
+<p>To support this principle Hypothesis provides strategies for most built-in
+types with arguments to constrain or adjust the output, as well as higher-order
+strategies that can be composed to generate more complex types.</p>
+<p>This document is a guide to what strategies are available for generating data
+and how to build them. Strategies have a variety of other important internal
+features, such as how they simplify, but the data they can generate is the only
+public part of their API.</p>
+<p>Functions for building strategies are all available in the hypothesis.strategies
+module. The salient functions from it are as follows:</p>
+<span class="target" id="module-hypothesis.strategies"></span><dl class="function">
+<dt id="hypothesis.strategies.binary">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">binary</code><span class="sig-paren">(</span><em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the appropriate binary type (str in python 2, bytes in python
+3).</p>
+<p>min_size and max_size have the usual interpretations.</p>
+<p>Examples from this strategy shrink towards smaller strings and lower byte
+values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.booleans">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">booleans</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#booleans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.booleans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy which generates instances of <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">bool</span></code></a>.</p>
+<p>Examples from this strategy will shrink towards False (i.e.
+shrinking will try to replace True with False where possible).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.builds">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">builds</code><span class="sig-paren">(</span><em class="sig-param">*callable_and_args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#builds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.builds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates values by drawing from <code class="docutils literal notranslate"><span class="pre">args</span></code> and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> and passing
+them to the callable (provided as the first positional argument) in the
+appropriate argument position.</p>
+<p>e.g. <code class="docutils literal notranslate"><span class="pre">builds(target,</span> <span class="pre">integers(),</span> <span class="pre">flag=booleans())</span></code> would draw an
+integer <code class="docutils literal notranslate"><span class="pre">i</span></code> and a boolean <code class="docutils literal notranslate"><span class="pre">b</span></code> and call <code class="docutils literal notranslate"><span class="pre">target(i,</span> <span class="pre">flag=b)</span></code>.</p>
+<p>If the callable has type annotations, they will be used to infer a strategy
+for required arguments that were not passed to builds.  You can also tell
+builds to infer a strategy for an optional argument by passing the special
+value <a class="reference internal" href="details.html#hypothesis.infer" title="hypothesis.infer"><code class="xref py py-const docutils literal notranslate"><span class="pre">hypothesis.infer</span></code></a> as a keyword argument to
+builds, instead of a strategy for that argument to the callable.</p>
+<p>If the callable is a class defined with <a class="reference external" href="https://pypi.org/project/attrs">attrs</a>, missing required
+arguments will be inferred from the attribute on a best-effort basis,
+e.g. by checking <a class="reference external" href="https://www.attrs.org/en/stable/api.html#api-validators" title="(in attrs v19.1)"><span class="xref std std-ref">attrs standard validators</span></a>.
+Dataclasses are handled natively by the inference from type hints.</p>
+<p>Examples from this strategy shrink by shrinking the argument values to
+the callable.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.characters">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">characters</code><span class="sig-paren">(</span><em class="sig-param">whitelist_categories=None</em>, <em class="sig-param">blacklist_categories=None</em>, <em class="sig-param">blacklist_characters=None</em>, <em class="sig-param">min_codepoint=None</em>, <em class="sig-param">max_codepoint=None</em>, <em class="sig-param">whitelist_characters=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#characters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.characters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates unicode text type (unicode on python 2, str on python 3)
+characters following specified filtering rules.</p>
+<ul class="simple">
+<li><p>When no filtering rules are specifed, any character can be produced.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">min_codepoint</span></code> or <code class="docutils literal notranslate"><span class="pre">max_codepoint</span></code> is specifed, then only
+characters having a codepoint in that range will be produced.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">whitelist_categories</span></code> is specified, then only characters from those
+Unicode categories will be produced. This is a further restriction,
+characters must also satisfy <code class="docutils literal notranslate"><span class="pre">min_codepoint</span></code> and <code class="docutils literal notranslate"><span class="pre">max_codepoint</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">blacklist_categories</span></code> is specified, then any character from those
+categories will not be produced.  Any overlap between
+<code class="docutils literal notranslate"><span class="pre">whitelist_categories</span></code> and <code class="docutils literal notranslate"><span class="pre">blacklist_categories</span></code> will raise an
+exception, as each character can only belong to a single class.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">whitelist_characters</span></code> is specified, then any additional characters
+in that list will also be produced.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">blacklist_characters</span></code> is specified, then any characters in
+that list will be not be produced. Any overlap between
+<code class="docutils literal notranslate"><span class="pre">whitelist_characters</span></code> and <code class="docutils literal notranslate"><span class="pre">blacklist_characters</span></code> will raise an
+exception.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">_codepoint</span></code> arguments must be integers between zero and
+<a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.maxunicode" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">sys.maxunicode</span></code></a>.  The <code class="docutils literal notranslate"><span class="pre">_characters</span></code> arguments must be
+collections of length-one unicode strings, such as a unicode string.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">_categories</span></code> arguments must be used to specify either the
+one-letter Unicode major category or the two-letter Unicode
+<a class="reference external" href="https://wikipedia.org/wiki/Unicode_character_property">general category</a>.  For example, <code class="docutils literal notranslate"><span class="pre">('Nd',</span> <span class="pre">'Lu')</span></code> signifies “Number,
+decimal digit” and “Letter, uppercase”.  A single letter (‘major category’)
+can be given to match all corresponding categories, for example <code class="docutils literal notranslate"><span class="pre">'P'</span></code>
+for characters in any punctuation category.</p>
+<p>Examples from this strategy shrink towards the codepoint for <code class="docutils literal notranslate"><span class="pre">'0'</span></code>,
+or the first allowable codepoint after it if <code class="docutils literal notranslate"><span class="pre">'0'</span></code> is excluded.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.complex_numbers">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">complex_numbers</code><span class="sig-paren">(</span><em class="sig-param">min_magnitude=0</em>, <em class="sig-param">max_magnitude=None</em>, <em class="sig-param">allow_infinity=None</em>, <em class="sig-param">allow_nan=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#complex_numbers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.complex_numbers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy that generates complex numbers.</p>
+<p>This strategy draws complex numbers with constrained magnitudes.
+The <code class="docutils literal notranslate"><span class="pre">min_magnitude</span></code> and <code class="docutils literal notranslate"><span class="pre">max_magnitude</span></code> parameters should be
+non-negative <a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Real" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Real</span></code></a> numbers; values
+of <code class="docutils literal notranslate"><span class="pre">None</span></code> correspond to zero and infinite values respectively.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">min_magnitude</span></code> is positive or <code class="docutils literal notranslate"><span class="pre">max_magnitude</span></code> is finite, it
+is an error to enable <code class="docutils literal notranslate"><span class="pre">allow_nan</span></code>.  If <code class="docutils literal notranslate"><span class="pre">max_magnitude</span></code> is finite,
+it is an error to enable <code class="docutils literal notranslate"><span class="pre">allow_infinity</span></code>.</p>
+<p>The magnitude contraints are respected up to a relative error
+of (around) floating-point epsilon, due to implementation via
+the system <code class="docutils literal notranslate"><span class="pre">sqrt</span></code> function.</p>
+<p>Examples from this strategy shrink by shrinking their real and
+imaginary parts, as <a class="reference internal" href="#hypothesis.strategies.floats" title="hypothesis.strategies.floats"><code class="xref py py-func docutils literal notranslate"><span class="pre">floats()</span></code></a>.</p>
+<p>If you need to generate complex numbers with particular real and
+imaginary parts or relationships between parts, consider using
+<a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds(complex,</span> <span class="pre">...)</span></code></a> or
+<a class="reference internal" href="#hypothesis.strategies.composite" title="hypothesis.strategies.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;composite</span></code></a> respectively.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.composite">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">composite</code><span class="sig-paren">(</span><em class="sig-param">f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#composite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.composite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines a strategy that is built out of potentially arbitrarily many
+other strategies.</p>
+<p>This is intended to be used as a decorator. See
+<a class="reference internal" href="#composite-strategies"><span class="std std-ref">the full documentation for more details</span></a>
+about how to use this function.</p>
+<p>Examples from this strategy shrink by shrinking the output of each draw
+call.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.data">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This isn’t really a normal strategy, but instead gives you an object
+which can be used to draw data interactively from other strategies.</p>
+<p>See <a class="reference internal" href="#interactive-draw"><span class="std std-ref">the rest of the documentation</span></a> for more
+complete information.</p>
+<p>Examples from this strategy do not shrink (because there is only one),
+but the result of calls to each draw() call shrink as they normally would.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="hypothesis.strategies.DataObject">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">DataObject</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#DataObject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.DataObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>This type only exists so that you can write type hints for tests using
+the <a class="reference internal" href="#hypothesis.strategies.data" title="hypothesis.strategies.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a> strategy.  Do not use it directly!</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.dates">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">dates</code><span class="sig-paren">(</span><em class="sig-param">min_value=datetime.date(1</em>, <em class="sig-param">1</em>, <em class="sig-param">1)</em>, <em class="sig-param">max_value=datetime.date(9999</em>, <em class="sig-param">12</em>, <em class="sig-param">31)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#dates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.dates" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for dates between <code class="docutils literal notranslate"><span class="pre">min_value</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code>.</p>
+<p>Examples from this strategy shrink towards January 1st 2000.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.datetimes">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">datetimes</code><span class="sig-paren">(</span><em class="sig-param">min_value=datetime.datetime(1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">max_value=datetime.datetime(9999</em>, <em class="sig-param">12</em>, <em class="sig-param">31</em>, <em class="sig-param">23</em>, <em class="sig-param">59</em>, <em class="sig-param">59</em>, <em class="sig-param">999999)</em>, <em class="sig-param">timezones=none()</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#datetimes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.datetimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for generating datetimes, which may be timezone-aware.</p>
+<p>This strategy works by drawing a naive datetime between <code class="docutils literal notranslate"><span class="pre">min_value</span></code>
+and <code class="docutils literal notranslate"><span class="pre">max_value</span></code>, which must both be naive (have no timezone).</p>
+<p><code class="docutils literal notranslate"><span class="pre">timezones</span></code> must be a strategy that generates
+<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.tzinfo" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">tzinfo</span></code></a> objects (or None,
+which is valid for naive datetimes).  A value drawn from this strategy
+will be added to a naive datetime, and the resulting tz-aware datetime
+returned.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>tz-aware datetimes from this strategy may be ambiguous or non-existent
+due to daylight savings, leap seconds, timezone and calendar
+adjustments, etc.  This is intentional, as malformed timestamps are a
+common source of bugs.</p>
+</div>
+<p><a class="reference internal" href="extras.html#hypothesis.extra.pytz.timezones" title="hypothesis.extra.pytz.timezones"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.extra.pytz.timezones()</span></code></a> requires the <a class="reference external" href="https://pypi.org/project/pytz">pytz</a>
+package, but provides all timezones in the Olsen database.  If you want to
+allow naive datetimes, combine strategies like <code class="docutils literal notranslate"><span class="pre">none()</span> <span class="pre">|</span> <span class="pre">timezones()</span></code>.</p>
+<p><a class="reference internal" href="extras.html#hypothesis.extra.dateutil.timezones" title="hypothesis.extra.dateutil.timezones"><code class="xref py py-func docutils literal notranslate"><span class="pre">hypothesis.extra.dateutil.timezones()</span></code></a> requires the
+<a class="reference external" href="https://pypi.org/project/python-dateutil">python-dateutil</a> package, and similarly provides all timezones
+there.</p>
+<p>Alternatively, you can create a list of the timezones you wish to allow
+(e.g. from the standard library, <code class="docutils literal notranslate"><span class="pre">datetutil</span></code>, or <code class="docutils literal notranslate"><span class="pre">pytz</span></code>) and use
+<a class="reference internal" href="#hypothesis.strategies.sampled_from" title="hypothesis.strategies.sampled_from"><code class="xref py py-func docutils literal notranslate"><span class="pre">sampled_from()</span></code></a>.  Ensure that simple values such as None or UTC
+are at the beginning of the list for proper minimisation.</p>
+<p>Examples from this strategy shrink towards midnight on January 1st 2000.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.decimals">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">decimals</code><span class="sig-paren">(</span><em class="sig-param">min_value=None</em>, <em class="sig-param">max_value=None</em>, <em class="sig-param">allow_nan=None</em>, <em class="sig-param">allow_infinity=None</em>, <em class="sig-param">places=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#decimals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.decimals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates instances of <a class="reference external" href="https://docs.python.org/3/library/decimal.html#decimal.Decimal" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">decimal.Decimal</span></code></a>, which may be:</p>
+<ul class="simple">
+<li><p>A finite rational number, between <code class="docutils literal notranslate"><span class="pre">min_value</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code>.</p></li>
+<li><p>Not a Number, if <code class="docutils literal notranslate"><span class="pre">allow_nan</span></code> is True.  None means “allow NaN, unless
+<code class="docutils literal notranslate"><span class="pre">min_value</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code> are not None”.</p></li>
+<li><p>Positive or negative infinity, if <code class="docutils literal notranslate"><span class="pre">max_value</span></code> and <code class="docutils literal notranslate"><span class="pre">min_value</span></code>
+respectively are None, and <code class="docutils literal notranslate"><span class="pre">allow_infinity</span></code> is not False.  None means
+“allow infinity, unless excluded by the min and max values”.</p></li>
+</ul>
+<p>Note that where floats have one <code class="docutils literal notranslate"><span class="pre">NaN</span></code> value, Decimals have four: signed,
+and either <em>quiet</em> or <em>signalling</em>.  See <a class="reference external" href="https://docs.python.org/3/library/decimal.html#special-values">the decimal module docs</a> for
+more information on special values.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">places</span></code> is not None, all finite values drawn from the strategy will
+have that number of digits after the decimal place.</p>
+<p>Examples from this strategy do not have a well defined shrink order but
+try to maximize human readability when shrinking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.deferred">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">deferred</code><span class="sig-paren">(</span><em class="sig-param">definition</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#deferred"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.deferred" title="Permalink to this definition">¶</a></dt>
+<dd><p>A deferred strategy allows you to write a strategy that references other
+strategies that have not yet been defined. This allows for the easy
+definition of recursive and mutually recursive strategies.</p>
+<p>The definition argument should be a zero-argument function that returns a
+strategy. It will be evaluated the first time the strategy is used to
+produce an example.</p>
+<p>Example usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">deferred</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">()</span> <span class="o">|</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">(((False, (True, True)), (False, True)), (True, True))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Mutual recursion also works fine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">deferred</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">()</span> <span class="o">|</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">deferred</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">(False, (False, ((False, True), False)))</span>
+</pre></div>
+</div>
+<p>Examples from this strategy shrink as they normally would from the strategy
+returned by the definition.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.dictionaries">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">dictionaries</code><span class="sig-paren">(</span><em class="sig-param">keys</em>, <em class="sig-param">values</em>, <em class="sig-param">dict_class=&lt;class 'dict'&gt;</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#dictionaries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.dictionaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates dictionaries of type dict_class with keys drawn from the keys
+argument and values drawn from the values argument.</p>
+<p>The size parameters have the same interpretation as for lists.</p>
+<p>Examples from this strategy shrink by trying to remove keys from the
+generated dictionary, and by shrinking each generated key and value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.emails">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">emails</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#emails"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.emails" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for generating email addresses as unicode strings. The
+address format is specified in <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc5322.html#section-3.4.1"><strong>RFC 5322#section-3.4.1</strong></a>. Values shrink
+towards shorter local-parts and host domains.</p>
+<p>This strategy is useful for generating “user data” for tests, as
+mishandling of email addresses is a common source of bugs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.fixed_dictionaries">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">fixed_dictionaries</code><span class="sig-paren">(</span><em class="sig-param">mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#fixed_dictionaries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.fixed_dictionaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a dictionary of the same type as mapping with a fixed set of
+keys mapping to strategies. mapping must be a dict subclass.</p>
+<p>Generated values have all keys present in mapping, with the
+corresponding values drawn from mapping[key]. If mapping is an
+instance of OrderedDict the keys will also be in the same order,
+otherwise the order is arbitrary.</p>
+<p>Examples from this strategy shrink by shrinking each individual value in
+the generated dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.floats">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">floats</code><span class="sig-paren">(</span><em class="sig-param">min_value=None</em>, <em class="sig-param">max_value=None</em>, <em class="sig-param">allow_nan=None</em>, <em class="sig-param">allow_infinity=None</em>, <em class="sig-param">width=64</em>, <em class="sig-param">exclude_min=False</em>, <em class="sig-param">exclude_max=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#floats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.floats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy which generates floats.</p>
+<ul class="simple">
+<li><p>If min_value is not None, all values will be &gt;= min_value.</p></li>
+<li><p>If max_value is not None, all values will be &lt;= max_value.</p></li>
+<li><p>If min_value or max_value is not None, it is an error to enable
+allow_nan.</p></li>
+<li><p>If both min_value and max_value are not None, it is an error to enable
+allow_infinity.</p></li>
+</ul>
+<p>Where not explicitly ruled out by the bounds, all of infinity, -infinity
+and NaN are possible values generated by this strategy.</p>
+<p>The width argument specifies the maximum number of bits of precision
+required to represent the generated float. Valid values are 16, 32, or 64.
+Passing <code class="docutils literal notranslate"><span class="pre">width=32</span></code> will still use the builtin 64-bit <code class="docutils literal notranslate"><span class="pre">float</span></code> class,
+but always for values which can be exactly represented as a 32-bit float.
+Half-precision floats (<code class="docutils literal notranslate"><span class="pre">width=16</span></code>) are only supported on Python 3.6, or
+if <a class="reference external" href="https://pypi.org/project/Numpy">Numpy</a> is installed.</p>
+<p>The exclude_min and exclude_max argument can be used to generate numbers
+from open or half-open intervals, by excluding the respective endpoints.
+Attempting to exclude an endpoint which is None will raise an error;
+use <code class="docutils literal notranslate"><span class="pre">allow_infinity=False</span></code> to generate finite floats.  You can however
+use e.g. <code class="docutils literal notranslate"><span class="pre">min_value=float(&quot;-inf&quot;),</span> <span class="pre">exclude_min=True</span></code> to exclude only
+one infinite endpoint.</p>
+<p>Examples from this strategy have a complicated and hard to explain
+shrinking behaviour, but it tries to improve “human readability”. Finite
+numbers will be preferred to infinity and infinity will be preferred to
+NaN.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.fractions">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">fractions</code><span class="sig-paren">(</span><em class="sig-param">min_value=None</em>, <em class="sig-param">max_value=None</em>, <em class="sig-param">max_denominator=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#fractions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.fractions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy which generates Fractions.</p>
+<p>If min_value is not None then all generated values are no less than
+min_value.  If max_value is not None then all generated values are no
+greater than max_value.  min_value and max_value may be anything accepted
+by the <a class="reference external" href="https://docs.python.org/3/library/fractions.html#fractions.Fraction" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fraction</span></code></a> constructor.</p>
+<p>If max_denominator is not None then the denominator of any generated
+values is no greater than max_denominator. Note that max_denominator must
+be None or a positive integer.</p>
+<p>Examples from this strategy shrink towards smaller denominators, then
+closer to zero.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.from_regex">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">from_regex</code><span class="sig-paren">(</span><em class="sig-param">regex</em>, <em class="sig-param">fullmatch=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#from_regex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.from_regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates strings that contain a match for the given regex (i.e. ones
+for which <a class="reference external" href="https://docs.python.org/3/library/re.html#re.search" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">re.search()</span></code></a> will return a non-None result).</p>
+<p><code class="docutils literal notranslate"><span class="pre">regex</span></code> may be a pattern or <a class="reference external" href="https://docs.python.org/3/library/re.html#re.compile" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">compiled</span> <span class="pre">regex</span></code></a>.
+Both byte-strings and unicode strings are supported, and will generate
+examples of the same type.</p>
+<p>You can use regex flags such as <a class="reference external" href="https://docs.python.org/3/library/re.html#re.IGNORECASE" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">re.IGNORECASE</span></code></a> or
+<a class="reference external" href="https://docs.python.org/3/library/re.html#re.DOTALL" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">re.DOTALL</span></code></a> to control generation. Flags can be passed either
+in compiled regex or inside the pattern with a <code class="docutils literal notranslate"><span class="pre">(?iLmsux)</span></code> group.</p>
+<p>Some regular expressions are only partly supported - the underlying
+strategy checks local matching and relies on filtering to resolve
+context-dependent expressions.  Using too many of these constructs may
+cause health-check errors as too many examples are filtered out. This
+mainly includes (positive or negative) lookahead and lookbehind groups.</p>
+<p>If you want the generated string to match the whole regex you should use
+boundary markers. So e.g. <code class="docutils literal notranslate"><span class="pre">r&quot;\A.\Z&quot;</span></code> will return a single character
+string, while <code class="docutils literal notranslate"><span class="pre">&quot;.&quot;</span></code> will return any string, and <code class="docutils literal notranslate"><span class="pre">r&quot;\A.$&quot;</span></code> will return
+a single character optionally followed by a <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>.
+Alternatively, passing <code class="docutils literal notranslate"><span class="pre">fullmatch=True</span></code> will ensure that the whole
+string is a match, as if you had used the <code class="docutils literal notranslate"><span class="pre">\A</span></code> and <code class="docutils literal notranslate"><span class="pre">\Z</span></code> markers.</p>
+<p>Examples from this strategy shrink towards shorter strings and lower
+character values, with exact behaviour that may depend on the pattern.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.from_type">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">from_type</code><span class="sig-paren">(</span><em class="sig-param">thing</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#from_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.from_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks up the appropriate search strategy for the given type.</p>
+<p><code class="docutils literal notranslate"><span class="pre">from_type</span></code> is used internally to fill in missing arguments to
+<a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a> and can be used interactively
+to explore what strategies are available or to debug type resolution.</p>
+<p>You can use <a class="reference internal" href="#hypothesis.strategies.register_type_strategy" title="hypothesis.strategies.register_type_strategy"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_type_strategy()</span></code></a> to
+handle your custom types, or to globally redefine certain strategies -
+for example excluding NaN from floats, or use timezone-aware instead of
+naive time and datetime strategies.</p>
+<p>The resolution logic may be changed in a future version, but currently
+tries these four options:</p>
+<ol class="arabic simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">thing</span></code> is in the default lookup mapping or user-registered lookup,
+return the corresponding strategy.  The default lookup covers all types
+with Hypothesis strategies, including extras where possible.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">thing</span></code> is from the <a class="reference external" href="https://docs.python.org/3/library/typing.html#module-typing" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">typing</span></code></a> module, return the
+corresponding strategy (special logic).</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">thing</span></code> has one or more subtypes in the merged lookup, return
+the union of the strategies for those types that are not subtypes of
+other elements in the lookup.</p></li>
+<li><p>Finally, if <code class="docutils literal notranslate"><span class="pre">thing</span></code> has type annotations for all required arguments,
+it is resolved via <a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a>.</p></li>
+</ol>
+<p>There is a valuable recipe for leveraging <code class="docutils literal notranslate"><span class="pre">from_type()</span></code> to generate
+“everything except” values from a specified type. I.e.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">everything_except</span><span class="p">(</span><span class="n">excluded_types</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">from_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span><span class="n">from_type</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">excluded_types</span><span class="p">))</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">everything_except(int)</span></code> returns a strategy that can
+generate anything that <code class="docutils literal notranslate"><span class="pre">from_type()</span></code> can ever generate, except for
+instances of <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a>, and excluding instances of types
+added via <a class="reference internal" href="#hypothesis.strategies.register_type_strategy" title="hypothesis.strategies.register_type_strategy"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_type_strategy()</span></code></a>.</p>
+<p>This is useful when writing tests which check that invalid input is
+rejected in a certain way.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.frozensets">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">frozensets</code><span class="sig-paren">(</span><em class="sig-param">elements</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#frozensets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.frozensets" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is identical to the sets function but instead returns
+frozensets.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.functions">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">functions</code><span class="sig-paren">(</span><em class="sig-param">like=&lt;function &lt;lambda&gt;&gt;</em>, <em class="sig-param">returns=none()</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#functions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for functions, which can be used in callbacks.</p>
+<p>The generated functions will mimic the interface of <code class="docutils literal notranslate"><span class="pre">like</span></code>, which must
+be a callable (including a class, method, or function).  The return value
+for the function is drawn from the <code class="docutils literal notranslate"><span class="pre">returns</span></code> argument, which must be a
+strategy.</p>
+<p>Note that the generated functions do not validate their arguments, and
+may return a different value if called again with the same arguments.</p>
+<p>Generated functions can only be called within the scope of the <code class="docutils literal notranslate"><span class="pre">&#64;given</span></code>
+which created them.  This strategy does not support <code class="docutils literal notranslate"><span class="pre">.example()</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.integers">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">integers</code><span class="sig-paren">(</span><em class="sig-param">min_value=None</em>, <em class="sig-param">max_value=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#integers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.integers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy which generates integers; in Python 2 these may be
+ints or longs.</p>
+<p>If min_value is not None then all values will be &gt;= min_value. If
+max_value is not None then all values will be &lt;= max_value</p>
+<p>Examples from this strategy will shrink towards zero, and negative values
+will also shrink towards positive (i.e. -n may be replaced by +n).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.iterables">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">iterables</code><span class="sig-paren">(</span><em class="sig-param">elements</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em>, <em class="sig-param">unique_by=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#iterables"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.iterables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This has the same behaviour as lists, but returns iterables instead.</p>
+<p>Some iterables cannot be indexed (e.g. sets) and some do not have a
+fixed length (e.g. generators). This strategy produces iterators,
+which cannot be indexed and do not have a fixed length. This ensures
+that you do not accidentally depend on sequence behaviour.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.just">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">just</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#just"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.just" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy which only generates <code class="docutils literal notranslate"><span class="pre">value</span></code>.</p>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">value</span></code> is not copied. Be wary of using mutable values.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">value</span></code> is the result of a callable, you can use
+<a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds(callable)</span></code></a> instead
+of <code class="docutils literal notranslate"><span class="pre">just(callable())</span></code> to get a fresh value each time.</p>
+<p>Examples from this strategy do not shrink (because there is only one).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.lists">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">lists</code><span class="sig-paren">(</span><em class="sig-param">elements</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em>, <em class="sig-param">unique_by=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.lists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list containing values drawn from elements with length in the
+interval [min_size, max_size] (no bounds in that direction if these are
+None). If max_size is 0 then elements may be None and only the empty list
+will be drawn.</p>
+<p>If unique is True (or something that evaluates to True), we compare direct
+object equality, as if unique_by was <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">x:</span> <span class="pre">x</span></code>. This comparison only
+works for hashable types.</p>
+<p>If unique_by is not None it must be a callable or tuple of callables
+returning a hashable type when given a value drawn from elements. The
+resulting list will satisfy the condition that for <code class="docutils literal notranslate"><span class="pre">i</span></code> != <code class="docutils literal notranslate"><span class="pre">j</span></code>,
+<code class="docutils literal notranslate"><span class="pre">unique_by(result[i])</span></code> != <code class="docutils literal notranslate"><span class="pre">unique_by(result[j])</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">unique_by</span></code> is a tuple of callables the uniqueness will be respective
+to each callable.</p>
+<p>For example, the following will produce two columns of integers with both
+columns being unique respectively.
+.. code-block:: pycon</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">twoints</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">twoints</span><span class="p">,</span> <span class="n">unique_by</span><span class="o">=</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>Examples from this strategy shrink by trying to remove elements from the
+list, and by shrinking each individual element of the list.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.none">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">none</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.none" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy which only generates None.</p>
+<p>Examples from this strategy do not shrink (because there is only
+one).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.nothing">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">nothing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#nothing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.nothing" title="Permalink to this definition">¶</a></dt>
+<dd><p>This strategy never successfully draws a value and will always reject on
+an attempt to draw.</p>
+<p>Examples from this strategy do not shrink (because there are none).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.one_of">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">one_of</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#one_of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.one_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy which generates values from any of the argument
+strategies.</p>
+<p>This may be called with one iterable argument instead of multiple
+strategy arguments, in which case <code class="docutils literal notranslate"><span class="pre">one_of(x)</span></code> and <code class="docutils literal notranslate"><span class="pre">one_of(*x)</span></code> are
+equivalent.</p>
+<p>Examples from this strategy will generally shrink to ones that come from
+strategies earlier in the list, then shrink according to behaviour of the
+strategy that produced them. In order to get good shrinking behaviour,
+try to put simpler strategies first. e.g. <code class="docutils literal notranslate"><span class="pre">one_of(none(),</span> <span class="pre">text())</span></code> is
+better than <code class="docutils literal notranslate"><span class="pre">one_of(text(),</span> <span class="pre">none())</span></code>.</p>
+<p>This is especially important when using recursive strategies. e.g.
+<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">st.deferred(lambda:</span> <span class="pre">st.none()</span> <span class="pre">|</span> <span class="pre">st.tuples(x,</span> <span class="pre">x))</span></code> will shrink well,
+but <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">st.deferred(lambda:</span> <span class="pre">st.tuples(x,</span> <span class="pre">x)</span> <span class="pre">|</span> <span class="pre">st.none())</span></code> will shrink
+very badly indeed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.permutations">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">permutations</code><span class="sig-paren">(</span><em class="sig-param">values</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#permutations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.permutations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy which returns permutations of the ordered collection
+<code class="docutils literal notranslate"><span class="pre">values</span></code>.</p>
+<p>Examples from this strategy shrink by trying to become closer to the
+original order of values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.random_module">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">random_module</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#random_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.random_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Hypothesis engine handles PRNG state for the stdlib and Numpy random
+modules internally, always seeding them to zero and restoring the previous
+state after the test.</p>
+<p>If having a fixed seed would unacceptably weaken your tests, and you
+cannot use a <code class="docutils literal notranslate"><span class="pre">random.Random</span></code> instance provided by
+<a class="reference internal" href="#hypothesis.strategies.randoms" title="hypothesis.strategies.randoms"><code class="xref py py-func docutils literal notranslate"><span class="pre">randoms()</span></code></a>, this strategy calls
+<a class="reference external" href="https://docs.python.org/3/library/random.html#random.seed" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">random.seed()</span></code></a> with an arbitrary integer and passes you
+an opaque object whose repr displays the seed value for debugging.
+If <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> is available, that state is also managed.</p>
+<p>Examples from these strategy shrink to seeds closer to zero.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.randoms">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">randoms</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#randoms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.randoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates instances of <code class="docutils literal notranslate"><span class="pre">random.Random</span></code>, tweaked to show the seed value
+in the repr for reproducibility.</p>
+<p>Examples from this strategy shrink to seeds closer to zero.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.recursive">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">recursive</code><span class="sig-paren">(</span><em class="sig-param">base</em>, <em class="sig-param">extend</em>, <em class="sig-param">max_leaves=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#recursive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.recursive" title="Permalink to this definition">¶</a></dt>
+<dd><p>base: A strategy to start from.</p>
+<p>extend: A function which takes a strategy and returns a new strategy.</p>
+<p>max_leaves: The maximum number of elements to be drawn from base on a given
+run.</p>
+<p>This returns a strategy <code class="docutils literal notranslate"><span class="pre">S</span></code> such that <code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">=</span> <span class="pre">extend(base</span> <span class="pre">|</span> <span class="pre">S)</span></code>. That is,
+values may be drawn from base, or from any strategy reachable by mixing
+applications of | and extend.</p>
+<p>An example may clarify: <code class="docutils literal notranslate"><span class="pre">recursive(booleans(),</span> <span class="pre">lists)</span></code> would return a
+strategy that may return arbitrarily nested and mixed lists of booleans.
+So e.g. <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">[True]</span></code>, <code class="docutils literal notranslate"><span class="pre">[False,</span> <span class="pre">[]]</span></code>, and <code class="docutils literal notranslate"><span class="pre">[[[[True]]]]</span></code> are
+all valid values to be drawn from that strategy.</p>
+<p>Examples from this strategy shrink by trying to reduce the amount of
+recursion and by shrinking according to the shrinking behaviour of base
+and the result of extend.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.register_type_strategy">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">register_type_strategy</code><span class="sig-paren">(</span><em class="sig-param">custom_type</em>, <em class="sig-param">strategy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#register_type_strategy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.register_type_strategy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an entry to the global type-to-strategy lookup.</p>
+<p>This lookup is used in <a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a> and
+<a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>.</p>
+<p><a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a> will be used automatically for
+classes with type annotations on <code class="docutils literal notranslate"><span class="pre">__init__</span></code> , so you only need to
+register a strategy if one or more arguments need to be more tightly
+defined than their type-based default, or if you want to supply a strategy
+for an argument with a default value.</p>
+<p><code class="docutils literal notranslate"><span class="pre">strategy</span></code> may be a search strategy, or a function that takes a type and
+returns a strategy (useful for generic types).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.runner">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">runner</code><span class="sig-paren">(</span><em class="sig-param">default=not_set</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#runner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.runner" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for getting “the current test runner”, whatever that may be.
+The exact meaning depends on the entry point, but it will usually be the
+associated ‘self’ value for it.</p>
+<p>If there is no current test runner and a default is provided, return
+that default. If no default is provided, raises InvalidArgument.</p>
+<p>Examples from this strategy do not shrink (because there is only one).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.sampled_from">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">sampled_from</code><span class="sig-paren">(</span><em class="sig-param">elements</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#sampled_from"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.sampled_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy which generates any value present in <code class="docutils literal notranslate"><span class="pre">elements</span></code>.</p>
+<p>Note that as with <a class="reference internal" href="#hypothesis.strategies.just" title="hypothesis.strategies.just"><code class="xref py py-func docutils literal notranslate"><span class="pre">just()</span></code></a>, values will not be
+copied and thus you should be careful of using mutable data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sampled_from</span></code> supports ordered collections, as well as
+<a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a> objects.  <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Flag" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flag</span></code></a> objects
+may also generate any combination of their members.</p>
+<p>Examples from this strategy shrink by replacing them with values earlier in
+the list. So e.g. sampled_from((10, 1)) will shrink by trying to replace
+1 values with 10, and sampled_from((1, 10)) will shrink by trying to
+replace 10 values with 1.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.sets">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">sets</code><span class="sig-paren">(</span><em class="sig-param">elements</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#sets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.sets" title="Permalink to this definition">¶</a></dt>
+<dd><p>This has the same behaviour as lists, but returns sets instead.</p>
+<p>Note that Hypothesis cannot tell if values are drawn from elements
+are hashable until running the test, so you can define a strategy
+for sets of an unhashable type but it will fail at test time.</p>
+<p>Examples from this strategy shrink by trying to remove elements from the
+set, and by shrinking each individual element of the set.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.shared">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">shared</code><span class="sig-paren">(</span><em class="sig-param">base</em>, <em class="sig-param">key=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#shared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy that draws a single shared value per run, drawn from
+base. Any two shared instances with the same key will share the same value,
+otherwise the identity of this strategy will be used. That is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">integers</span><span class="p">()</span>  <span class="c1"># or any other strategy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">shared</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">shared</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the above x and y may draw different (or potentially the same) values.
+In the following they will always draw the same:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">shared</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">shared</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Examples from this strategy shrink as per their base strategy.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.slices">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">slices</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#slices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.slices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates slices that will select indices up to the supplied size</p>
+<p>Generated slices will have start and stop indices that range from 0 to size - 1
+and will step in the appropriate direction. Slices should only produce an empty selection
+if the start and end are the same.</p>
+<p>Examples from this strategy shrink toward 0 and smaller values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.text">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">text</code><span class="sig-paren">(</span><em class="sig-param">alphabet=characters(blacklist_categories=('Cs'</em>, <em class="sig-param">))</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#text"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates values of a unicode text type (unicode on python 2, str on
+python 3) with values drawn from alphabet, which should be an iterable of
+length one strings or a strategy generating such strings.</p>
+<p>The default alphabet strategy can generate the full unicode range but
+excludes surrogate characters because they are invalid in the UTF-8
+encoding.  You can use <a class="reference internal" href="#hypothesis.strategies.characters" title="hypothesis.strategies.characters"><code class="xref py py-func docutils literal notranslate"><span class="pre">characters()</span></code></a> without
+arguments to find surrogate-related bugs such as <a class="reference external" href="https://bugs.python.org/issue34454">bpo-34454</a>.</p>
+<p>min_size and max_size have the usual interpretations.
+Note that Python measures string length by counting codepoints: U+00C5
+<code class="docutils literal notranslate"><span class="pre">Å</span></code> is a single character, while U+0041 U+030A <code class="docutils literal notranslate"><span class="pre">Å</span></code> is two - the <code class="docutils literal notranslate"><span class="pre">A</span></code>,
+and a combining ring above.</p>
+<p>Examples from this strategy shrink towards shorter strings, and with the
+characters in the text shrinking as per the alphabet strategy.
+This strategy does not <a class="reference external" href="https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">normalize()</span></code></a> examples,
+so generated strings may be in any or none of the ‘normal forms’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.timedeltas">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">timedeltas</code><span class="sig-paren">(</span><em class="sig-param">min_value=datetime.timedelta(days=-999999999)</em>, <em class="sig-param">max_value=datetime.timedelta(days=999999999</em>, <em class="sig-param">seconds=86399</em>, <em class="sig-param">microseconds=999999)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#timedeltas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.timedeltas" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for timedeltas between <code class="docutils literal notranslate"><span class="pre">min_value</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code>.</p>
+<p>Examples from this strategy shrink towards zero.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.times">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">times</code><span class="sig-paren">(</span><em class="sig-param">min_value=datetime.time(0</em>, <em class="sig-param">0)</em>, <em class="sig-param">max_value=datetime.time(23</em>, <em class="sig-param">59</em>, <em class="sig-param">59</em>, <em class="sig-param">999999)</em>, <em class="sig-param">timezones=none()</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#times"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.times" title="Permalink to this definition">¶</a></dt>
+<dd><p>A strategy for times between <code class="docutils literal notranslate"><span class="pre">min_value</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">timezones</span></code> argument is handled as for <a class="reference internal" href="#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">datetimes()</span></code></a>.</p>
+<p>Examples from this strategy shrink towards midnight, with the timezone
+component shrinking as for the strategy that provided it.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.tuples">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">tuples</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#tuples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy which generates a tuple of the same length as args by
+generating the value at index i from args[i].</p>
+<p>e.g. tuples(integers(), integers()) would generate a tuple of length
+two with both values an integer.</p>
+<p>Examples from this strategy shrink by shrinking their component parts.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.strategies.uuids">
+<code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">uuids</code><span class="sig-paren">(</span><em class="sig-param">version=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_strategies.html#uuids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.strategies.uuids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy that generates <a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UUIDs</span></code></a>.</p>
+<p>If the optional version argument is given, value is passed through
+to <a class="reference external" href="https://docs.python.org/3/library/uuid.html#uuid.UUID" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">UUID</span></code></a> and only UUIDs of that version will
+be generated.</p>
+<p>All returned values from this will be unique, so e.g. if you do
+<code class="docutils literal notranslate"><span class="pre">lists(uuids())</span></code> the resulting list will never contain duplicates.</p>
+<p>Examples from this strategy don’t have any meaningful shrink order.</p>
+</dd></dl>
+
+<div class="section" id="shrinking">
+<span id="id1"></span><h2>Shrinking<a class="headerlink" href="#shrinking" title="Permalink to this headline">¶</a></h2>
+<p>When using strategies it is worth thinking about how the data <em>shrinks</em>.
+Shrinking is the process by which Hypothesis tries to produce human readable
+examples when it finds a failure - it takes a complex example and turns it
+into a simpler one.</p>
+<p>Each strategy defines an order in which it shrinks - you won’t usually need to
+care about this much, but it can be worth being aware of as it can affect what
+the best way to write your own strategies is.</p>
+<p>The exact shrinking behaviour is not a guaranteed part of the API, but it
+doesn’t change that often and when it does it’s usually because we think the
+new way produces nicer examples.</p>
+<p>Possibly the most important one to be aware of is
+<a class="reference internal" href="#hypothesis.strategies.one_of" title="hypothesis.strategies.one_of"><code class="xref py py-func docutils literal notranslate"><span class="pre">one_of()</span></code></a>, which has a preference for values
+produced by strategies earlier in its argument list. Most of the others should
+largely “do the right thing” without you having to think about it.</p>
+</div>
+<div class="section" id="adapting-strategies">
+<h2>Adapting strategies<a class="headerlink" href="#adapting-strategies" title="Permalink to this headline">¶</a></h2>
+<p>Often it is the case that a strategy doesn’t produce exactly what you want it
+to and you need to adapt it. Sometimes you can do this in the test, but this
+hurts reuse because you then have to repeat the adaption in every test.</p>
+<p>Hypothesis gives you ways to build strategies from other strategies given
+functions for transforming the data.</p>
+<div class="section" id="mapping">
+<h3>Mapping<a class="headerlink" href="#mapping" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">map</span></code> is probably the easiest and most useful of these to use. If you have a
+strategy <code class="docutils literal notranslate"><span class="pre">s</span></code> and a function <code class="docutils literal notranslate"><span class="pre">f</span></code>, then an example <code class="docutils literal notranslate"><span class="pre">s.map(f).example()</span></code> is
+<code class="docutils literal notranslate"><span class="pre">f(s.example())</span></code>, i.e. we draw an example from <code class="docutils literal notranslate"><span class="pre">s</span></code> and then apply <code class="docutils literal notranslate"><span class="pre">f</span></code> to it.</p>
+<p>e.g.:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[-25527, -24245, -23118, -93, -70, -7, 0, 39, 40, 65, 88, 112, 6189, 9480, 19469, 27256, 32526, 1566924430]</span>
+</pre></div>
+</div>
+<p>Note that many things that you might use mapping for can also be done with
+<a class="reference internal" href="#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a>.</p>
+</div>
+<div class="section" id="filtering">
+<span id="id2"></span><h3>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">filter</span></code> lets you reject some examples. <code class="docutils literal notranslate"><span class="pre">s.filter(f).example()</span></code> is some
+example of <code class="docutils literal notranslate"><span class="pre">s</span></code> such that <code class="docutils literal notranslate"><span class="pre">f(example)</span></code> is truthy.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">26126</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">integers</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">11</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">23324</span>
+</pre></div>
+</div>
+<p>It’s important to note that <code class="docutils literal notranslate"><span class="pre">filter</span></code> isn’t magic and if your condition is too
+hard to satisfy then this can fail:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+    <span class="o">...</span>
+<span class="gr">hypothesis.errors.Unsatisfiable</span>: <span class="n">Could not find any valid examples in 20 tries</span>
+</pre></div>
+</div>
+<p>In general you should try to use <code class="docutils literal notranslate"><span class="pre">filter</span></code> only to avoid corner cases that you
+don’t want rather than attempting to cut out a large chunk of the search space.</p>
+<p>A technique that often works well here is to use map to first transform the data
+and then use <code class="docutils literal notranslate"><span class="pre">filter</span></code> to remove things that didn’t work out. So for example if
+you wanted pairs of integers (x,y) such that x &lt; y you could do the following:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tuples</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">())</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[-8543729478746591815, 3760495307320535691]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="chaining-strategies-together">
+<span id="flatmap"></span><h3>Chaining strategies together<a class="headerlink" href="#chaining-strategies-together" title="Permalink to this headline">¶</a></h3>
+<p>Finally there is <code class="docutils literal notranslate"><span class="pre">flatmap</span></code>. <code class="docutils literal notranslate"><span class="pre">flatmap</span></code> draws an example, then turns that
+example into a strategy, then draws an example from <em>that</em> strategy.</p>
+<p>It may not be obvious why you want this at first, but it turns out to be
+quite useful because it lets you generate different types of data with
+relationships to each other.</p>
+<p>For example suppose we wanted to generate a list of lists of the same
+length:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle_lists</span> <span class="o">=</span> <span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span>
+<span class="gp">... </span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">lists</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">min_size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">n</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle_lists</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle_lists</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[[], [], [], [], [], [], [], [], [], []]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle_lists</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rectangle_lists</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]]</span>
+</pre></div>
+</div>
+<p>In this example we first choose a length for our tuples, then we build a
+strategy which generates lists containing lists precisely of that length. The
+finds show what simple examples for this look like.</p>
+<p>Most of the time you probably don’t want <code class="docutils literal notranslate"><span class="pre">flatmap</span></code>, but unlike <code class="docutils literal notranslate"><span class="pre">filter</span></code> and
+<code class="docutils literal notranslate"><span class="pre">map</span></code> which are just conveniences for things you could just do in your tests,
+<code class="docutils literal notranslate"><span class="pre">flatmap</span></code> allows genuinely new data generation that you wouldn’t otherwise be
+able to easily do.</p>
+<p>(If you know Haskell: Yes, this is more or less a monadic bind. If you don’t
+know Haskell, ignore everything in these parentheses. You do not need to
+understand anything about monads to use this, or anything else in Hypothesis).</p>
+</div>
+<div class="section" id="recursive-data">
+<h3>Recursive data<a class="headerlink" href="#recursive-data" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes the data you want to generate has a recursive definition. e.g. if you
+wanted to generate JSON data, valid JSON is:</p>
+<ol class="arabic simple">
+<li><p>Any float, any boolean, any unicode string.</p></li>
+<li><p>Any list of valid JSON data</p></li>
+<li><p>Any dictionary mapping unicode strings to valid JSON data.</p></li>
+</ol>
+<p>The problem is that you cannot call a strategy recursively and expect it to not just
+blow up and eat all your memory.  The other problem here is that not all unicode strings
+display consistently on different machines, so we’ll restrict them in our doctest.</p>
+<p>The way Hypothesis handles this is with the <a class="reference internal" href="#hypothesis.strategies.recursive" title="hypothesis.strategies.recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">recursive()</span></code></a> function
+which you pass in a base case and a function that, given a strategy for your data type,
+returns a new strategy for it. So for example:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">printable</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span> <span class="o">=</span> <span class="n">recursive</span><span class="p">(</span><span class="n">none</span><span class="p">()</span> <span class="o">|</span> <span class="n">booleans</span><span class="p">()</span> <span class="o">|</span> <span class="n">floats</span><span class="p">()</span> <span class="o">|</span> <span class="n">text</span><span class="p">(</span><span class="n">printable</span><span class="p">),</span>
+<span class="gp">... </span><span class="k">lambda</span> <span class="n">children</span><span class="p">:</span> <span class="n">lists</span><span class="p">(</span><span class="n">children</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">dictionaries</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">printable</span><span class="p">),</span> <span class="n">children</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">example</span><span class="p">())</span>
+<span class="go">[[1.175494351e-38, &#39;]&#39;, 1.9, True, False, &#39;.M}Xl&#39;, &#39;&#39;], True]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">example</span><span class="p">())</span>
+<span class="go">{&#39;de(l&#39;: None,</span>
+<span class="go"> &#39;nK&#39;: {&#39;(Rt)&#39;: None,</span>
+<span class="go">        &#39;+hoZh1YU]gy8&#39;: True,</span>
+<span class="go">        &#39;8z]EIFA06^l`i^&#39;: &#39;LFE{Q&#39;,</span>
+<span class="go">        &#39;9,&#39;: &#39;l{cA=/&#39;}}</span>
+</pre></div>
+</div>
+<p>That is, we start with our leaf data and then we augment it by allowing lists and dictionaries of anything we can generate as JSON data.</p>
+<p>The size control of this works by limiting the maximum number of values that can be drawn from the base strategy. So for example if
+we wanted to only generate really small JSON we could do this as:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">small_lists</span> <span class="o">=</span> <span class="n">recursive</span><span class="p">(</span><span class="n">booleans</span><span class="p">(),</span> <span class="n">lists</span><span class="p">,</span> <span class="n">max_leaves</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">small_lists</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">small_lists</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[False]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="composite-strategies">
+<span id="id3"></span><h2>Composite strategies<a class="headerlink" href="#composite-strategies" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="#hypothesis.strategies.composite" title="hypothesis.strategies.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;composite</span></code></a> decorator lets
+you combine other strategies in more or less
+arbitrary ways. It’s probably the main thing you’ll want to use for
+complicated custom strategies.</p>
+<p>The composite decorator works by converting a function that returns one
+example into a function that returns a strategy that produces such
+examples - which you can pass to <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>, modify
+with <code class="docutils literal notranslate"><span class="pre">.map</span></code> or <code class="docutils literal notranslate"><span class="pre">.filter</span></code>, and generally use like any other strategy.</p>
+<p>It does this by giving you a special function <code class="docutils literal notranslate"><span class="pre">draw</span></code> as the first
+argument, which can be used just like the corresponding method of the
+<a class="reference internal" href="#hypothesis.strategies.data" title="hypothesis.strategies.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a> strategy within a test.  In fact,
+the implementation is almost the same - but defining a strategy with
+<a class="reference internal" href="#hypothesis.strategies.composite" title="hypothesis.strategies.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;composite</span></code></a> makes code reuse
+easier, and usually improves the display of failing examples.</p>
+<p>For example, the following gives you a list and an index into it:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@composite</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">list_and_index</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="n">integers</span><span class="p">()):</span>
+<span class="gp">... </span>    <span class="n">xs</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="n">i</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">draw(s)</span></code> is a function that should be thought of as returning <code class="docutils literal notranslate"><span class="pre">s.example()</span></code>,
+except that the result is reproducible and will minimize correctly. The
+decorated function has the initial argument removed from the list, but will
+accept all the others in the expected order. Defaults are preserved.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_and_index</span><span class="p">()</span>
+<span class="go">list_and_index()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_and_index</span><span class="p">()</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">([15949, -35, 21764, 8167, 1607867656, -41, 104, 19, -90, 520116744169390387, 7107438879249457973], 0)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_and_index</span><span class="p">(</span><span class="n">booleans</span><span class="p">())</span>
+<span class="go">list_and_index(elements=booleans())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">list_and_index</span><span class="p">(</span><span class="n">booleans</span><span class="p">())</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">([True, False], 0)</span>
+</pre></div>
+</div>
+<p>Note that the repr will work exactly like it does for all the built-in
+strategies: it will be a function that you can call to get the strategy in
+question, with values provided only if they do not match the defaults.</p>
+<p>You can use <a class="reference internal" href="details.html#hypothesis.assume" title="hypothesis.assume"><code class="xref py py-func docutils literal notranslate"><span class="pre">assume</span></code></a> inside composite functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@composite</span>
+<span class="k">def</span> <span class="nf">distinct_strings_with_common_characters</span><span class="p">(</span><span class="n">draw</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">text</span><span class="p">(),</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">text</span><span class="p">(</span><span class="n">alphabet</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">assume</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This works as <a class="reference internal" href="details.html#hypothesis.assume" title="hypothesis.assume"><code class="xref py py-func docutils literal notranslate"><span class="pre">assume</span></code></a> normally would, filtering out any examples for which the
+passed in argument is falsey.</p>
+</div>
+<div class="section" id="drawing-interactively-in-tests">
+<span id="interactive-draw"></span><h2>Drawing interactively in tests<a class="headerlink" href="#drawing-interactively-in-tests" title="Permalink to this headline">¶</a></h2>
+<p>There is also the <a class="reference internal" href="#hypothesis.strategies.data" title="hypothesis.strategies.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a> strategy, which gives you a means of using
+strategies interactively. Rather than having to specify everything up front in
+<a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> you can draw from strategies in the body of your test.</p>
+<p>This is similar to <a class="reference internal" href="#hypothesis.strategies.composite" title="hypothesis.strategies.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;composite</span></code></a>, but
+even more powerful as it allows you to mix test code with example generation.
+The downside of this power is that <a class="reference internal" href="#hypothesis.strategies.data" title="hypothesis.strategies.data"><code class="xref py py-func docutils literal notranslate"><span class="pre">data()</span></code></a> is
+incompatible with explicit <a class="reference internal" href="reproducing.html#hypothesis.example" title="hypothesis.example"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;example(...)</span></code></a>s -
+and the mixed code is often harder to debug when something goes wrong.</p>
+<p>If you need values that are affected by previous draws but which <em>don’t</em> depend
+on the execution of your test, stick to the simpler
+<a class="reference internal" href="#hypothesis.strategies.composite" title="hypothesis.strategies.composite"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;composite</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">data</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_draw_sequentially</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>If the test fails, each draw will be printed with the falsifying example. e.g.
+the above is wrong (it has a boundary condition error), so will print:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">Falsifying example: test_draw_sequentially(data=data(...))</span>
+<span class="go">Draw 1: 0</span>
+<span class="go">Draw 2: 0</span>
+</pre></div>
+</div>
+<p>As you can see, data drawn this way is simplified as usual.</p>
+<p>Optionally, you can provide a label to identify values generated by each call
+to <code class="docutils literal notranslate"><span class="pre">data.draw()</span></code>.  These labels can be used to identify values in the output
+of a falsifying example.</p>
+<p>For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">data</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_draw_sequentially</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;First number&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Second number&#39;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>will produce the output:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">Falsifying example: test_draw_sequentially(data=data(...))</span>
+<span class="go">Draw 1 (First number): 0</span>
+<span class="go">Draw 2 (Second number): 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extras.html" class="btn btn-neutral float-right" title="First-party extensions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="settings.html" class="btn btn-neutral float-left" title="Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

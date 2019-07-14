@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Packaging Guidelines &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reproducing Failures" href="reproducing.html" />
+    <link rel="prev" title="Help and Support" href="support.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Packaging Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#release-tarballs">Release tarballs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-versions">Python versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-python-libraries">Other Python libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-hypothesis">Testing Hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Packaging Guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/packaging.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="packaging-guidelines">
+<h1>Packaging Guidelines<a class="headerlink" href="#packaging-guidelines" title="Permalink to this headline">¶</a></h1>
+<p>Downstream packagers often want to package Hypothesis. Here are some guidelines.</p>
+<p>The primary guideline is this: If you are not prepared to keep up with the Hypothesis release schedule,
+don’t. You will annoy me and are doing your users a disservice.</p>
+<p>Hypothesis has a very frequent release schedule. It’s rare that it goes a week without a release,
+and there are often multiple releases in a given week.</p>
+<p>If you <em>are</em> prepared to keep up with this schedule, you might find the rest of this document useful.</p>
+<div class="section" id="release-tarballs">
+<h2>Release tarballs<a class="headerlink" href="#release-tarballs" title="Permalink to this headline">¶</a></h2>
+<p>These are available from <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/releases">the GitHub releases page</a>. The
+tarballs on PyPI are intended for installation from a Python tool such as pip and should not
+be considered complete releases. Requests to include additional files in them will not be granted. Their absence
+is not a bug.</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-versions">
+<h3>Python versions<a class="headerlink" href="#python-versions" title="Permalink to this headline">¶</a></h3>
+<p>Hypothesis is designed to work with a range of Python versions.  We always support
+<a class="reference external" href="https://devguide.python.org/#status-of-python-branches">all versisions of CPython with upstream support</a>,
+and plan to drop Python 2 at EOL in 2020.  We also support the latest versions of PyPy
+for Python 3, and for Python 2 until the CPython 2 EOL.</p>
+<p>If you feel the need to have separate Python 3 and Python 2 packages you can, but Hypothesis works unmodified
+on either.</p>
+</div>
+<div class="section" id="other-python-libraries">
+<h3>Other Python libraries<a class="headerlink" href="#other-python-libraries" title="Permalink to this headline">¶</a></h3>
+<p>Hypothesis has <em>mandatory</em> dependencies on the following libraries:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/attrs">attrs</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/enum34">enum34</a> is required on Python 2.7</p></li>
+</ul>
+<p>Hypothesis has <em>optional</em> dependencies on the following libraries:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/pytz">pytz</a> (almost any version should work)</p></li>
+<li><p><a class="reference external" href="https://www.djangoproject.com">Django</a>, all supported versions</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/numpy">numpy</a>, 1.10 or later (earlier versions will probably work fine)</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/pandas">pandas</a>, 1.19 or later</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/pytest">pytest</a> (3.0 or greater). This is a mandatory dependency for testing Hypothesis itself but optional for users.</p></li>
+</ul>
+<p>The way this works when installing Hypothesis normally is that these features become available if the relevant
+library is installed.</p>
+</div>
+</div>
+<div class="section" id="testing-hypothesis">
+<h2>Testing Hypothesis<a class="headerlink" href="#testing-hypothesis" title="Permalink to this headline">¶</a></h2>
+<p>If you want to test Hypothesis as part of your packaging you will probably not want to use the mechanisms
+Hypothesis itself uses for running its tests, because it has a lot of logic for installing and testing against
+different versions of Python.</p>
+<p>The tests must be run with pytest &gt;= 3.0; check the <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/requirements/">requirements/</a>
+directory for details.</p>
+<p>The organisation of the tests is described in the <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/hypothesis-python/tests/README.rst">hypothesis-python/tests/README.rst</a>.</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.archlinux.org/packages/community/any/python-hypothesis/">arch linux</a></p></li>
+<li><p><a class="reference external" href="https://src.fedoraproject.org/rpms/python-hypothesis">fedora</a></p></li>
+<li><p><a class="reference external" href="https://packages.gentoo.org/packages/dev-python/hypothesis">gentoo</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reproducing.html" class="btn btn-neutral float-right" title="Reproducing Failures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="support.html" class="btn btn-neutral float-left" title="Help and Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

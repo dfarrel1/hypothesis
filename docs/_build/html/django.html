@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hypothesis for Django users &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Hypothesis for the Scientific Stack" href="numpy.html" />
+    <link rel="prev" title="First-party extensions" href="extras.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hypothesis for Django users</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-tricks">Tips and tricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-field-types">Custom field types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-child-models">Generating child models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-primary-key-values">Generating primary key values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-the-subject-of-multivaluefield">On the subject of <code class="docutils literal notranslate"><span class="pre">MultiValueField</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Hypothesis for Django users</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/django.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hypothesis-for-django-users">
+<span id="hypothesis-django"></span><h1>Hypothesis for Django users<a class="headerlink" href="#hypothesis-for-django-users" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis offers a number of features specific for Django testing, available
+in the <code class="docutils literal notranslate"><span class="pre">hypothesis[django]</span></code> <a class="reference internal" href="extras.html"><span class="doc">extra</span></a>.  This is tested
+against each supported series with mainstream or extended support -
+if you’re still getting security patches, you can test with Hypothesis.</p>
+<dl class="class">
+<dt id="hypothesis.extra.django.TestCase">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.extra.django.</code><code class="sig-name descname">TestCase</code><a class="headerlink" href="#hypothesis.extra.django.TestCase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Using it is quite straightforward: All you need to do is subclass
+<a class="reference internal" href="#hypothesis.extra.django.TestCase" title="hypothesis.extra.django.TestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypothesis.extra.django.TestCase</span></code></a> or
+<a class="reference internal" href="#hypothesis.extra.django.TransactionTestCase" title="hypothesis.extra.django.TransactionTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">hypothesis.extra.django.TransactionTestCase</span></code></a>
+and you can use <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> as normal,
+and the transactions will be per example
+rather than per test function as they would be if you used <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> with a normal
+django test suite (this is important because your test function will be called
+multiple times and you don’t want them to interfere with each other). Test cases
+on these classes that do not use
+<a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> will be run as normal.</p>
+<dl class="class">
+<dt id="hypothesis.extra.django.TransactionTestCase">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.extra.django.</code><code class="sig-name descname">TransactionTestCase</code><a class="headerlink" href="#hypothesis.extra.django.TransactionTestCase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>We recommend avoiding <a class="reference internal" href="#hypothesis.extra.django.TransactionTestCase" title="hypothesis.extra.django.TransactionTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionTestCase</span></code></a>
+unless you really have to run each test case in a database transaction.
+Because Hypothesis runs this in a loop, the performance problems it normally has
+are significantly exacerbated and your tests will be really slow.
+If you are using <a class="reference internal" href="#hypothesis.extra.django.TransactionTestCase" title="hypothesis.extra.django.TransactionTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionTestCase</span></code></a>,
+you may need to use <code class="docutils literal notranslate"><span class="pre">&#64;settings(suppress_health_check=[HealthCheck.too_slow])</span></code>
+to avoid <a class="reference internal" href="healthchecks.html"><span class="doc">errors due to slow example generation</span></a>.</p>
+<p>Having set up a test class, you can now pass <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>
+a strategy for Django models:</p>
+<dl class="function">
+<dt id="hypothesis.extra.django.from_model">
+<code class="sig-prename descclassname">hypothesis.extra.django.</code><code class="sig-name descname">from_model</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">**field_strategies</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/django/_impl.html#from_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.django.from_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for examples of <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Hypothesis creates saved models. This will run inside your testing
+transaction when using the test runner, but if you use the dev console
+this will leave debris in your database.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">model</span></code> must be an subclass of <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/models/instances.html#django.db.models.Model" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a>.
+Strategies for fields may be passed as keyword arguments, for example
+<code class="docutils literal notranslate"><span class="pre">is_staff=st.just(False)</span></code>.</p>
+<p>Hypothesis can often infer a strategy based the field type and validators,
+and will attempt to do so for any required fields.  No strategy will be
+inferred for an <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/models/fields.html#django.db.models.AutoField" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AutoField</span></code></a>, nullable field,
+foreign key, or field for which a keyword
+argument is passed to <code class="docutils literal notranslate"><span class="pre">from_model()</span></code>.  For example,
+a Shop type with a foreign key to Company could be generated with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shop_strategy</span> <span class="o">=</span> <span class="n">from_model</span><span class="p">(</span><span class="n">Shop</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="n">from_model</span><span class="p">(</span><span class="n">Company</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Like for <a class="reference internal" href="data.html#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a>, you can pass
+<a class="reference internal" href="details.html#hypothesis.infer" title="hypothesis.infer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">infer</span></code></a> as a keyword argument to infer a strategy for
+a field which has a default value instead of using the default.</p>
+</dd></dl>
+
+<p>For example, using <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/hypothesis-python/tests/django/toystore/models.py">the trivial django project we have for testing</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.django</span> <span class="kn">import</span> <span class="n">from_model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">toystore.models</span> <span class="kn">import</span> <span class="n">Customer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">from_model</span><span class="p">(</span><span class="n">Customer</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">&lt;Customer: Customer object&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">email</span>
+<span class="go">&#39;jaime.urbina@gmail.com&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;\U00109d3d\U000e07be\U000165f8\U0003fabf\U000c12cd\U000f1910\U00059f12\U000519b0\U0003fabf\U000f1910\U000423fb\U000423fb\U00059f12\U000e07be\U000c12cd\U000e07be\U000519b0\U000165f8\U0003fabf\U0007bc31&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">age</span>
+<span class="go">-873375803</span>
+</pre></div>
+</div>
+<p>Hypothesis has just created this with whatever the relevant type of data is.</p>
+<p>Obviously the customer’s age is implausible, which is only possible because
+we have not used (eg) <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/validators.html#django.core.validators.MinValueValidator" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MinValueValidator</span></code></a>
+to set the valid range for this field (or used a
+<a class="reference external" href="https://django.readthedocs.io/en/stable/ref/models/fields.html#django.db.models.PositiveSmallIntegerField" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositiveSmallIntegerField</span></code></a>, which would only
+need a maximum value validator).</p>
+<p>If you <em>do</em> have validators attached, Hypothesis will only generate examples
+that pass validation.  Sometimes that will mean that we fail a
+<a class="reference internal" href="healthchecks.html#hypothesis.HealthCheck" title="hypothesis.HealthCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">HealthCheck</span></code></a> because of the filtering, so let’s explicitly
+pass a strategy to skip validation at the strategy level:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Inference from validators will be much more powerful when <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/issues/1116">issue #1116</a>
+is implemented, but there will always be some edge cases that require you
+to pass an explicit strategy.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">integers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">from_model</span><span class="p">(</span><span class="n">Customer</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">120</span><span class="p">))</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">&lt;Customer: Customer object&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">age</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="hypothesis.extra.django.from_form">
+<code class="sig-prename descclassname">hypothesis.extra.django.</code><code class="sig-name descname">from_form</code><span class="sig-paren">(</span><em class="sig-param">form</em>, <em class="sig-param">form_kwargs=None</em>, <em class="sig-param">**field_strategies</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/django/_impl.html#from_form"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.django.from_form" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for examples of <code class="docutils literal notranslate"><span class="pre">form</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">form</span></code> must be an subclass of <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/forms/api.html#django.forms.Form" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Form</span></code></a>.
+Strategies for fields may be passed as keyword arguments, for example
+<code class="docutils literal notranslate"><span class="pre">is_staff=st.just(False)</span></code>.</p>
+<p>Hypothesis can often infer a strategy based the field type and validators,
+and will attempt to do so for any required fields.  No strategy will be
+inferred for a disabled field or field for which a keyword argument
+is passed to <code class="docutils literal notranslate"><span class="pre">from_form()</span></code>.</p>
+<p>This function uses the fields of an unbound <code class="docutils literal notranslate"><span class="pre">form</span></code> instance to determine
+field strategies, any keyword arguments needed to instantiate the unbound
+<code class="docutils literal notranslate"><span class="pre">form</span></code> instance can be passed into <code class="docutils literal notranslate"><span class="pre">from_form()</span></code> as a dict with the
+keyword <code class="docutils literal notranslate"><span class="pre">form_kwargs</span></code>. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shop_strategy</span> <span class="o">=</span> <span class="n">from_form</span><span class="p">(</span><span class="n">Shop</span><span class="p">,</span> <span class="n">form_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;company_id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Like for <a class="reference internal" href="data.html#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a>, you can pass
+<a class="reference internal" href="details.html#hypothesis.infer" title="hypothesis.infer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">infer</span></code></a> as a keyword argument to infer a strategy for
+a field which has a default value instead of using the default.</p>
+</dd></dl>
+
+<div class="section" id="tips-and-tricks">
+<h2>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="custom-field-types">
+<h3>Custom field types<a class="headerlink" href="#custom-field-types" title="Permalink to this headline">¶</a></h3>
+<p>If you have a custom Django field type you can register it with Hypothesis’s
+model deriving functionality by registering a default strategy for it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">toystore.models</span> <span class="kn">import</span> <span class="n">CustomishField</span><span class="p">,</span> <span class="n">Customish</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">from_model</span><span class="p">(</span><span class="n">Customish</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">hypothesis.errors.InvalidArgument: Missing arguments for mandatory field</span>
+<span class="go">    customish for model Customish</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.django</span> <span class="kn">import</span> <span class="n">register_field_strategy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">just</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">register_field_strategy</span><span class="p">(</span><span class="n">CustomishField</span><span class="p">,</span> <span class="n">just</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">from_model</span><span class="p">(</span><span class="n">Customish</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">customish</span>
+<span class="go">&#39;hi&#39;</span>
+</pre></div>
+</div>
+<p>Note that this mapping is on exact type. Subtypes will not inherit it.</p>
+<dl class="function">
+<dt id="hypothesis.extra.django.register_field_strategy">
+<code class="sig-prename descclassname">hypothesis.extra.django.</code><code class="sig-name descname">register_field_strategy</code><span class="sig-paren">(</span><em class="sig-param">field_type</em>, <em class="sig-param">strategy</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/django/_fields.html#register_field_strategy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.django.register_field_strategy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an entry to the global field-to-strategy lookup used by from_field.</p>
+<p><code class="docutils literal notranslate"><span class="pre">field_type</span></code> must be a subtype of django.db.models.Field, which must not
+already be registered.  <code class="docutils literal notranslate"><span class="pre">strategy</span></code> must be a SearchStrategy.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="generating-child-models">
+<h3>Generating child models<a class="headerlink" href="#generating-child-models" title="Permalink to this headline">¶</a></h3>
+<p>For the moment there’s no explicit support in hypothesis-django for generating
+dependent models. i.e. a Company model will generate no Shops. However if you
+want to generate some dependent models as well, you can emulate this by using
+the <em>flatmap</em> function as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">lists</span><span class="p">,</span> <span class="n">just</span>
+
+<span class="k">def</span> <span class="nf">generate_with_shops</span><span class="p">(</span><span class="n">company</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">lists</span><span class="p">(</span><span class="n">from_model</span><span class="p">(</span><span class="n">Shop</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="n">just</span><span class="p">(</span><span class="n">company</span><span class="p">)))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="n">company</span><span class="p">)</span>
+
+<span class="n">company_with_shops_strategy</span> <span class="o">=</span> <span class="n">from_model</span><span class="p">(</span><span class="n">Company</span><span class="p">)</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span><span class="n">generate_with_shops</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Lets unpack what this is doing:</p>
+<p>The way flatmap works is that we draw a value from the original strategy, then
+apply a function to it which gives us a new strategy. We then draw a value from
+<em>that</em> strategy. So in this case we’re first drawing a company, and then we’re
+drawing a list of shops belonging to that company: The <em>just</em> strategy is a
+strategy such that drawing it always produces the individual value, so
+<code class="docutils literal notranslate"><span class="pre">from_model(Shop,</span> <span class="pre">company=just(company))</span></code> is a strategy that generates a Shop belonging
+to the original company.</p>
+<p>So the following code would give us a list of shops all belonging to the same
+company:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">from_model</span><span class="p">(</span><span class="n">Company</span><span class="p">)</span><span class="o">.</span><span class="n">flatmap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">lists</span><span class="p">(</span><span class="n">from_model</span><span class="p">(</span><span class="n">Shop</span><span class="p">,</span> <span class="n">company</span><span class="o">=</span><span class="n">just</span><span class="p">(</span><span class="n">c</span><span class="p">))))</span>
+</pre></div>
+</div>
+<p>The only difference from this and the above is that we want the company, not
+the shops. This is where the inner map comes in. We build the list of shops
+and then throw it away, instead returning the company we started for. This
+works because the models that Hypothesis generates are saved in the database,
+so we’re essentially running the inner strategy purely for the side effect of
+creating those children in the database.</p>
+</div>
+<div class="section" id="generating-primary-key-values">
+<span id="django-generating-primary-key"></span><h3>Generating primary key values<a class="headerlink" href="#generating-primary-key-values" title="Permalink to this headline">¶</a></h3>
+<p>If your model includes a custom primary key that you want to generate
+using a strategy (rather than a default auto-increment primary key)
+then Hypothesis has to deal with the possibility of a duplicate
+primary key.</p>
+<p>If a model strategy generates a value for the primary key field,
+Hypothesis will create the model instance with
+<a class="reference external" href="https://django.readthedocs.io/en/stable/ref/models/querysets.html#django.db.models.query.QuerySet.update_or_create" title="(in Django v2.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_or_create()</span></code></a>,
+overwriting any existing instance in the database for this test case
+with the same primary key.</p>
+</div>
+<div class="section" id="on-the-subject-of-multivaluefield">
+<h3>On the subject of <code class="docutils literal notranslate"><span class="pre">MultiValueField</span></code><a class="headerlink" href="#on-the-subject-of-multivaluefield" title="Permalink to this headline">¶</a></h3>
+<p>Django forms feature the <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/forms/fields.html#django.forms.MultiValueField" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiValueField</span></code></a>
+which allows for several fields to be combined under a single named field, the
+default example of this is the <a class="reference external" href="https://django.readthedocs.io/en/stable/ref/forms/fields.html#django.forms.SplitDateTimeField" title="(in Django v2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SplitDateTimeField</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CustomerForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">()</span>
+  <span class="n">birth_date_time</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">SplitDateTimeField</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">from_form</span></code> supports <code class="docutils literal notranslate"><span class="pre">MultiValueField</span></code> subclasses directly, however if you
+want to define your own strategy be forewarned that Django binds data for a
+<code class="docutils literal notranslate"><span class="pre">MultiValueField</span></code> in a peculiar way. Specifically each sub-field is expected
+to have its own entry in <code class="docutils literal notranslate"><span class="pre">data</span></code> addressed by the field name
+(e.g. <code class="docutils literal notranslate"><span class="pre">birth_date_time</span></code>) and the index of the sub-field within the
+<code class="docutils literal notranslate"><span class="pre">MultiValueField</span></code>, so form <code class="docutils literal notranslate"><span class="pre">data</span></code> for the example above might look
+like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Samuel John&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;birth_date_time_0&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-05-19&#39;</span><span class="p">,</span>  <span class="c1"># the date, as the first sub-field</span>
+  <span class="s1">&#39;birth_date_time_1&#39;</span><span class="p">:</span> <span class="s1">&#39;15:18:00&#39;</span>     <span class="c1"># the time, as the second sub-field</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Thus, if you want to define your own strategies for such a field you must
+address your sub-fields appropriately:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">from_form</span><span class="p">(</span><span class="n">CustomerForm</span><span class="p">,</span> <span class="n">birth_date_time_0</span><span class="o">=</span><span class="n">just</span><span class="p">(</span><span class="s1">&#39;2018-05-19&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="numpy.html" class="btn btn-neutral float-right" title="Hypothesis for the Scientific Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="extras.html" class="btn btn-neutral float-left" title="First-party extensions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

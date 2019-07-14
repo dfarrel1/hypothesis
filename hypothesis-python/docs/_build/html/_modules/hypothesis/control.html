@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.control &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.control</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.control</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="k">import</span> <span class="n">Verbosity</span><span class="p">,</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="n">CleanupFailed</span><span class="p">,</span> <span class="n">InvalidArgument</span><span class="p">,</span> <span class="n">UnsatisfiedAssumption</span>
+<span class="kn">from</span> <span class="nn">hypothesis.reporting</span> <span class="k">import</span> <span class="n">report</span>
+<span class="kn">from</span> <span class="nn">hypothesis.utils.dynamicvariables</span> <span class="k">import</span> <span class="n">DynamicVariable</span>
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AnyStr</span>  <span class="c1"># noqa</span>
+
+
+<span class="k">def</span> <span class="nf">reject</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="n">UnsatisfiedAssumption</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="assume"><a class="viewcode-back" href="../../details.html#hypothesis.assume">[docs]</a><span class="k">def</span> <span class="nf">assume</span><span class="p">(</span><span class="n">condition</span><span class="p">):</span>
+    <span class="c1"># type: (Any) -&gt; bool</span>
+    <span class="sd">&quot;&quot;&quot;Calling ``assume`` is like an :ref:`assert &lt;python:assert&gt;` that marks</span>
+<span class="sd">    the example as bad, rather than failing the test.</span>
+
+<span class="sd">    This allows you to specify properties that you *assume* will be</span>
+<span class="sd">    true, and let Hypothesis try to avoid similar examples in future.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">condition</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">UnsatisfiedAssumption</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<span class="n">_current_build_context</span> <span class="o">=</span> <span class="n">DynamicVariable</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">current_build_context</span><span class="p">():</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">_current_build_context</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;No build context registered&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">context</span>
+
+
+<span class="k">class</span> <span class="nc">BuildContext</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">is_final</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">close_on_capture</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_final</span> <span class="o">=</span> <span class="n">is_final</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close_on_capture</span> <span class="o">=</span> <span class="n">close_on_capture</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close_on_del</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_variable</span> <span class="o">=</span> <span class="n">_current_build_context</span><span class="o">.</span><span class="n">with_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_variable</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">tb</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_variable</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="ow">and</span> <span class="n">exc_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">CleanupFailed</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">any_failed</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">task</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">any_failed</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">report</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">any_failed</span>
+
+
+<span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="n">teardown</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Register a function to be called when the current test has finished</span>
+<span class="sd">    executing. Any exceptions thrown in teardown will be printed but not</span>
+<span class="sd">    rethrown.</span>
+
+<span class="sd">    Inside a test this isn&#39;t very interesting, because you can just use</span>
+<span class="sd">    a finally block, but note that you can use this inside map, flatmap,</span>
+<span class="sd">    etc. in order to e.g. insist that a value is closed at the end.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">_current_build_context</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Cannot register cleanup outside of build context&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">teardown</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="note"><a class="viewcode-back" href="../../details.html#hypothesis.note">[docs]</a><span class="k">def</span> <span class="nf">note</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="c1"># type: (AnyStr) -&gt; None</span>
+    <span class="sd">&quot;&quot;&quot;Report this value in the final execution.&quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">_current_build_context</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;Cannot make notes outside of a test&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">notes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">is_final</span> <span class="ow">or</span> <span class="n">settings</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="n">report</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="event"><a class="viewcode-back" href="../../details.html#hypothesis.event">[docs]</a><span class="k">def</span> <span class="nf">event</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="c1"># type: (AnyStr) -&gt; None</span>
+    <span class="sd">&quot;&quot;&quot;Record an event that occurred this test. Statistics on number of test</span>
+<span class="sd">    runs with each event will be reported at the end if you run Hypothesis in</span>
+<span class="sd">    statistics reporting mode.</span>
+
+<span class="sd">    Events should be strings or convertible to them.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">_current_build_context</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;Cannot make record events outside of a test&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">note_event</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

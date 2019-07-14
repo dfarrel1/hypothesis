@@ -1,0 +1,723 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hypothesis for the Scientific Stack &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Health checks" href="healthchecks.html" />
+    <link rel="prev" title="Hypothesis for Django users" href="django.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hypothesis for the Scientific Stack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#numpy">numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pandas">pandas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supported-versions">Supported Versions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Hypothesis for the Scientific Stack</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/numpy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hypothesis-for-the-scientific-stack">
+<h1>Hypothesis for the Scientific Stack<a class="headerlink" href="#hypothesis-for-the-scientific-stack" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="numpy">
+<span id="hypothesis-numpy"></span><h2>numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis offers a number of strategies for <a class="reference external" href="https://www.numpy.org/">NumPy</a> testing,
+available in the <code class="docutils literal notranslate"><span class="pre">hypothesis[numpy]</span></code> <a class="reference internal" href="extras.html"><span class="doc">extra</span></a>.
+It lives in the <code class="docutils literal notranslate"><span class="pre">hypothesis.extra.numpy</span></code> package.</p>
+<p>The centerpiece is the <a class="reference internal" href="#hypothesis.extra.numpy.arrays" title="hypothesis.extra.numpy.arrays"><code class="xref py py-func docutils literal notranslate"><span class="pre">arrays()</span></code></a> strategy, which generates arrays with
+any dtype, shape, and contents you can specify or give a strategy for.
+To make this as useful as possible, strategies are provided to generate array
+shapes and generate all kinds of fixed-size or compound dtypes.</p>
+<span class="target" id="module-hypothesis.extra.numpy"></span><dl class="function">
+<dt id="hypothesis.extra.numpy.from_dtype">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">from_dtype</code><span class="sig-paren">(</span><em class="sig-param">dtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#from_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.from_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a strategy which can generate any value of the given dtype.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.arrays">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">arrays</code><span class="sig-paren">(</span><em class="sig-param">dtype</em>, <em class="sig-param">shape</em>, <em class="sig-param">elements=None</em>, <em class="sig-param">fill=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#arrays"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strategy for generating <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.16)"><code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>s.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> may be any valid input to <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.16)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code></a>
+(this includes <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.16)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code></a> objects), or a strategy that
+generates such values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> may be an integer &gt;= 0, a tuple of such integers, or a
+strategy that generates such values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">elements</span></code> is a strategy for generating values to put in the array.
+If it is None a suitable value will be inferred based on the dtype,
+which may give any legal value (including eg <code class="docutils literal notranslate"><span class="pre">NaN</span></code> for floats).
+If you have more specific requirements, you should supply your own
+elements strategy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill</span></code> is a strategy that may be used to generate a single background
+value for the array. If None, a suitable default will be inferred
+based on the other arguments. If set to
+<a class="reference internal" href="data.html#hypothesis.strategies.nothing" title="hypothesis.strategies.nothing"><code class="xref py py-func docutils literal notranslate"><span class="pre">nothing()</span></code></a> then filling
+behaviour will be disabled entirely and every element will be generated
+independently.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unique</span></code> specifies if the elements of the array should all be
+distinct from one another. Note that in this case multiple NaN values
+may still be allowed. If fill is also set, the only valid values for
+it to return are NaN values (anything for which <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.isnan.html#numpy.isnan" title="(in NumPy v1.16)"><code class="docutils literal notranslate"><span class="pre">numpy.isnan</span></code></a>
+returns True. So e.g. for complex numbers (nan+1j) is also a valid fill).
+Note that if unique is set to True the generated values must be hashable.</p></li>
+</ul>
+<p>Arrays of specified <code class="docutils literal notranslate"><span class="pre">dtype</span></code> and <code class="docutils literal notranslate"><span class="pre">shape</span></code> are generated for example
+like this:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arrays</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">array([[-8,  6,  3],</span>
+<span class="go">       [-6,  4,  6]], dtype=int8)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>See <a class="reference internal" href="data.html"><span class="doc">What you can generate and how</span></a>.</p></li>
+</ul>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">floats</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arrays</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">elements</span><span class="o">=</span><span class="n">floats</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">array([ 0.88974794,  0.77387938,  0.1977879 ])</span>
+</pre></div>
+</div>
+<p>Array values are generated in two parts:</p>
+<ol class="arabic simple">
+<li><p>Some subset of the coordinates of the array are populated with a value
+drawn from the elements strategy (or its inferred form).</p></li>
+<li><p>If any coordinates were not assigned in the previous step, a single
+value is drawn from the fill strategy and is assigned to all remaining
+places.</p></li>
+</ol>
+<p>You can set fill to <a class="reference internal" href="data.html#hypothesis.strategies.nothing" title="hypothesis.strategies.nothing"><code class="xref py py-func docutils literal notranslate"><span class="pre">nothing()</span></code></a> if you want to
+disable this behaviour and draw a value for every element.</p>
+<p>If fill is set to None then it will attempt to infer the correct behaviour
+automatically: If unique is True, no filling will occur by default.
+Otherwise, if it looks safe to reuse the values of elements across
+multiple coordinates (this will be the case for any inferred strategy, and
+for most of the builtins, but is not the case for mutable values or
+strategies built with flatmap, map, composite, etc) then it will use the
+elements strategy as the fill, else it will default to having no fill.</p>
+<p>Having a fill helps Hypothesis craft high quality examples, but its
+main importance is when the array generated is large: Hypothesis is
+primarily designed around testing small examples. If you have arrays with
+hundreds or more elements, having a fill value is essential if you want
+your tests to run in reasonable time.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.array_shapes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">array_shapes</code><span class="sig-paren">(</span><em class="sig-param">min_dims=1</em>, <em class="sig-param">max_dims=None</em>, <em class="sig-param">min_side=1</em>, <em class="sig-param">max_side=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#array_shapes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.array_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for array shapes (tuples of int &gt;= 1).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.scalar_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">scalar_dtypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#scalar_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.scalar_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy that can return any non-flexible scalar dtype.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.unsigned_integer_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">unsigned_integer_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">sizes=(8</em>, <em class="sig-param">16</em>, <em class="sig-param">32</em>, <em class="sig-param">64)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#unsigned_integer_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.unsigned_integer_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for unsigned integer dtypes.</p>
+<p>endianness may be <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> for little-endian, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> for big-endian,
+<code class="docutils literal notranslate"><span class="pre">=</span></code> for native byte order, or <code class="docutils literal notranslate"><span class="pre">?</span></code> to allow either byte order.
+This argument only applies to dtypes of more than one byte.</p>
+<p>sizes must be a collection of integer sizes in bits.  The default
+(8, 16, 32, 64) covers the full range of sizes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.integer_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">integer_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">sizes=(8</em>, <em class="sig-param">16</em>, <em class="sig-param">32</em>, <em class="sig-param">64)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#integer_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.integer_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for signed integer dtypes.</p>
+<p>endianness and sizes are treated as for
+<a class="reference internal" href="#hypothesis.extra.numpy.unsigned_integer_dtypes" title="hypothesis.extra.numpy.unsigned_integer_dtypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">unsigned_integer_dtypes()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.floating_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">floating_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">sizes=(16</em>, <em class="sig-param">32</em>, <em class="sig-param">64)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#floating_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.floating_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for floating-point dtypes.</p>
+<p>sizes is the size in bits of floating-point number.  Some machines support
+96- or 128-bit floats, but these are not generated by default.</p>
+<p>Larger floats (96 and 128 bit real parts) are not supported on all
+platforms and therefore disabled by default.  To generate these dtypes,
+include these values in the sizes argument.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.complex_number_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">complex_number_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">sizes=(64</em>, <em class="sig-param">128)</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#complex_number_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.complex_number_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for complex-number dtypes.</p>
+<p>sizes is the total size in bits of a complex number, which consists
+of two floats.  Complex halfs (a 16-bit real part) are not supported
+by numpy and will not be generated by this strategy.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.datetime64_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">datetime64_dtypes</code><span class="sig-paren">(</span><em class="sig-param">max_period='Y'</em>, <em class="sig-param">min_period='ns'</em>, <em class="sig-param">endianness='?'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#datetime64_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.datetime64_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for datetime64 dtypes, with various precisions from
+year to attosecond.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.timedelta64_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">timedelta64_dtypes</code><span class="sig-paren">(</span><em class="sig-param">max_period='Y'</em>, <em class="sig-param">min_period='ns'</em>, <em class="sig-param">endianness='?'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#timedelta64_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.timedelta64_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for timedelta64 dtypes, with various precisions from
+year to attosecond.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.byte_string_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">byte_string_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">min_len=0</em>, <em class="sig-param">max_len=16</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#byte_string_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.byte_string_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for generating bytestring dtypes, of various lengths
+and byteorder.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.unicode_string_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">unicode_string_dtypes</code><span class="sig-paren">(</span><em class="sig-param">endianness='?'</em>, <em class="sig-param">min_len=0</em>, <em class="sig-param">max_len=16</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#unicode_string_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.unicode_string_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for generating unicode string dtypes, of various
+lengths and byteorder.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.array_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">array_dtypes</code><span class="sig-paren">(</span><em class="sig-param">subtype_strategy=scalar_dtypes()</em>, <em class="sig-param">min_size=1</em>, <em class="sig-param">max_size=5</em>, <em class="sig-param">allow_subarrays=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#array_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.array_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for generating array (compound) dtypes, with members
+drawn from the given subtype strategy.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.nested_dtypes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">nested_dtypes</code><span class="sig-paren">(</span><em class="sig-param">subtype_strategy=scalar_dtypes()</em>, <em class="sig-param">max_leaves=10</em>, <em class="sig-param">max_itemsize=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#nested_dtypes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.nested_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the most-general dtype strategy.</p>
+<p>Elements drawn from this strategy may be simple (from the
+subtype_strategy), or several such values drawn from
+<a class="reference internal" href="#hypothesis.extra.numpy.array_dtypes" title="hypothesis.extra.numpy.array_dtypes"><code class="xref py py-func docutils literal notranslate"><span class="pre">array_dtypes()</span></code></a> with <code class="docutils literal notranslate"><span class="pre">allow_subarrays=True</span></code>. Subdtypes in an
+array dtype may be nested to any depth, subject to the max_leaves
+argument.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.valid_tuple_axes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">valid_tuple_axes</code><span class="sig-paren">(</span><em class="sig-param">ndim</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#valid_tuple_axes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.valid_tuple_axes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for generating permissible tuple-values for the
+<code class="docutils literal notranslate"><span class="pre">axis</span></code> argument for a numpy sequential function (e.g.
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum" title="(in NumPy v1.16)"><code class="docutils literal notranslate"><span class="pre">numpy.sum()</span></code></a>), given an array of the specified
+dimensionality.</p>
+<p>All tuples will have an length &gt;= min_size and &lt;= max_size. The default
+value for max_size is <code class="docutils literal notranslate"><span class="pre">ndim</span></code>.</p>
+<p>Examples from this strategy shrink towards an empty tuple, which render
+most sequential functions as no-ops.</p>
+<p>The following are some examples drawn from this strategy.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">valid_tuple_axes</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="go">[(-3, 1), (0, 1, -1), (0, 2), (0, -2, 2)]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">valid_tuple_axes</span></code> can be joined with other strategies to generate
+any type of valid axis object, i.e. integers, tuples, and <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="go">any_axis_strategy = none() | integers(-ndim, ndim - 1) | valid_tuple_axes(ndim)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.broadcastable_shapes">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">broadcastable_shapes</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">min_dims=0</em>, <em class="sig-param">max_dims=None</em>, <em class="sig-param">min_side=1</em>, <em class="sig-param">max_side=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#broadcastable_shapes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.broadcastable_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a strategy for generating shapes that are broadcast-compatible
+with the provided shape.</p>
+<p>Examples from this strategy shrink towards a shape with length <code class="docutils literal notranslate"><span class="pre">min_dims</span></code>.
+The size of an aligned dimension shrinks towards being a singleton. The
+size of an unaligned dimension shrink towards <code class="docutils literal notranslate"><span class="pre">min_side</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> a tuple of integers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_dims</span></code> The smallest length that the generated shape can possess.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_dims</span></code> The largest length that the generated shape can possess.
+shape can possess. Cannot exceed 32. The default-value for <code class="docutils literal notranslate"><span class="pre">max_dims</span></code>
+is <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">max(len(shape),</span> <span class="pre">min_dims)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_side</span></code> The smallest size that an unaligned dimension can possess.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_side</span></code> The largest size that an unaligned dimension can possess.
+The default value is 2 + ‘size-of-largest-aligned-dimension’.</p></li>
+</ul>
+<p>The following are some examples drawn from this strategy.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">broadcastable_shapes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">example</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="go">[(1, 3), (), (2, 3), (2, 1), (4, 1, 3), (3, )]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.numpy.integer_array_indices">
+<code class="sig-prename descclassname">hypothesis.extra.numpy.</code><code class="sig-name descname">integer_array_indices</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">result_shape=array_shapes()</em>, <em class="sig-param">dtype='int'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/numpy.html#integer_array_indices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.numpy.integer_array_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a search strategy for tuples of integer-arrays that, when used
+to index into an array of shape <code class="docutils literal notranslate"><span class="pre">shape</span></code>, given an array whose shape
+was drawn from <code class="docutils literal notranslate"><span class="pre">result_shape</span></code>.</p>
+<p>Examples from this strategy shrink towards the tuple of index-arrays:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">drawn_result_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">),</span> <span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> a tuple of integers that indicates the shape of the array,
+whose indices are being generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result_shape</span></code> a strategy for generating tuples of integers, which
+describe the shape of the resulting index arrays. The default is
+<a class="reference internal" href="#hypothesis.extra.numpy.array_shapes" title="hypothesis.extra.numpy.array_shapes"><code class="xref py py-func docutils literal notranslate"><span class="pre">array_shapes()</span></code></a>.  The shape drawn from
+this strategy determines the shape of the array that will be produced
+when the corresponding example from <code class="docutils literal notranslate"><span class="pre">integer_array_indices</span></code> is used
+as an index.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> the integer data type of the generated index-arrays. Negative
+integer indices can be generated if a signed integer type is specified.</p></li>
+</ul>
+<p>Recall that an array can be indexed using a tuple of integer-arrays to
+access its members in an arbitrary order, producing an array with an
+arbitrary shape. For example:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]),)</span>  <span class="c1"># a tuple containing a 2D integer-array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>  <span class="c1"># the resulting array is commensurate with the indexing array(s)</span>
+<span class="go">array([[-4,  0],</span>
+<span class="go">       [0, -1]])</span>
+</pre></div>
+</div>
+<p>Note that this strategy does not accommodate all variations of so-called
+‘advanced indexing’, as prescribed by NumPy’s nomenclature.  Combinations
+of basic and advanced indexes are too complex to usefully define in a
+standard strategy; we leave application-specific strategies to the user.
+Advanced-boolean indexing can be defined as <code class="docutils literal notranslate"><span class="pre">arrays(shape=...,</span> <span class="pre">dtype=bool)</span></code>,
+and is similarly left to the user.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pandas">
+<span id="hypothesis-pandas"></span><h2>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis provides strategies for several of the core pandas data types:
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Index</span></code></a>, <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>.</p>
+<p>The general approach taken by the pandas module is that there are multiple
+strategies for generating indexes, and all of the other strategies take the
+number of entries they contain from their index strategy (with sensible defaults).
+So e.g. a Series is specified by specifying its <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.16)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a> (and/or
+a strategy for generating elements for it).</p>
+<span class="target" id="module-hypothesis.extra.pandas"></span><dl class="function">
+<dt id="hypothesis.extra.pandas.indexes">
+<code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">indexes</code><span class="sig-paren">(</span><em class="sig-param">elements=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em>, <em class="sig-param">unique=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#indexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a strategy for producing a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Index</span></code></a>.</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p>elements is a strategy which will be used to generate the individual
+values of the index. If None, it will be inferred from the dtype. Note:
+even if the elements strategy produces tuples, the generated value
+will not be a MultiIndex, but instead be a normal index whose elements
+are tuples.</p></li>
+<li><p>dtype is the dtype of the resulting index. If None, it will be inferred
+from the elements strategy. At least one of dtype or elements must be
+provided.</p></li>
+<li><p>min_size is the minimum number of elements in the index.</p></li>
+<li><p>max_size is the maximum number of elements in the index. If None then it
+will default to a suitable small size. If you want larger indexes you
+should pass a max_size explicitly.</p></li>
+<li><p>unique specifies whether all of the elements in the resulting index
+should be distinct.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.pandas.range_indexes">
+<code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">range_indexes</code><span class="sig-paren">(</span><em class="sig-param">min_size=0</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#range_indexes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.range_indexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a strategy which generates an <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Index</span></code></a> whose
+values are 0, 1, …, n for some n.</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p>min_size is the smallest number of elements the index can have.</p></li>
+<li><p>max_size is the largest number of elements the index can have. If None
+it will default to some suitable value based on min_size.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.pandas.series">
+<code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">series</code><span class="sig-paren">(</span><em class="sig-param">elements=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">index=None</em>, <em class="sig-param">fill=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a strategy for producing a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Series</span></code></a>.</p>
+<p>Arguments:</p>
+<ul>
+<li><p>elements: a strategy that will be used to generate the individual
+values in the series. If None, we will attempt to infer a suitable
+default from the dtype.</p></li>
+<li><p>dtype: the dtype of the resulting series and may be any value
+that can be passed to <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.16)"><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.dtype</span></code></a>. If None, will use
+pandas’s standard behaviour to infer it from the type of the elements
+values. Note that if the type of values that comes out of your
+elements strategy varies, then so will the resulting dtype of the
+series.</p></li>
+<li><p>index: If not None, a strategy for generating indexes for the
+resulting Series. This can generate either <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Index</span></code></a>
+objects or any sequence of values (which will be passed to the
+Index constructor).</p>
+<p>You will probably find it most convenient to use the
+<a class="reference internal" href="#hypothesis.extra.pandas.indexes" title="hypothesis.extra.pandas.indexes"><code class="xref py py-func docutils literal notranslate"><span class="pre">indexes()</span></code></a> or
+<a class="reference internal" href="#hypothesis.extra.pandas.range_indexes" title="hypothesis.extra.pandas.range_indexes"><code class="xref py py-func docutils literal notranslate"><span class="pre">range_indexes()</span></code></a> function to produce
+values for this argument.</p>
+</li>
+</ul>
+<p>Usage:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">series</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">0   -2001747478</span>
+<span class="go">1    1153062837</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="hypothesis.extra.pandas.column">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">column</code><span class="sig-paren">(</span><em class="sig-param">name=None</em>, <em class="sig-param">elements=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">fill=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#column"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data object for describing a column in a DataFrame.</p>
+<p>Arguments:</p>
+<ul class="simple">
+<li><p>name: the column name, or None to default to the column position. Must
+be hashable, but can otherwise be any value supported as a pandas column
+name.</p></li>
+<li><p>elements: the strategy for generating values in this column, or None
+to infer it from the dtype.</p></li>
+<li><p>dtype: the dtype of the column, or None to infer it from the element
+strategy. At least one of dtype or elements must be provided.</p></li>
+<li><p>fill: A default value for elements of the column. See
+<a class="reference internal" href="#hypothesis.extra.numpy.arrays" title="hypothesis.extra.numpy.arrays"><code class="xref py py-func docutils literal notranslate"><span class="pre">arrays()</span></code></a> for a full explanation.</p></li>
+<li><p>unique: If all values in this column should be distinct.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.pandas.columns">
+<code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">columns</code><span class="sig-paren">(</span><em class="sig-param">names_or_number</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">elements=None</em>, <em class="sig-param">fill=None</em>, <em class="sig-param">unique=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#columns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience function for producing a list of <a class="reference internal" href="#hypothesis.extra.pandas.column" title="hypothesis.extra.pandas.column"><code class="xref py py-class docutils literal notranslate"><span class="pre">column</span></code></a> objects
+of the same general shape.</p>
+<p>The names_or_number argument is either a sequence of values, the
+elements of which will be used as the name for individual column
+objects, or a number, in which case that many unnamed columns will
+be created. All other arguments are passed through verbatim to
+create the columns.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="hypothesis.extra.pandas.data_frames">
+<code class="sig-prename descclassname">hypothesis.extra.pandas.</code><code class="sig-name descname">data_frames</code><span class="sig-paren">(</span><em class="sig-param">columns=None</em>, <em class="sig-param">rows=None</em>, <em class="sig-param">index=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/extra/pandas/impl.html#data_frames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.extra.pandas.data_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a strategy for producing a <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>.</p>
+<p>Arguments:</p>
+<ul>
+<li><p>columns: An iterable of <a class="reference internal" href="#hypothesis.extra.pandas.column" title="hypothesis.extra.pandas.column"><code class="xref py py-class docutils literal notranslate"><span class="pre">column</span></code></a> objects describing the shape
+of the generated DataFrame.</p></li>
+<li><p>rows: A strategy for generating a row object. Should generate
+either dicts mapping column names to values or a sequence mapping
+column position to the value in that position (note that unlike the
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> constructor, single values are not allowed
+here. Passing e.g. an integer is an error, even if there is only one
+column).</p>
+<p>At least one of rows and columns must be provided. If both are
+provided then the generated rows will be validated against the
+columns and an error will be raised if they don’t match.</p>
+<p>Caveats on using rows:</p>
+<ul class="simple">
+<li><p>In general you should prefer using columns to rows, and only use
+rows if the columns interface is insufficiently flexible to
+describe what you need - you will get better performance and
+example quality that way.</p></li>
+<li><p>If you provide rows and not columns, then the shape and dtype of
+the resulting DataFrame may vary. e.g. if you have a mix of int
+and float in the values for one column in your row entries, the
+column will sometimes have an integral dtype and sometimes a float.</p></li>
+</ul>
+</li>
+<li><p>index: If not None, a strategy for generating indexes for the
+resulting DataFrame. This can generate either <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html#pandas.Index" title="(in pandas v0.24.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.Index</span></code></a>
+objects or any sequence of values (which will be passed to the
+Index constructor).</p>
+<p>You will probably find it most convenient to use the
+<a class="reference internal" href="#hypothesis.extra.pandas.indexes" title="hypothesis.extra.pandas.indexes"><code class="xref py py-func docutils literal notranslate"><span class="pre">indexes()</span></code></a> or
+<a class="reference internal" href="#hypothesis.extra.pandas.range_indexes" title="hypothesis.extra.pandas.range_indexes"><code class="xref py py-func docutils literal notranslate"><span class="pre">range_indexes()</span></code></a> function to produce
+values for this argument.</p>
+</li>
+</ul>
+<p>Usage:</p>
+<p>The expected usage pattern is that you use <a class="reference internal" href="#hypothesis.extra.pandas.column" title="hypothesis.extra.pandas.column"><code class="xref py py-class docutils literal notranslate"><span class="pre">column</span></code></a> and
+<a class="reference internal" href="#hypothesis.extra.pandas.columns" title="hypothesis.extra.pandas.columns"><code class="xref py py-func docutils literal notranslate"><span class="pre">columns()</span></code></a> to specify a fixed shape of the DataFrame you want as
+follows. For example the following gives a two column data frame:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.pandas</span> <span class="kn">import</span> <span class="n">column</span><span class="p">,</span> <span class="n">data_frames</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_frames</span><span class="p">([</span>
+<span class="gp">... </span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">column</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)])</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">            A              B</span>
+<span class="go">0  2021915903  1.793898e+232</span>
+<span class="go">1  1146643993            inf</span>
+<span class="go">2 -2096165693   1.000000e+07</span>
+</pre></div>
+</div>
+<p>If you want the values in different columns to interact in some way you
+can use the rows argument. For example the following gives a two column
+DataFrame where the value in the first column is always at most the value
+in the second:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.pandas</span> <span class="kn">import</span> <span class="n">column</span><span class="p">,</span> <span class="n">data_frames</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="kn">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_frames</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">rows</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">allow_nan</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">allow_nan</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">               0             1</span>
+<span class="go">0  -3.402823e+38  9.007199e+15</span>
+<span class="go">1 -1.562796e-298  5.000000e-01</span>
+</pre></div>
+</div>
+<p>You can also combine the two:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.pandas</span> <span class="kn">import</span> <span class="n">columns</span><span class="p">,</span> <span class="n">data_frames</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="kn">as</span> <span class="nn">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_frames</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">([</span><span class="s2">&quot;lo&quot;</span><span class="p">,</span> <span class="s2">&quot;hi&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">rows</span><span class="o">=</span><span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">allow_nan</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+<span class="gp">... </span>                   <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(</span><span class="n">allow_nan</span><span class="o">=</span><span class="bp">False</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">sorted</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">         lo            hi</span>
+<span class="go">0   9.314723e-49  4.353037e+45</span>
+<span class="go">1  -9.999900e-01  1.000000e+07</span>
+<span class="go">2 -2.152861e+134 -1.069317e-73</span>
+</pre></div>
+</div>
+<p>(Note that the column dtype must still be specified and will not be
+inferred from the rows. This restriction may be lifted in future).</p>
+<p>Combining rows and columns has the following behaviour:</p>
+<ul class="simple">
+<li><p>The column names and dtypes will be used.</p></li>
+<li><p>If the column is required to be unique, this will be enforced.</p></li>
+<li><p>Any values missing from the generated rows will be provided using the
+column’s fill.</p></li>
+<li><p>Any values in the row not present in the column specification (if
+dicts are passed, if there are keys with no corresponding column name,
+if sequences are passed if there are too many items) will result in
+InvalidArgument being raised.</p></li>
+</ul>
+</dd></dl>
+
+<div class="section" id="supported-versions">
+<h3>Supported Versions<a class="headerlink" href="#supported-versions" title="Permalink to this headline">¶</a></h3>
+<p>There is quite a lot of variation between pandas versions. We only
+commit to supporting the latest version of pandas, but older minor versions are
+supported on a “best effort” basis.  Hypothesis is currently tested against
+and confirmed working with Pandas 0.19, 0.20, 0.21, 0.22, and 0.23.</p>
+<p>Releases that are not the latest patch release of their minor version are not
+tested or officially supported, but will probably also work unless you hit a
+pandas bug.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="healthchecks.html" class="btn btn-neutral float-right" title="Health checks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="django.html" class="btn btn-neutral float-left" title="Hypothesis for Django users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

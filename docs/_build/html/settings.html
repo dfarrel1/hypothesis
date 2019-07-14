@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Settings &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="What you can generate and how" href="data.html" />
+    <link rel="prev" title="Details and advanced features" href="details.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#available-settings">Available settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#controlling-what-runs">Controlling What Runs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seeing-intermediate-result">Seeing intermediate result</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-settings-objects">Building settings objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#default-settings">Default settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#settings-profiles">settings Profiles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/settings.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="settings">
+<h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis tries to have good defaults for its behaviour, but sometimes that’s
+not enough and you need to tweak it.</p>
+<p>The mechanism for doing this is the <a class="reference internal" href="#hypothesis.settings" title="hypothesis.settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">settings</span></code></a> object.
+You can set up a <a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> based test to use this using a settings
+decorator:</p>
+<p><a class="reference internal" href="details.html#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> invocation is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">settings</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="nd">@settings</span><span class="p">(</span><span class="n">max_examples</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_this_thoroughly</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This uses a <a class="reference internal" href="#hypothesis.settings" title="hypothesis.settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">settings</span></code></a> object which causes the test to receive a much larger
+set of examples than normal.</p>
+<p>This may be applied either before or after the given and the results are
+the same. The following is exactly equivalent:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">settings</span>
+
+<span class="nd">@settings</span><span class="p">(</span><span class="n">max_examples</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_this_thoroughly</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="section" id="available-settings">
+<h2>Available settings<a class="headerlink" href="#available-settings" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="hypothesis.settings">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">settings</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_settings.html#settings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>A settings object controls a variety of parameters that are used in
+falsification. These may control both the falsification strategy and the
+details of the data that is generated.</p>
+<p>Default values are picked up from the settings.default object and
+changes made there will be picked up in newly created settings.</p>
+<dl class="attribute">
+<dt id="hypothesis.settings.database">
+<code class="sig-name descname">database</code><a class="headerlink" href="#hypothesis.settings.database" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of hypothesis.database.ExampleDatabase that will be
+used to save examples to and load previous examples from. May be None
+in which case no storage will be used, <cite>:memory:</cite> for an in-memory
+database, or any path for a directory-based example database.</p>
+<p>default value: (dynamically calculated)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.deadline">
+<code class="sig-name descname">deadline</code><a class="headerlink" href="#hypothesis.settings.deadline" title="Permalink to this definition">¶</a></dt>
+<dd><p>If set, a duration (as timedelta, or integer or float number of milliseconds)
+that each individual example (i.e. each time your test
+function is called, not the whole decorated test) within a test is not
+allowed to exceed. Tests which take longer than that may be converted into
+errors (but will not necessarily be if close to the deadline, to allow some
+variability in test run time).</p>
+<p>Set this to None to disable this behaviour entirely.</p>
+<p>default value: timedelta(milliseconds=200.0)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.derandomize">
+<code class="sig-name descname">derandomize</code><a class="headerlink" href="#hypothesis.settings.derandomize" title="Permalink to this definition">¶</a></dt>
+<dd><p>If this is True then hypothesis will run in deterministic mode
+where each falsification uses a random number generator that is seeded
+based on the hypothesis to falsify, which will be consistent across
+multiple runs. This has the advantage that it will eliminate any
+randomness from your tests, which may be preferable for some situations.
+It does have the disadvantage of making your tests less likely to
+find novel breakages.</p>
+<p>default value: False</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.max_examples">
+<code class="sig-name descname">max_examples</code><a class="headerlink" href="#hypothesis.settings.max_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Once this many satisfying examples have been considered without finding any
+counter-example, falsification will terminate.</p>
+<p>The default value is chosen to suit a workflow where the test will be part of
+a suite that is regularly executed locally or on a CI server, balancing total
+running time against the chance of missing a bug.</p>
+<p>If you are writing one-off tests, running tens of thousands of examples is
+quite reasonable as Hypothesis may miss uncommon bugs with default settings.
+For very complex code, we have observed Hypothesis finding novel bugs after
+<em>several million</em> examples while testing <a class="reference external" href="https://pypi.org/project/SymPy">SymPy</a>.</p>
+<p>default value: 100</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.phases">
+<code class="sig-name descname">phases</code><a class="headerlink" href="#hypothesis.settings.phases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control which phases should be run. See <a class="reference internal" href="#phases"><span class="std std-ref">the full documentation for more details</span></a></p>
+<p>default value: (&lt;Phase.explicit: 0&gt;, &lt;Phase.reuse: 1&gt;, &lt;Phase.generate: 2&gt;, &lt;Phase.shrink: 3&gt;)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.print_blob">
+<code class="sig-name descname">print_blob</code><a class="headerlink" href="#hypothesis.settings.print_blob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether to print blobs after tests that can be used to reproduce
+failures.</p>
+<p>See <a class="reference internal" href="reproducing.html#reproduce-failure"><span class="std std-ref">the documentation on &#64;reproduce_failure</span></a> for
+more details of this behaviour.</p>
+<p>default value: PrintSettings.INFER</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.report_multiple_bugs">
+<code class="sig-name descname">report_multiple_bugs</code><a class="headerlink" href="#hypothesis.settings.report_multiple_bugs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Because Hypothesis runs the test many times, it can sometimes find multiple
+bugs in a single run.  Reporting all of them at once is usually very useful,
+but replacing the exceptions can occasionally clash with debuggers.
+If disabled, only the exception with the smallest minimal example is raised.</p>
+<p>default value: True</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.stateful_step_count">
+<code class="sig-name descname">stateful_step_count</code><a class="headerlink" href="#hypothesis.settings.stateful_step_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of steps to run a stateful program for before giving up on it breaking.</p>
+<p>default value: 50</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.suppress_health_check">
+<code class="sig-name descname">suppress_health_check</code><a class="headerlink" href="#hypothesis.settings.suppress_health_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of health checks to disable.</p>
+<p>default value: ()</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.timeout">
+<code class="sig-name descname">timeout</code><a class="headerlink" href="#hypothesis.settings.timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>The timeout setting has been deprecated and no longer does anything.</p>
+<p>default value: not_set</p>
+<p>The timeout setting can safely be removed with no effect.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="hypothesis.settings.verbosity">
+<code class="sig-name descname">verbosity</code><a class="headerlink" href="#hypothesis.settings.verbosity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Control the verbosity level of Hypothesis messages</p>
+<p>default value: Verbosity.normal</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="controlling-what-runs">
+<span id="phases"></span><h3>Controlling What Runs<a class="headerlink" href="#controlling-what-runs" title="Permalink to this headline">¶</a></h3>
+<p>Hypothesis divides tests into four logically distinct phases:</p>
+<ol class="arabic simple">
+<li><p>Running explicit examples <a class="reference internal" href="reproducing.html#providing-explicit-examples"><span class="std std-ref">provided with the &#64;example decorator</span></a>.</p></li>
+<li><p>Rerunning a selection of previously failing examples to reproduce a previously seen error</p></li>
+<li><p>Generating new examples.</p></li>
+<li><p>Attempting to shrink an example found in phases 2 or 3 to a more manageable
+one (explicit examples cannot be shrunk).</p></li>
+</ol>
+<p>The phases setting provides you with fine grained control over which of these run,
+with each phase corresponding to a value on the <a class="reference internal" href="#hypothesis.Phase" title="hypothesis.Phase"><code class="xref py py-class docutils literal notranslate"><span class="pre">Phase</span></code></a> enum:</p>
+<dl class="class">
+<dt id="hypothesis.Phase">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">Phase</code><a class="headerlink" href="#hypothesis.Phase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Phase.explicit</span></code> controls whether explicit examples are run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Phase.reuse</span></code> controls whether previous examples will be reused.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Phase.generate</span></code> controls whether new examples will be generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Phase.shrink</span></code> controls whether examples will be shrunk.</p></li>
+</ol>
+<p>The phases argument accepts a collection with any subset of these. e.g.
+<code class="docutils literal notranslate"><span class="pre">settings(phases=[Phase.generate,</span> <span class="pre">Phase.shrink])</span></code> will generate new examples
+and shrink them, but will not run explicit examples or reuse previous failures,
+while <code class="docutils literal notranslate"><span class="pre">settings(phases=[Phase.explicit])</span></code> will only run the explicit
+examples.</p>
+</div>
+<div class="section" id="seeing-intermediate-result">
+<span id="verbose-output"></span><h3>Seeing intermediate result<a class="headerlink" href="#seeing-intermediate-result" title="Permalink to this headline">¶</a></h3>
+<p>To see what’s going on while Hypothesis runs your tests, you can turn
+up the verbosity setting.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">find</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">Verbosity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">lists</span><span class="p">,</span> <span class="n">integers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="gp">... </span><span class="nd">@settings</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">assert</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">... </span><span class="n">f</span><span class="p">()</span>
+<span class="go">Trying example: []</span>
+<span class="go">Falsifying example: [-1198601713, -67, 116, -29578]</span>
+<span class="go">Shrunk example to [-1198601713]</span>
+<span class="go">Shrunk example to [-1198601600]</span>
+<span class="go">Shrunk example to [-1191228800]</span>
+<span class="go">Shrunk example to [-8421504]</span>
+<span class="go">Shrunk example to [-32896]</span>
+<span class="go">Shrunk example to [-128]</span>
+<span class="go">Shrunk example to [64]</span>
+<span class="go">Shrunk example to [32]</span>
+<span class="go">Shrunk example to [16]</span>
+<span class="go">Shrunk example to [8]</span>
+<span class="go">Shrunk example to [4]</span>
+<span class="go">Shrunk example to [3]</span>
+<span class="go">Shrunk example to [2]</span>
+<span class="go">Shrunk example to [1]</span>
+<span class="go">[1]</span>
+</pre></div>
+</div>
+<p>The four levels are quiet, normal, verbose and debug. normal is the default,
+while in quiet mode Hypothesis will not print anything out, not even the final
+falsifying example. debug is basically verbose but a bit more so. You probably
+don’t want it.</p>
+<p>If you are using <a class="reference external" href="https://pypi.org/project/pytest">pytest</a>, you may also need to
+<a class="reference external" href="https://docs.pytest.org/en/stable/capture.html" title="(in pytest v5.0.1)"><span class="xref std std-doc">disable output capturing for passing tests</span></a>.</p>
+</div>
+</div>
+<div class="section" id="building-settings-objects">
+<h2>Building settings objects<a class="headerlink" href="#building-settings-objects" title="Permalink to this headline">¶</a></h2>
+<p>Settings can be created by calling <a class="reference internal" href="#hypothesis.settings" title="hypothesis.settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">settings</span></code></a> with any of the available settings
+values. Any absent ones will be set to defaults:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">max_examples</span>
+<span class="go">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="p">(</span><span class="n">max_examples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">max_examples</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>You can also pass a ‘parent’ settings object as the first argument,
+and any settings you do not specify as keyword arguments will be
+copied from the parent settings:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">settings</span><span class="p">(</span><span class="n">max_examples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child</span> <span class="o">=</span> <span class="n">settings</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">deadline</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span><span class="o">.</span><span class="n">max_examples</span> <span class="o">==</span> <span class="n">child</span><span class="o">.</span><span class="n">max_examples</span> <span class="o">==</span> <span class="mi">10</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span><span class="o">.</span><span class="n">deadline</span>
+<span class="go">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child</span><span class="o">.</span><span class="n">deadline</span> <span class="ow">is</span> <span class="bp">None</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-settings">
+<h2>Default settings<a class="headerlink" href="#default-settings" title="Permalink to this headline">¶</a></h2>
+<p>At any given point in your program there is a current default settings,
+available as <code class="docutils literal notranslate"><span class="pre">settings.default</span></code>. As well as being a settings object in its own
+right, all newly created settings objects which are not explicitly based off
+another settings are based off the default, so will inherit any values that are
+not explicitly set from it.</p>
+<p>You can change the defaults by using profiles.</p>
+<div class="section" id="settings-profiles">
+<span id="id1"></span><h3>settings Profiles<a class="headerlink" href="#settings-profiles" title="Permalink to this headline">¶</a></h3>
+<p>Depending on your environment you may want different default settings.
+For example: during development you may want to lower the number of examples
+to speed up the tests. However, in a CI environment you may want more examples
+so you are more likely to find bugs.</p>
+<p>Hypothesis allows you to define different settings profiles. These profiles
+can be loaded at any time.</p>
+<dl class="class">
+<dt>
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">settings</code><span class="sig-paren">(</span><em class="sig-param">parent=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_settings.html#settings"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>A settings object controls a variety of parameters that are used in
+falsification. These may control both the falsification strategy and the
+details of the data that is generated.</p>
+<p>Default values are picked up from the settings.default object and
+changes made there will be picked up in newly created settings.</p>
+<dl class="method">
+<dt id="hypothesis.settings.register_profile">
+<em class="property">static </em><code class="sig-name descname">register_profile</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">parent=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_settings.html#settings.register_profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.settings.register_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers a collection of values to be used as a settings profile.</p>
+<p>Settings profiles can be loaded by name - for example, you might
+create a ‘fast’ profile which runs fewer examples, keep the ‘default’
+profile, and create a ‘ci’ profile that increases the number of
+examples and uses a different database to store failures.</p>
+<p>The arguments to this method are exactly as for
+<a class="reference internal" href="#hypothesis.settings" title="hypothesis.settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">settings</span></code></a>: optional <code class="docutils literal notranslate"><span class="pre">parent</span></code> settings, and
+keyword arguments for each setting that will be set differently to
+parent (or settings.default, if parent is None).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hypothesis.settings.get_profile">
+<em class="property">static </em><code class="sig-name descname">get_profile</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_settings.html#settings.get_profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.settings.get_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the profile with the given name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="hypothesis.settings.load_profile">
+<em class="property">static </em><code class="sig-name descname">load_profile</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/_settings.html#settings.load_profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.settings.load_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads in the settings defined in the profile provided.</p>
+<p>If the profile does not exist, InvalidArgument will be raised.
+Any setting not defined in the profile will be the library
+defined default for that setting.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Loading a profile changes the default settings but will not change the behavior
+of tests that explicitly change the settings.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">register_profile</span><span class="p">(</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span> <span class="n">max_examples</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">max_examples</span>
+<span class="go">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">load_profile</span><span class="p">(</span><span class="s2">&quot;ci&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="p">()</span><span class="o">.</span><span class="n">max_examples</span>
+<span class="go">1000</span>
+</pre></div>
+</div>
+<p>Instead of loading the profile and overriding the defaults you can retrieve profiles for
+specific tests.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="s2">&quot;ci&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max_examples</span>
+<span class="go">1000</span>
+</pre></div>
+</div>
+<p>Optionally, you may define the environment variable to load a profile for you.
+This is the suggested pattern for running your tests on CI.
+The code below should run in a <cite>conftest.py</cite> or any setup/initialization section of your test suite.
+If this variable is not defined the Hypothesis defined defaults will be loaded.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">Verbosity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">register_profile</span><span class="p">(</span><span class="s2">&quot;ci&quot;</span><span class="p">,</span> <span class="n">max_examples</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">register_profile</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span> <span class="n">max_examples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">register_profile</span><span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span> <span class="n">max_examples</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">settings</span><span class="o">.</span><span class="n">load_profile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;HYPOTHESIS_PROFILE&#39;</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If you are using the hypothesis pytest plugin and your profiles are registered
+by your conftest you can load one with the command line option <code class="docutils literal notranslate"><span class="pre">--hypothesis-profile</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest tests --hypothesis-profile &lt;profile-name&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="data.html" class="btn btn-neutral float-right" title="What you can generate and how" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="details.html" class="btn btn-neutral float-left" title="Details and advanced features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

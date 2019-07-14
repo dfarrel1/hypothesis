@@ -1,0 +1,1347 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.core &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.core</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.core</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="sd">&quot;&quot;&quot;This module provides the core primitives of Hypothesis, such as given.&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">rnd_module</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">Random</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="k">import</span> <span class="n">TestCase</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+
+<span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">hypothesis._settings</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">HealthCheck</span><span class="p">,</span>
+    <span class="n">Phase</span><span class="p">,</span>
+    <span class="n">PrintSettings</span><span class="p">,</span>
+    <span class="n">Verbosity</span><span class="p">,</span>
+    <span class="n">local_settings</span><span class="p">,</span>
+    <span class="n">note_deprecation</span><span class="p">,</span>
+    <span class="n">settings</span> <span class="k">as</span> <span class="n">Settings</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.control</span> <span class="k">import</span> <span class="n">BuildContext</span>
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">DeadlineExceeded</span><span class="p">,</span>
+    <span class="n">DidNotReproduce</span><span class="p">,</span>
+    <span class="n">FailedHealthCheck</span><span class="p">,</span>
+    <span class="n">Flaky</span><span class="p">,</span>
+    <span class="n">HypothesisDeprecationWarning</span><span class="p">,</span>
+    <span class="n">HypothesisWarning</span><span class="p">,</span>
+    <span class="n">InvalidArgument</span><span class="p">,</span>
+    <span class="n">MultipleFailures</span><span class="p">,</span>
+    <span class="n">NoSuchExample</span><span class="p">,</span>
+    <span class="n">Unsatisfiable</span><span class="p">,</span>
+    <span class="n">UnsatisfiedAssumption</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.executors</span> <span class="k">import</span> <span class="n">new_style_executor</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.compat</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">PY2</span><span class="p">,</span>
+    <span class="n">bad_django_TestCase</span><span class="p">,</span>
+    <span class="n">benchmark_time</span><span class="p">,</span>
+    <span class="n">binary_type</span><span class="p">,</span>
+    <span class="n">get_type_hints</span><span class="p">,</span>
+    <span class="n">getfullargspec</span><span class="p">,</span>
+    <span class="n">hbytes</span><span class="p">,</span>
+    <span class="n">int_from_bytes</span><span class="p">,</span>
+    <span class="n">qualname</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.conjecture.data</span> <span class="k">import</span> <span class="n">ConjectureData</span><span class="p">,</span> <span class="n">StopTest</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.conjecture.engine</span> <span class="k">import</span> <span class="n">ConjectureRunner</span><span class="p">,</span> <span class="n">ExitReason</span><span class="p">,</span> <span class="n">sort_key</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.entropy</span> <span class="k">import</span> <span class="n">deterministic_PRNG</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.escalation</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">escalate_hypothesis_internal_error</span><span class="p">,</span>
+    <span class="n">get_trimmed_traceback</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.healthcheck</span> <span class="k">import</span> <span class="n">fail_health_check</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.reflection</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">arg_string</span><span class="p">,</span>
+    <span class="n">convert_positional_arguments</span><span class="p">,</span>
+    <span class="n">define_function_signature</span><span class="p">,</span>
+    <span class="n">function_digest</span><span class="p">,</span>
+    <span class="n">get_pretty_function_description</span><span class="p">,</span>
+    <span class="n">impersonate</span><span class="p">,</span>
+    <span class="n">is_mock</span><span class="p">,</span>
+    <span class="n">nicerepr</span><span class="p">,</span>
+    <span class="n">proxies</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.reporting</span> <span class="k">import</span> <span class="n">current_verbosity</span><span class="p">,</span> <span class="n">report</span><span class="p">,</span> <span class="n">verbose_report</span>
+<span class="kn">from</span> <span class="nn">hypothesis.searchstrategy.collections</span> <span class="k">import</span> <span class="n">TupleStrategy</span>
+<span class="kn">from</span> <span class="nn">hypothesis.searchstrategy.strategies</span> <span class="k">import</span> <span class="n">SearchStrategy</span>
+<span class="kn">from</span> <span class="nn">hypothesis.statistics</span> <span class="k">import</span> <span class="n">note_engine_for_statistics</span>
+<span class="kn">from</span> <span class="nn">hypothesis.utils.conventions</span> <span class="k">import</span> <span class="n">infer</span>
+<span class="kn">from</span> <span class="nn">hypothesis.version</span> <span class="k">import</span> <span class="n">__version__</span>
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TypeVar</span>  <span class="c1"># noqa</span>
+    <span class="kn">from</span> <span class="nn">hypothesis.utils.conventions</span> <span class="k">import</span> <span class="n">InferType</span>  <span class="c1"># noqa</span>
+
+    <span class="n">TestFunc</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;TestFunc&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Callable</span><span class="p">)</span>
+
+
+<span class="n">running_under_pytest</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">global_force_seed</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">new_random</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">rnd_module</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">rnd_module</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">Example</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">kwargs</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="example"><a class="viewcode-back" href="../../reproducing.html#hypothesis.example">[docs]</a><span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># type: (*Any, **Any) -&gt; Callable[[TestFunc], TestFunc]</span>
+    <span class="sd">&quot;&quot;&quot;A decorator which ensures a specific example is always tested.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot mix positional and keyword arguments for examples&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">args</span> <span class="ow">or</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;An example must provide at least one argument&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;hypothesis_explicit_examples&quot;</span><span class="p">):</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">hypothesis_explicit_examples</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">hypothesis_explicit_examples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Example</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">test</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<div class="viewcode-block" id="seed"><a class="viewcode-back" href="../../reproducing.html#hypothesis.seed">[docs]</a><span class="k">def</span> <span class="nf">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+    <span class="c1"># type: (Hashable) -&gt; Callable[[TestFunc], TestFunc]</span>
+    <span class="sd">&quot;&quot;&quot;seed: Start the test execution from a specific seed.</span>
+
+<span class="sd">    May be any hashable object. No exact meaning for seed is provided</span>
+<span class="sd">    other than that for a fixed seed value Hypothesis will try the same</span>
+<span class="sd">    actions (insofar as it can given external sources of non-</span>
+<span class="sd">    determinism. e.g. timing and hash randomization).</span>
+
+<span class="sd">    Overrides the derandomize setting, which is designed to enable</span>
+<span class="sd">    deterministic builds rather than reproducing observed failures.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="n">current_settings</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_settings&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span>
+            <span class="n">current_settings</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">test</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<div class="viewcode-block" id="reproduce_failure"><a class="viewcode-back" href="../../reproducing.html#hypothesis.reproduce_failure">[docs]</a><span class="k">def</span> <span class="nf">reproduce_failure</span><span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">blob</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run the example that corresponds to this data blob in order to reproduce</span>
+<span class="sd">    a failure.</span>
+
+<span class="sd">    A test with this decorator *always* runs only one example and always fails.</span>
+<span class="sd">    If the provided example does not cause a failure, or is in some way invalid</span>
+<span class="sd">    for this test, then this will fail with a DidNotReproduce error.</span>
+
+<span class="sd">    This decorator is not intended to be a permanent addition to your test</span>
+<span class="sd">    suite. It&#39;s simply some code you can add to ease reproduction of a problem</span>
+<span class="sd">    in the event that you don&#39;t have access to the test database. Because of</span>
+<span class="sd">    this, *no* compatibility guarantees are made between different versions of</span>
+<span class="sd">    Hypothesis - its API may change arbitrarily from version to version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_reproduce_failure</span> <span class="o">=</span> <span class="p">(</span><span class="n">version</span><span class="p">,</span> <span class="n">blob</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">test</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<span class="k">def</span> <span class="nf">encode_failure</span><span class="p">(</span><span class="n">buffer</span><span class="p">):</span>
+    <span class="c1"># This needs to be a real bytes() instance, so we use binary_type()</span>
+    <span class="c1"># instead of hbytes() here.</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">binary_type</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+    <span class="n">compressed</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">buffer</span><span class="p">):</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\1</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">compressed</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">buffer</span>
+    <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">decode_failure</span><span class="p">(</span><span class="n">blob</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">blob</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;Invalid base64 encoded string: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">blob</span><span class="p">,))</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">prefix</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\0</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">elif</span> <span class="n">prefix</span> <span class="o">==</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\1</span><span class="s2">&quot;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+        <span class="k">except</span> <span class="n">zlib</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;Invalid zlib compression for blob </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">blob</span><span class="p">,))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Could not decode blob </span><span class="si">%r</span><span class="s2">: Invalid start byte </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">blob</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">WithRunner</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">runner</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">runner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">runner</span> <span class="o">=</span> <span class="n">runner</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">hypothesis_runner</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">runner</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="n">do_draw</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_invalid_test</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">original_argspec</span><span class="p">,</span> <span class="n">generator_arguments</span><span class="p">,</span> <span class="n">generator_kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">invalid</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapped_test</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">is_hypothesis_test</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">wrapped_test</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">generator_arguments</span> <span class="ow">or</span> <span class="n">generator_kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span><span class="s2">&quot;given must be called with at least one argument&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">generator_arguments</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">varargs</span><span class="p">,</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">varkw</span><span class="p">,</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlyargs</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span>
+            <span class="s2">&quot;positional arguments to @given are not supported with varargs, &quot;</span>
+            <span class="s2">&quot;varkeywords, or keyword-only arguments&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">generator_arguments</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">generator_arguments</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span>
+            <span class="s2">&quot;Too many positional arguments for </span><span class="si">%s</span><span class="s2">() were passed to @given &quot;</span>
+            <span class="s2">&quot;- expected at most </span><span class="si">%d</span><span class="s2"> arguments, but got </span><span class="si">%d</span><span class="s2"> </span><span class="si">%r</span><span class="s2">&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">infer</span> <span class="ow">in</span> <span class="n">generator_arguments</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span>
+            <span class="s2">&quot;infer was passed as a positional argument to @given, &quot;</span>
+            <span class="s2">&quot;but may only be passed as a keyword argument&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">generator_arguments</span> <span class="ow">and</span> <span class="n">generator_kwargs</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span><span class="s2">&quot;cannot mix positional and keyword arguments to @given&quot;</span><span class="p">)</span>
+    <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">k</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">generator_kwargs</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span> <span class="o">+</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlyargs</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="n">extra_kwargs</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">varkw</span><span class="p">:</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">extra_kwargs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span>
+            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">() got an unexpected keyword argument </span><span class="si">%r</span><span class="s2">, from `</span><span class="si">%s</span><span class="s2">=</span><span class="si">%r</span><span class="s2">` in @given&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="n">generator_kwargs</span><span class="p">[</span><span class="n">arg</span><span class="p">])</span>
+        <span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span>
+                <span class="s2">&quot;Cannot decorate function </span><span class="si">%s</span><span class="s2">() because it has destructuring arguments&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,)</span>
+            <span class="p">)</span>
+    <span class="k">if</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">defaults</span> <span class="ow">or</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlydefaults</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">invalid</span><span class="p">(</span><span class="s2">&quot;Cannot apply @given to a function with defaults.&quot;</span><span class="p">)</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nb">repr</span><span class="p">(</span><span class="n">kw</span><span class="p">)</span> <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlyargs</span> <span class="k">if</span> <span class="n">kw</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">generator_kwargs</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Missing required kwarg</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="s2">&quot;s&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">execute_explicit_examples</span><span class="p">(</span>
+    <span class="n">test_runner</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">wrapped_test</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span>
+<span class="p">):</span>
+    <span class="n">original_argspec</span> <span class="o">=</span> <span class="n">getfullargspec</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">wrapped_test</span><span class="p">,</span> <span class="s2">&quot;hypothesis_explicit_examples&quot;</span><span class="p">,</span> <span class="p">())):</span>
+        <span class="n">example_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlydefaults</span> <span class="ow">or</span> <span class="p">{})</span>
+        <span class="k">if</span> <span class="n">example</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                    <span class="s2">&quot;example has too many arguments for test. &quot;</span>
+                    <span class="s2">&quot;Expected at most </span><span class="si">%d</span><span class="s2"> but got </span><span class="si">%d</span><span class="s2">&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">args</span><span class="p">))</span>
+                <span class="p">)</span>
+            <span class="n">example_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="p">:],</span> <span class="n">example</span><span class="o">.</span><span class="n">args</span><span class="p">))</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">example_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">Phase</span><span class="o">.</span><span class="n">explicit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">phases</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">example_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># Note: Test may mutate arguments and we can&#39;t rerun explicit</span>
+        <span class="c1"># examples, so we have to calculate the failure message at this</span>
+        <span class="c1"># point rather than than later.</span>
+        <span class="n">example_string</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="n">arg_string</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">example_kwargs</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="k">with</span> <span class="n">local_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">BuildContext</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">as</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="n">verbose_report</span><span class="p">(</span><span class="s2">&quot;Trying example: &quot;</span> <span class="o">+</span> <span class="n">example_string</span><span class="p">)</span>
+                    <span class="n">test_runner</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">test</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">example_kwargs</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">report</span><span class="p">(</span><span class="s2">&quot;Falsifying example: &quot;</span> <span class="o">+</span> <span class="n">example_string</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">b</span><span class="o">.</span><span class="n">notes</span><span class="p">:</span>
+                    <span class="n">report</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+
+<span class="k">def</span> <span class="nf">get_random_for_wrapped_test</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">wrapped_test</span><span class="p">):</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_settings</span>
+    <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_generated_seed</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Random</span><span class="p">(</span><span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">settings</span><span class="o">.</span><span class="n">derandomize</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Random</span><span class="p">(</span><span class="n">int_from_bytes</span><span class="p">(</span><span class="n">function_digest</span><span class="p">(</span><span class="n">test</span><span class="p">)))</span>
+    <span class="k">elif</span> <span class="n">global_force_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Random</span><span class="p">(</span><span class="n">global_force_seed</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">rnd_module</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_generated_seed</span> <span class="o">=</span> <span class="n">seed</span>
+        <span class="k">return</span> <span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">process_arguments_to_given</span><span class="p">(</span>
+    <span class="n">wrapped_test</span><span class="p">,</span>
+    <span class="n">arguments</span><span class="p">,</span>
+    <span class="n">kwargs</span><span class="p">,</span>
+    <span class="n">generator_arguments</span><span class="p">,</span>
+    <span class="n">generator_kwargs</span><span class="p">,</span>
+    <span class="n">argspec</span><span class="p">,</span>
+    <span class="n">test</span><span class="p">,</span>
+    <span class="n">settings</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">selfy</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">convert_positional_arguments</span><span class="p">(</span><span class="n">wrapped_test</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># If the test function is a method of some kind, the bound object</span>
+    <span class="c1"># will be the first named argument if there are any, otherwise the</span>
+    <span class="c1"># first vararg (if any).</span>
+    <span class="k">if</span> <span class="n">argspec</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+        <span class="n">selfy</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">argspec</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">arguments</span><span class="p">:</span>
+        <span class="n">selfy</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Ensure that we don&#39;t mistake mocks for self here.</span>
+    <span class="c1"># This can cause the mock to be used as the test runner.</span>
+    <span class="k">if</span> <span class="n">is_mock</span><span class="p">(</span><span class="n">selfy</span><span class="p">):</span>
+        <span class="n">selfy</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">test_runner</span> <span class="o">=</span> <span class="n">new_style_executor</span><span class="p">(</span><span class="n">selfy</span><span class="p">)</span>
+
+    <span class="n">arguments</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+    <span class="c1"># We use TupleStrategy over tuples() here to avoid polluting</span>
+    <span class="c1"># st.STRATEGY_CACHE with references (see #493), and because this is</span>
+    <span class="c1"># trivial anyway if the fixed_dictionaries strategy is cacheable.</span>
+    <span class="n">search_strategy</span> <span class="o">=</span> <span class="n">TupleStrategy</span><span class="p">(</span>
+        <span class="p">(</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="n">arguments</span><span class="p">),</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">(</span><span class="n">generator_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">args</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">selfy</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">search_strategy</span> <span class="o">=</span> <span class="n">WithRunner</span><span class="p">(</span><span class="n">search_strategy</span><span class="p">,</span> <span class="n">selfy</span><span class="p">)</span>
+
+    <span class="n">search_strategy</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">test_runner</span><span class="p">,</span> <span class="n">search_strategy</span>
+
+
+<span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wraps a no-args function so that its outcome is cached.</span>
+<span class="sd">    We use this for calculating various lists of exceptions</span>
+<span class="sd">    the first time we use them.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">fn</span><span class="p">()</span>
+            <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">run</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">return</span> <span class="n">run</span>
+
+
+<span class="nd">@run_once</span>
+<span class="k">def</span> <span class="nf">skip_exceptions_to_reraise</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return a tuple of exceptions meaning &#39;skip this test&#39;, to re-raise.</span>
+
+<span class="sd">    This is intended to cover most common test runners; if you would</span>
+<span class="sd">    like another to be added please open an issue or pull request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">unittest</span>
+
+    <span class="c1"># This is a set because nose may simply re-export unittest.SkipTest</span>
+    <span class="n">exceptions</span> <span class="o">=</span> <span class="p">{</span><span class="n">unittest</span><span class="o">.</span><span class="n">SkipTest</span><span class="p">}</span>
+
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">unittest2</span> <span class="k">import</span> <span class="n">SkipTest</span>
+
+        <span class="n">exceptions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SkipTest</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">pytest.runner</span> <span class="k">import</span> <span class="n">Skipped</span>
+
+        <span class="n">exceptions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Skipped</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">nose</span> <span class="k">import</span> <span class="n">SkipTest</span> <span class="k">as</span> <span class="n">NoseSkipTest</span>
+
+        <span class="n">exceptions</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">NoseSkipTest</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">exceptions</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="p">))</span>
+
+
+<span class="nd">@run_once</span>
+<span class="k">def</span> <span class="nf">failure_exceptions_to_catch</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return a tuple of exceptions meaning &#39;this test has failed&#39;, to catch.</span>
+
+<span class="sd">    This is intended to cover most common test runners; if you would</span>
+<span class="sd">    like another to be added please open an issue or pull request.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[</span><span class="ne">Exception</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="kn">from</span> <span class="nn">_pytest.outcomes</span> <span class="k">import</span> <span class="n">Failed</span>
+
+        <span class="n">exceptions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Failed</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">exceptions</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">new_given_argspec</span><span class="p">(</span><span class="n">original_argspec</span><span class="p">,</span> <span class="n">generator_kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make an updated argspec for the wrapped test.&quot;&quot;&quot;</span>
+    <span class="n">new_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">generator_kwargs</span><span class="p">]</span>
+    <span class="n">new_kwonlyargs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">kwonlyargs</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">generator_kwargs</span>
+    <span class="p">]</span>
+    <span class="n">annots</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">new_args</span> <span class="o">+</span> <span class="n">new_kwonlyargs</span>
+    <span class="p">}</span>
+    <span class="n">annots</span><span class="p">[</span><span class="s2">&quot;return&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">original_argspec</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span>
+        <span class="n">args</span><span class="o">=</span><span class="n">new_args</span><span class="p">,</span> <span class="n">kwonlyargs</span><span class="o">=</span><span class="n">new_kwonlyargs</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">annots</span>
+    <span class="p">)</span>
+
+
+<span class="n">ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
+
+<span class="n">STDLIB</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">StateForActualGivenExecution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">test_runner</span><span class="p">,</span> <span class="n">search_strategy</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span> <span class="n">had_seed</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_runner</span> <span class="o">=</span> <span class="n">test_runner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_strategy</span> <span class="o">=</span> <span class="n">search_strategy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span> <span class="o">=</span> <span class="n">settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_exception</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__was_flaky</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random</span> <span class="o">=</span> <span class="n">random</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__warned_deadline</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__test_runtime</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__had_seed</span> <span class="o">=</span> <span class="n">had_seed</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="n">test</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">files_to_propagate</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_normally</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">used_examples_from_database</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">,</span>
+        <span class="n">print_example</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">is_final</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">expected_failure</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">collect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">text_repr</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">deadline</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="nd">@proxies</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__test_runtime</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">initial_draws</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">draw_times</span><span class="p">)</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">benchmark_time</span><span class="p">()</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">finish</span> <span class="o">=</span> <span class="n">benchmark_time</span><span class="p">()</span>
+                <span class="n">internal_draw_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">draw_times</span><span class="p">[</span><span class="n">initial_draws</span><span class="p">:])</span>
+                <span class="n">runtime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span>
+                    <span class="n">seconds</span><span class="o">=</span><span class="n">finish</span> <span class="o">-</span> <span class="n">start</span> <span class="o">-</span> <span class="n">internal_draw_time</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__test_runtime</span> <span class="o">=</span> <span class="n">runtime</span>
+                <span class="n">current_deadline</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">deadline</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">is_final</span><span class="p">:</span>
+                    <span class="n">current_deadline</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_deadline</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span>
+                <span class="k">if</span> <span class="n">runtime</span> <span class="o">&gt;=</span> <span class="n">current_deadline</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DeadlineExceeded</span><span class="p">(</span><span class="n">runtime</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">deadline</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span>
+
+        <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;can_reproduce_example_from_repr&quot;</span><span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">can_reproduce_example_from_repr</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">with</span> <span class="n">local_settings</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">):</span>
+                <span class="k">with</span> <span class="n">deterministic_PRNG</span><span class="p">():</span>
+                    <span class="k">with</span> <span class="n">BuildContext</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">is_final</span><span class="o">=</span><span class="n">is_final</span><span class="p">):</span>
+                        <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_strategy</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">expected_failure</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">text_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_string</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">print_example</span><span class="p">:</span>
+                            <span class="n">example</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                                <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                                <span class="n">arg_string</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">),</span>
+                            <span class="p">)</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">ast</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">SyntaxError</span><span class="p">:</span>
+                                <span class="n">data</span><span class="o">.</span><span class="n">can_reproduce_example_from_repr</span> <span class="o">=</span> <span class="kc">False</span>
+                            <span class="n">report</span><span class="p">(</span><span class="s2">&quot;Falsifying example: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">example</span><span class="p">,))</span>
+                        <span class="k">elif</span> <span class="n">current_verbosity</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="n">report</span><span class="p">(</span>
+                                <span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;Trying example: </span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span>
+                                <span class="o">%</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">arg_string</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+                            <span class="p">)</span>
+                        <span class="k">return</span> <span class="n">test</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_runner</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">expected_failure</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">exception</span><span class="p">,</span> <span class="n">traceback</span> <span class="o">=</span> <span class="n">expected_failure</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">DeadlineExceeded</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__test_runtime</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="p">):</span>
+                <span class="n">report</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="s2">&quot;Unreliable test timings! On an initial run, this &quot;</span>
+                        <span class="s2">&quot;test took </span><span class="si">%.2f</span><span class="s2">ms, which exceeded the deadline of &quot;</span>
+                        <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">ms, but on a subsequent run it took </span><span class="si">%.2f</span><span class="s2"> ms, &quot;</span>
+                        <span class="s2">&quot;which did not. If you expect this sort of &quot;</span>
+                        <span class="s2">&quot;variability in your test timings, consider turning &quot;</span>
+                        <span class="s2">&quot;deadlines off for this test by setting deadline=None.&quot;</span>
+                    <span class="p">)</span>
+                    <span class="o">%</span> <span class="p">(</span>
+                        <span class="n">exception</span><span class="o">.</span><span class="n">runtime</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">deadline</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">__test_runtime</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">report</span><span class="p">(</span><span class="s2">&quot;Failed to reproduce exception. Expected: </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">traceback</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__flaky</span><span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;Hypothesis </span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">) produces unreliable results: Falsified&quot;</span>
+                    <span class="s2">&quot; on the first call but did not on a subsequent one&quot;</span>
+                <span class="p">)</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">text_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_test_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">fail_health_check</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+                    <span class="p">(</span>
+                        <span class="s2">&quot;Tests run under @given should return None, but &quot;</span>
+                        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> returned </span><span class="si">%r</span><span class="s2"> instead.&quot;</span>
+                    <span class="p">)</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">result</span><span class="p">),</span>
+                    <span class="n">HealthCheck</span><span class="o">.</span><span class="n">return_value</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="k">except</span> <span class="n">UnsatisfiedAssumption</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">mark_invalid</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span>
+            <span class="n">HypothesisDeprecationWarning</span><span class="p">,</span>
+            <span class="n">FailedHealthCheck</span><span class="p">,</span>
+            <span class="n">StopTest</span><span class="p">,</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="n">skip_exceptions_to_reraise</span><span class="p">():</span>
+            <span class="k">raise</span>
+        <span class="k">except</span> <span class="n">failure_exceptions_to_catch</span><span class="p">()</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">escalate_hypothesis_internal_error</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">frozen</span><span class="p">:</span>
+                <span class="c1"># This can happen if an error occurred in a finally</span>
+                <span class="c1"># block somewhere, suppressing our original StopTest.</span>
+                <span class="c1"># We raise a new one here to resume normal operation.</span>
+                <span class="k">raise</span> <span class="n">StopTest</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">testcounter</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tb</span> <span class="o">=</span> <span class="n">get_trimmed_traceback</span><span class="p">()</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">extra_information</span>
+                <span class="n">info</span><span class="o">.</span><span class="n">__expected_traceback</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="n">traceback</span><span class="o">.</span><span class="n">format_exception</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">,</span> <span class="n">tb</span><span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">info</span><span class="o">.</span><span class="n">__expected_exception</span> <span class="o">=</span> <span class="n">e</span>
+                <span class="n">verbose_report</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">__expected_traceback</span><span class="p">)</span>
+
+                <span class="n">origin</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">extract_tb</span><span class="p">(</span><span class="n">tb</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">origin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">lineno</span> <span class="o">=</span> <span class="n">origin</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">mark_interesting</span><span class="p">((</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">filename</span><span class="p">,</span> <span class="n">lineno</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Tell pytest to omit the body of this function from tracebacks</span>
+        <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">global_force_seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">database_key</span> <span class="o">=</span> <span class="n">function_digest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">database_key</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">runner</span> <span class="o">=</span> <span class="n">ConjectureRunner</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_test_data</span><span class="p">,</span>
+            <span class="n">settings</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span>
+            <span class="n">random</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random</span><span class="p">,</span>
+            <span class="n">database_key</span><span class="o">=</span><span class="n">database_key</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">used_examples_from_database</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">used_examples_from_database</span>
+        <span class="n">note_engine_for_statistics</span><span class="p">(</span><span class="n">runner</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">used_examples_from_database</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">used_examples_from_database</span>
+
+        <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">call_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">interesting_examples</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">runner</span><span class="o">.</span><span class="n">interesting_examples</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+                <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">sort_key</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">buffer</span><span class="p">),</span>
+                <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">valid_examples</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">Unsatisfiable</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to satisfy assumptions of hypothesis </span><span class="si">%s</span><span class="s2">.&quot;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">get_pretty_function_description</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test</span><span class="p">),)</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">report_multiple_bugs</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">failed_normally</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">flaky</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">falsifying_example</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">:</span>
+            <span class="n">info</span> <span class="o">=</span> <span class="n">falsifying_example</span><span class="o">.</span><span class="n">extra_information</span>
+
+            <span class="n">ran_example</span> <span class="o">=</span> <span class="n">ConjectureData</span><span class="o">.</span><span class="n">for_buffer</span><span class="p">(</span><span class="n">falsifying_example</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__was_flaky</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">assert</span> <span class="n">info</span><span class="o">.</span><span class="n">__expected_exception</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                    <span class="n">ran_example</span><span class="p">,</span>
+                    <span class="n">print_example</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">is_final</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">expected_failure</span><span class="o">=</span><span class="p">(</span>
+                        <span class="n">info</span><span class="o">.</span><span class="n">__expected_exception</span><span class="p">,</span>
+                        <span class="n">info</span><span class="o">.</span><span class="n">__expected_traceback</span><span class="p">,</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="n">UnsatisfiedAssumption</span><span class="p">,</span> <span class="n">StopTest</span><span class="p">):</span>
+                <span class="n">report</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__flaky</span><span class="p">(</span>
+                    <span class="s2">&quot;Unreliable assumption: An example which satisfied &quot;</span>
+                    <span class="s2">&quot;assumptions on the first run now fails it.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">raise</span>
+                <span class="n">tb</span> <span class="o">=</span> <span class="n">get_trimmed_traceback</span><span class="p">()</span>
+                <span class="n">report</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exception</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">,</span> <span class="n">tb</span><span class="p">)))</span>
+            <span class="k">finally</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="c1"># This section is in fact entirely covered by the tests in</span>
+                <span class="c1"># test_reproduce_failure, but it seems to trigger a lovely set</span>
+                <span class="c1"># of coverage bugs: The branches show up as uncovered (despite</span>
+                <span class="c1"># definitely being covered - you can add an assert False else</span>
+                <span class="c1"># branch to verify this and see it fail - and additionally the</span>
+                <span class="c1"># second branch still complains about lack of coverage even if</span>
+                <span class="c1"># you add a pragma: no cover to it!</span>
+                <span class="c1"># See https://bitbucket.org/ned/coveragepy/issues/623/</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">print_blob</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">PrintSettings</span><span class="o">.</span><span class="n">NEVER</span><span class="p">:</span>
+                    <span class="n">failure_blob</span> <span class="o">=</span> <span class="n">encode_failure</span><span class="p">(</span><span class="n">falsifying_example</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span>
+                    <span class="c1"># Have to use the example we actually ran, not the original</span>
+                    <span class="c1"># falsifying example! Otherwise we won&#39;t catch problems</span>
+                    <span class="c1"># where the repr of the generated example doesn&#39;t parse.</span>
+                    <span class="n">can_use_repr</span> <span class="o">=</span> <span class="n">ran_example</span><span class="o">.</span><span class="n">can_reproduce_example_from_repr</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">print_blob</span> <span class="ow">is</span> <span class="n">PrintSettings</span><span class="o">.</span><span class="n">ALWAYS</span> <span class="ow">or</span> <span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">print_blob</span> <span class="ow">is</span> <span class="n">PrintSettings</span><span class="o">.</span><span class="n">INFER</span>
+                        <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">normal</span>
+                        <span class="ow">and</span> <span class="ow">not</span> <span class="n">can_use_repr</span>
+                        <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">failure_blob</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">200</span>
+                    <span class="p">):</span>
+                        <span class="n">report</span><span class="p">(</span>
+                            <span class="p">(</span>
+                                <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">You can reproduce this example by temporarily &quot;</span>
+                                <span class="s2">&quot;adding @reproduce_failure(</span><span class="si">%r</span><span class="s2">, </span><span class="si">%r</span><span class="s2">) as a decorator &quot;</span>
+                                <span class="s2">&quot;on your test case&quot;</span>
+                            <span class="p">)</span>
+                            <span class="o">%</span> <span class="p">(</span><span class="n">__version__</span><span class="p">,</span> <span class="n">failure_blob</span><span class="p">)</span>
+                        <span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__was_flaky</span><span class="p">:</span>
+                <span class="n">flaky</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># If we only have one example then we should have raised an error or</span>
+        <span class="c1"># flaky prior to this point.</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">flaky</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">Flaky</span><span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;Hypothesis found </span><span class="si">%d</span><span class="s2"> distinct failures, but </span><span class="si">%d</span><span class="s2"> of them &quot;</span>
+                    <span class="s2">&quot;exhibited some sort of flaky behaviour.&quot;</span>
+                <span class="p">)</span>
+                <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">),</span> <span class="n">flaky</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MultipleFailures</span><span class="p">(</span>
+                <span class="p">(</span><span class="s2">&quot;Hypothesis found </span><span class="si">%d</span><span class="s2"> distinct failures.&quot;</span><span class="p">)</span>
+                <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">))</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__flaky</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">falsifying_examples</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">Flaky</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__was_flaky</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">report</span><span class="p">(</span><span class="s2">&quot;Flaky example! &quot;</span> <span class="o">+</span> <span class="n">message</span><span class="p">)</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">fake_subTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">__</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Monkeypatch for `unittest.TestCase.subTest` during `@given`.</span>
+
+<span class="sd">    If we don&#39;t patch this out, each failing example is reported as a</span>
+<span class="sd">    seperate failing test by the unittest test runner, which is</span>
+<span class="sd">    obviously incorrect. We therefore replace it for the duration with</span>
+<span class="sd">    this version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;subTest per-example reporting interacts badly with Hypothesis &quot;</span>
+        <span class="s2">&quot;trying hundreds of examples, so we disable it for the duration of &quot;</span>
+        <span class="s2">&quot;any test that uses `@given`.&quot;</span><span class="p">,</span>
+        <span class="n">HypothesisWarning</span><span class="p">,</span>
+        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">yield</span>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">HypothesisHandle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This object is provided as the .hypothesis attribute on @given tests.</span>
+
+<span class="sd">    Downstream users can reassign its attributes to insert custom logic into</span>
+<span class="sd">    the execution of each case, for example by converting an async into a</span>
+<span class="sd">    sync function.</span>
+
+<span class="sd">    This must be an attribute of an attribute, because reassignment of a</span>
+<span class="sd">    first-level attribute would not be visible to Hypothesis if the function</span>
+<span class="sd">    had been decorated before the assignment.</span>
+
+<span class="sd">    See https://github.com/HypothesisWorks/hypothesis/issues/1257 for more</span>
+<span class="sd">    information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">inner_test</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="given"><a class="viewcode-back" href="../../details.html#hypothesis.given">[docs]</a><span class="k">def</span> <span class="nf">given</span><span class="p">(</span>
+    <span class="o">*</span><span class="n">given_arguments</span><span class="p">,</span>  <span class="c1"># type: Union[SearchStrategy, InferType]</span>
+    <span class="o">**</span><span class="n">given_kwargs</span>  <span class="c1"># type: Union[SearchStrategy, InferType]</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; Callable[[Callable[..., None]], Callable[..., None]]</span>
+    <span class="sd">&quot;&quot;&quot;A decorator for turning a test function that accepts arguments into a</span>
+<span class="sd">    randomized test.</span>
+
+<span class="sd">    This is the main entry point to Hypothesis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">run_test_with_generator</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_test_function_without_warning&quot;</span><span class="p">):</span>
+            <span class="c1"># Pull out the original test function to avoid the warning we</span>
+            <span class="c1"># stuck in about using @settings without @given.</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">_hypothesis_internal_test_function_without_warning</span>
+        <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isclass</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+            <span class="c1"># Provide a meaningful error to users, instead of exceptions from</span>
+            <span class="c1"># internals that assume we&#39;re dealing with a function.</span>
+            <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="s2">&quot;@given cannot be applied to a class.&quot;</span><span class="p">)</span>
+        <span class="n">generator_arguments</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">given_arguments</span><span class="p">)</span>
+        <span class="n">generator_kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">given_kwargs</span><span class="p">)</span>
+
+        <span class="n">original_argspec</span> <span class="o">=</span> <span class="n">getfullargspec</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+
+        <span class="n">check_invalid</span> <span class="o">=</span> <span class="n">is_invalid_test</span><span class="p">(</span>
+            <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">original_argspec</span><span class="p">,</span> <span class="n">generator_arguments</span><span class="p">,</span> <span class="n">generator_kwargs</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_invalid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">check_invalid</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">strategy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+            <span class="nb">reversed</span><span class="p">(</span><span class="n">original_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">),</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">generator_arguments</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="n">generator_kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">strategy</span>
+
+        <span class="n">argspec</span> <span class="o">=</span> <span class="n">new_given_argspec</span><span class="p">(</span><span class="n">original_argspec</span><span class="p">,</span> <span class="n">generator_kwargs</span><span class="p">)</span>
+
+        <span class="nd">@impersonate</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="nd">@define_function_signature</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">,</span> <span class="n">argspec</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped_test</span><span class="p">(</span><span class="o">*</span><span class="n">arguments</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="c1"># Tell pytest to omit the body of this function from tracebacks</span>
+            <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">test</span> <span class="o">=</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">hypothesis</span><span class="o">.</span><span class="n">inner_test</span>
+
+            <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;is_hypothesis_test&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="s2">&quot;You have applied @given to the test </span><span class="si">%s</span><span class="s2"> more than once, which &quot;</span>
+                        <span class="s2">&quot;wraps the test several times and is extremely slow. A &quot;</span>
+                        <span class="s2">&quot;similar effect can be gained by combining the arguments &quot;</span>
+                        <span class="s2">&quot;of the two calls to given. For example, instead of &quot;</span>
+                        <span class="s2">&quot;@given(booleans()) @given(integers()), you could write &quot;</span>
+                        <span class="s2">&quot;@given(booleans(), integers())&quot;</span>
+                    <span class="p">)</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,)</span>
+                <span class="p">)</span>
+
+            <span class="n">settings</span> <span class="o">=</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_settings</span>
+
+            <span class="n">random</span> <span class="o">=</span> <span class="n">get_random_for_wrapped_test</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">wrapped_test</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">infer</span> <span class="ow">in</span> <span class="n">generator_kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">hints</span> <span class="o">=</span> <span class="n">get_type_hints</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">generator_kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">infer</span>
+            <span class="p">]:</span>
+                <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">hints</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                        <span class="s2">&quot;passed </span><span class="si">%s</span><span class="s2">=infer for </span><span class="si">%s</span><span class="s2">, but </span><span class="si">%s</span><span class="s2"> has no type annotation&quot;</span>
+                        <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="n">generator_kwargs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">from_type</span><span class="p">(</span><span class="n">hints</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+            <span class="n">processed_args</span> <span class="o">=</span> <span class="n">process_arguments_to_given</span><span class="p">(</span>
+                <span class="n">wrapped_test</span><span class="p">,</span>
+                <span class="n">arguments</span><span class="p">,</span>
+                <span class="n">kwargs</span><span class="p">,</span>
+                <span class="n">generator_arguments</span><span class="p">,</span>
+                <span class="n">generator_kwargs</span><span class="p">,</span>
+                <span class="n">argspec</span><span class="p">,</span>
+                <span class="n">test</span><span class="p">,</span>
+                <span class="n">settings</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">test_runner</span><span class="p">,</span> <span class="n">search_strategy</span> <span class="o">=</span> <span class="n">processed_args</span>
+
+            <span class="n">runner</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">search_strategy</span><span class="p">,</span> <span class="s2">&quot;runner&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">)</span> <span class="ow">and</span> <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="s2">&quot;You have applied @given to the method </span><span class="si">%s</span><span class="s2">, which is &quot;</span>
+                    <span class="s2">&quot;used by the unittest runner but is not itself a test.&quot;</span>
+                    <span class="s2">&quot;  This is not useful in any way.&quot;</span> <span class="o">%</span> <span class="n">test</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="p">)</span>
+                <span class="n">fail_health_check</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">HealthCheck</span><span class="o">.</span><span class="n">not_a_test_method</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bad_django_TestCase</span><span class="p">(</span><span class="n">runner</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+                <span class="c1"># Covered by the Django tests, but not the pytest coverage task</span>
+                <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                    <span class="s2">&quot;You have applied @given to a method on </span><span class="si">%s</span><span class="s2">, but this &quot;</span>
+                    <span class="s2">&quot;class does not inherit from the supported versions in &quot;</span>
+                    <span class="s2">&quot;`hypothesis.extra.django`.  Use the Hypothesis variants &quot;</span>
+                    <span class="s2">&quot;to ensure that each example is run in a separate &quot;</span>
+                    <span class="s2">&quot;database transaction.&quot;</span> <span class="o">%</span> <span class="n">qualname</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">runner</span><span class="p">))</span>
+                <span class="p">)</span>
+
+            <span class="n">state</span> <span class="o">=</span> <span class="n">StateForActualGivenExecution</span><span class="p">(</span>
+                <span class="n">test_runner</span><span class="p">,</span>
+                <span class="n">search_strategy</span><span class="p">,</span>
+                <span class="n">test</span><span class="p">,</span>
+                <span class="n">settings</span><span class="p">,</span>
+                <span class="n">random</span><span class="p">,</span>
+                <span class="n">had_seed</span><span class="o">=</span><span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">reproduce_failure</span> <span class="o">=</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_reproduce_failure</span>
+
+            <span class="k">if</span> <span class="n">reproduce_failure</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">expected_version</span><span class="p">,</span> <span class="n">failure</span> <span class="o">=</span> <span class="n">reproduce_failure</span>
+                <span class="k">if</span> <span class="n">expected_version</span> <span class="o">!=</span> <span class="n">__version__</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+                        <span class="p">(</span>
+                            <span class="s2">&quot;Attempting to reproduce a failure from a different &quot;</span>
+                            <span class="s2">&quot;version of Hypothesis. This failure is from </span><span class="si">%s</span><span class="s2">, but &quot;</span>
+                            <span class="s2">&quot;you are currently running </span><span class="si">%r</span><span class="s2">. Please change your &quot;</span>
+                            <span class="s2">&quot;Hypothesis version to a matching one.&quot;</span>
+                        <span class="p">)</span>
+                        <span class="o">%</span> <span class="p">(</span><span class="n">expected_version</span><span class="p">,</span> <span class="n">__version__</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">state</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+                        <span class="n">ConjectureData</span><span class="o">.</span><span class="n">for_buffer</span><span class="p">(</span><span class="n">decode_failure</span><span class="p">(</span><span class="n">failure</span><span class="p">)),</span>
+                        <span class="n">print_example</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">is_final</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">DidNotReproduce</span><span class="p">(</span>
+                        <span class="s2">&quot;Expected the test to raise an error, but it &quot;</span>
+                        <span class="s2">&quot;completed successfully.&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="n">StopTest</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DidNotReproduce</span><span class="p">(</span>
+                        <span class="s2">&quot;The shape of the test data has changed in some way &quot;</span>
+                        <span class="s2">&quot;from where this blob was defined. Are you sure &quot;</span>
+                        <span class="s2">&quot;you&#39;re running the same test?&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="n">UnsatisfiedAssumption</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">DidNotReproduce</span><span class="p">(</span>
+                        <span class="s2">&quot;The test data failed to satisfy an assumption in the &quot;</span>
+                        <span class="s2">&quot;test. Have you added it since this blob was &quot;</span>
+                        <span class="s2">&quot;generated?&quot;</span>
+                    <span class="p">)</span>
+
+            <span class="n">execute_explicit_examples</span><span class="p">(</span>
+                <span class="n">test_runner</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">wrapped_test</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">kwargs</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">max_examples</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+                <span class="n">Phase</span><span class="o">.</span><span class="n">reuse</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">phases</span> <span class="ow">or</span> <span class="n">Phase</span><span class="o">.</span><span class="n">generate</span> <span class="ow">in</span> <span class="n">settings</span><span class="o">.</span><span class="n">phases</span>
+            <span class="p">):</span>
+                <span class="k">return</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">TestCase</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="s2">&quot;subTest&quot;</span><span class="p">):</span>
+                    <span class="n">subTest</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">subTest</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="s2">&quot;subTest&quot;</span><span class="p">,</span> <span class="n">fake_subTest</span><span class="p">)</span>
+                        <span class="n">state</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+                    <span class="k">finally</span><span class="p">:</span>
+                        <span class="nb">setattr</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="s2">&quot;subTest&quot;</span><span class="p">,</span> <span class="n">subTest</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">state</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">generated_seed</span> <span class="o">=</span> <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_generated_seed</span>
+                <span class="k">with</span> <span class="n">local_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">failed_normally</span> <span class="ow">or</span> <span class="n">generated_seed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">running_under_pytest</span><span class="p">:</span>
+                            <span class="n">report</span><span class="p">(</span>
+                                <span class="s2">&quot;You can add @seed(</span><span class="si">%(seed)d</span><span class="s2">) to this test or &quot;</span>
+                                <span class="s2">&quot;run pytest with --hypothesis-seed=</span><span class="si">%(seed)d</span><span class="s2"> &quot;</span>
+                                <span class="s2">&quot;to reproduce this failure.&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">generated_seed</span><span class="p">}</span>
+                            <span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">report</span><span class="p">(</span>
+                                <span class="s2">&quot;You can add @seed(</span><span class="si">%d</span><span class="s2">) to this test to &quot;</span>
+                                <span class="s2">&quot;reproduce this failure.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">generated_seed</span><span class="p">,)</span>
+                            <span class="p">)</span>
+                    <span class="c1"># The dance here is to avoid showing users long tracebacks</span>
+                    <span class="c1"># full of Hypothesis internals they don&#39;t care about.</span>
+                    <span class="c1"># We have to do this inline, to avoid adding another</span>
+                    <span class="c1"># internal stack frame just when we&#39;ve removed the rest.</span>
+                    <span class="k">if</span> <span class="n">PY2</span><span class="p">:</span>
+                        <span class="c1"># Python 2 doesn&#39;t have Exception.with_traceback(...);</span>
+                        <span class="c1"># instead it has a three-argument form of the `raise`</span>
+                        <span class="c1"># statement.  Unfortunately this is a SyntaxError on</span>
+                        <span class="c1"># Python 3, and before Python 2.7.9 it was *also* a</span>
+                        <span class="c1"># SyntaxError to use it in a nested function so we</span>
+                        <span class="c1"># can&#39;t `exec` or `eval` our way out (BPO-21591).</span>
+                        <span class="c1"># So unless we break some versions of Python 2, none</span>
+                        <span class="c1"># of them get traceback elision.</span>
+                        <span class="k">raise</span>
+                    <span class="c1"># On Python 3, we swap out the real traceback for our</span>
+                    <span class="c1"># trimmed version.  Using a variable ensures that the line</span>
+                    <span class="c1"># which will actually appear in trackbacks is as clear as</span>
+                    <span class="c1"># possible - &quot;raise the_error_hypothesis_found&quot;.</span>
+                    <span class="n">the_error_hypothesis_found</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span>
+                        <span class="n">get_trimmed_traceback</span><span class="p">()</span>
+                    <span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">the_error_hypothesis_found</span>
+
+        <span class="k">for</span> <span class="n">attrib</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">attrib</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">wrapped_test</span><span class="p">,</span> <span class="n">attrib</span><span class="p">)):</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">wrapped_test</span><span class="p">,</span> <span class="n">attrib</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">attrib</span><span class="p">))</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">is_hypothesis_test</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_settings_applied&quot;</span><span class="p">):</span>
+            <span class="c1"># Used to check if @settings is applied twice.</span>
+            <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_settings_applied</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_seed&quot;</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_settings</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_settings&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">or</span> <span class="n">Settings</span><span class="o">.</span><span class="n">default</span>
+        <span class="p">)</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">_hypothesis_internal_use_reproduce_failure</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+            <span class="n">test</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_reproduce_failure&quot;</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="n">wrapped_test</span><span class="o">.</span><span class="n">hypothesis</span> <span class="o">=</span> <span class="n">HypothesisHandle</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapped_test</span>
+
+    <span class="k">return</span> <span class="n">run_test_with_generator</span></div>
+
+
+<span class="k">def</span> <span class="nf">find</span><span class="p">(</span>
+    <span class="n">specifier</span><span class="p">,</span>  <span class="c1"># type: SearchStrategy</span>
+    <span class="n">condition</span><span class="p">,</span>  <span class="c1"># type: Callable[[Any], bool]</span>
+    <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: Settings</span>
+    <span class="n">random</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: Any</span>
+    <span class="n">database_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: bytes</span>
+<span class="p">):</span>
+    <span class="c1"># type: (...) -&gt; Any</span>
+    <span class="sd">&quot;&quot;&quot;Returns the minimal example from the given strategy ``specifier`` that</span>
+<span class="sd">    matches the predicate function ``condition``.&quot;&quot;&quot;</span>
+    <span class="n">note_deprecation</span><span class="p">(</span>
+        <span class="s2">&quot;`find(s, f)` is deprecated, because it is rarely used but takes &quot;</span>
+        <span class="s2">&quot;ongoing work to maintain as we upgrade other parts of Hypothesis.&quot;</span><span class="p">,</span>
+        <span class="n">since</span><span class="o">=</span><span class="s2">&quot;2019-07-11&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">max_examples</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">suppress_health_check</span><span class="o">=</span><span class="n">HealthCheck</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="n">database_key</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">settings</span><span class="o">.</span><span class="n">database</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">database_key</span> <span class="o">=</span> <span class="n">function_digest</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">specifier</span><span class="p">,</span> <span class="n">SearchStrategy</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span>
+            <span class="s2">&quot;Expected SearchStrategy but got </span><span class="si">%r</span><span class="s2"> of type </span><span class="si">%s</span><span class="s2">&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">specifier</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">specifier</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="n">specifier</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
+
+    <span class="n">search</span> <span class="o">=</span> <span class="n">specifier</span>
+
+    <span class="n">random</span> <span class="o">=</span> <span class="n">random</span> <span class="ow">or</span> <span class="n">new_random</span><span class="p">()</span>
+    <span class="n">successful_examples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">last_data</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+    <span class="n">last_repr</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">template_condition</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">deterministic_PRNG</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">BuildContext</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">is_find</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">note</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                    <span class="n">success</span> <span class="o">=</span> <span class="n">condition</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">UnsatisfiedAssumption</span><span class="p">:</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">mark_invalid</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="n">successful_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">successful_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Tried non-satisfying example </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">nicerepr</span><span class="p">(</span><span class="n">result</span><span class="p">),))</span>
+            <span class="k">elif</span> <span class="n">success</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">successful_examples</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">last_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nicerepr</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                    <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Found satisfying example </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">last_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">],))</span>
+                    <span class="n">last_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="k">elif</span> <span class="p">(</span>
+                    <span class="n">sort_key</span><span class="p">(</span><span class="n">hbytes</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">buffer</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">sort_key</span><span class="p">(</span><span class="n">last_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">buffer</span><span class="p">)</span>
+                <span class="p">)</span> <span class="ow">and</span> <span class="n">nicerepr</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">!=</span> <span class="n">last_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="n">last_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">nicerepr</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                    <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Shrunk example to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">last_repr</span><span class="p">[</span><span class="mi">0</span><span class="p">],))</span>
+                    <span class="n">last_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">if</span> <span class="n">success</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="o">.</span><span class="n">frozen</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">mark_interesting</span><span class="p">()</span>
+
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">ConjectureRunner</span><span class="p">(</span>
+        <span class="n">template_condition</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span> <span class="n">random</span><span class="o">=</span><span class="n">random</span><span class="p">,</span> <span class="n">database_key</span><span class="o">=</span><span class="n">database_key</span>
+    <span class="p">)</span>
+    <span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">note_engine_for_statistics</span><span class="p">(</span><span class="n">runner</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">interesting_examples</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ConjectureData</span><span class="o">.</span><span class="n">for_buffer</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">interesting_examples</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">buffer</span>
+        <span class="p">)</span>
+        <span class="k">with</span> <span class="n">deterministic_PRNG</span><span class="p">():</span>
+            <span class="k">with</span> <span class="n">BuildContext</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">runner</span><span class="o">.</span><span class="n">valid_examples</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">exit_reason</span> <span class="o">!=</span> <span class="n">ExitReason</span><span class="o">.</span><span class="n">finished</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">Unsatisfiable</span><span class="p">(</span>
+            <span class="s2">&quot;Unable to satisfy assumptions of </span><span class="si">%s</span><span class="s2">.&quot;</span>
+            <span class="o">%</span> <span class="p">(</span><span class="n">get_pretty_function_description</span><span class="p">(</span><span class="n">condition</span><span class="p">),)</span>
+        <span class="p">)</span>
+
+    <span class="k">raise</span> <span class="n">NoSuchExample</span><span class="p">(</span><span class="n">get_pretty_function_description</span><span class="p">(</span><span class="n">condition</span><span class="p">))</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

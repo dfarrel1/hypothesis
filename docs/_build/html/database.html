@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Hypothesis Example Database &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stateful testing" href="stateful.html" />
+    <link rel="prev" title="Health checks" href="healthchecks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Hypothesis Example Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#file-locations">File locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrading-hypothesis-and-changing-your-tests">Upgrading Hypothesis and changing your tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sharing-your-example-database">Sharing your example database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>The Hypothesis Example Database</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-hypothesis-example-database">
+<h1>The Hypothesis Example Database<a class="headerlink" href="#the-hypothesis-example-database" title="Permalink to this headline">¶</a></h1>
+<p>When Hypothesis finds a bug it stores enough information in its database to reproduce it. This
+enables you to have a classic testing workflow of find a bug, fix a bug, and be confident that
+this is actually doing the right thing because Hypothesis will start by retrying the examples that
+broke things last time.</p>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<p>The database is best thought of as a cache that you never need to invalidate: Information may be
+lost when you upgrade a Hypothesis version or change your test, so you shouldn’t rely on it for
+correctness - if there’s an example you want to ensure occurs each time then <a class="reference internal" href="reproducing.html#providing-explicit-examples"><span class="std std-ref">there’s a feature for
+including them in your source code</span></a> - but it helps the development
+workflow considerably by making sure that the examples you’ve just found are reproduced.</p>
+<p>The database also records examples that exercise less-used parts of your
+code, so the database may update even when no failing examples were found.</p>
+</div>
+<div class="section" id="file-locations">
+<h2>File locations<a class="headerlink" href="#file-locations" title="Permalink to this headline">¶</a></h2>
+<p>The default storage format is as a fairly opaque directory structure. Each test
+corresponds to a directory, and each example to a file within that directory.
+The standard location for it is <code class="docutils literal notranslate"><span class="pre">.hypothesis/examples</span></code> in your current working
+directory. You can override this by setting the
+<a class="reference internal" href="settings.html#hypothesis.settings.database" title="hypothesis.settings.database"><code class="xref py py-obj docutils literal notranslate"><span class="pre">database</span></code></a> setting.</p>
+<p>If you have not configured a database and the default location is unusable
+(e.g. because you do not have read/write permission), Hypothesis will issue
+a warning and then fall back to an in-memory database.</p>
+</div>
+<div class="section" id="upgrading-hypothesis-and-changing-your-tests">
+<h2>Upgrading Hypothesis and changing your tests<a class="headerlink" href="#upgrading-hypothesis-and-changing-your-tests" title="Permalink to this headline">¶</a></h2>
+<p>The design of the Hypothesis database is such that you can put arbitrary data in the database
+and not get wrong behaviour. When you upgrade Hypothesis, old data <em>might</em> be invalidated, but
+this should happen transparently. It can never be the case that e.g. changing the strategy
+that generates an argument gives you data from the old strategy.</p>
+</div>
+<div class="section" id="sharing-your-example-database">
+<h2>Sharing your example database<a class="headerlink" href="#sharing-your-example-database" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If specific examples are important for correctness you should use the
+<a class="reference internal" href="reproducing.html#hypothesis.example" title="hypothesis.example"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;example</span></code></a> decorator, as the example database may discard entries due to
+changes in your code or dependencies.  For most users, we therefore
+recommend using the example database locally and possibly persisting it
+between CI builds, but not tracking it under version control.</p>
+</div>
+<p>The examples database can be shared simply by checking the directory into
+version control, for example with the following <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Ignore files cached by Hypothesis...
+.hypothesis/*
+# except for the examples directory
+!.hypothesis/examples/
+</pre></div>
+</div>
+<p>Like everything under <code class="docutils literal notranslate"><span class="pre">.hypothesis/</span></code>, the examples directory will be
+transparently created on demand.  Unlike the other subdirectories,
+<code class="docutils literal notranslate"><span class="pre">examples/</span></code> is designed to handle merges, deletes, etc if you just add the
+directory into git, mercurial, or any similar version control system.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stateful.html" class="btn btn-neutral float-right" title="Stateful testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="healthchecks.html" class="btn btn-neutral float-left" title="Health checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

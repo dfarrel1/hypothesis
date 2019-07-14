@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Projects extending Hypothesis &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changes.html" />
+    <link rel="prev" title="Open Source Projects using Hypothesis" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Projects extending Hypothesis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#external-strategies">External Strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-cool-things">Other Cool Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-an-extension">Writing an Extension</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Projects extending Hypothesis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/strategies.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="projects-extending-hypothesis">
+<h1>Projects extending Hypothesis<a class="headerlink" href="#projects-extending-hypothesis" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis has been eagerly used and extended by the open source community.
+This page lists extensions and applications; you can find more or newer
+packages by searching PyPI <a class="reference external" href="https://pypi.org/search/?q=hypothesis">by keyword</a>
+or <a class="reference external" href="https://pypi.org/search/?c=Framework+%3A%3A+Hypothesis">filter by classifier</a>,
+or search <a class="reference external" href="https://libraries.io/search?languages=Python&amp;q=hypothesis">libraries.io</a>.</p>
+<p>If there’s something missing which you think should be here, let us know!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Being listed on this page does not imply that the Hypothesis
+maintainers endorse a package.</p>
+</div>
+<div class="section" id="external-strategies">
+<h2>External Strategies<a class="headerlink" href="#external-strategies" title="Permalink to this headline">¶</a></h2>
+<p>Some packages provide strategies directly:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-fspaths">hypothesis-fspaths</a> - strategy to generate filesystem paths.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-geojson">hypothesis-geojson</a> - strategy to generate <a class="reference external" href="http://geojson.org/">GeoJson</a>.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hs-dbus-signature">hs-dbus-signature</a> - strategy to generate arbitrary
+<a class="reference external" href="https://dbus.freedesktop.org">D-Bus signatures</a>.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis_sqlalchemy">hypothesis_sqlalchemy</a> - strategies to generate <a class="reference external" href="https://pypi.org/project/SQLAlchemy">SQLAlchemy</a> objects.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-ros">hypothesis-ros</a> - strategies to generate messages and parameters for the <a class="reference external" href="https://www.ros.org/">Robot Operating System</a>.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-csv">hypothesis-csv</a> - strategy to generate CSV files.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-networkx">hypothesis-networkx</a> - strategy to generate <a class="reference external" href="https://pypi.org/project/networkx">networkx</a> graphs.</p></li>
+</ul>
+<p>Others provide a function to infer a strategy from some other schema:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-jsonschema">hypothesis-jsonschema</a> - infer strategies from <a class="reference external" href="https://json-schema.org/">JSON schemas</a>.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/lollipop-hypothesis">lollipop-hypothesis</a> - infer strategies from <a class="reference external" href="https://pypi.org/project/lollipop">lollipop</a> schemas.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-drf">hypothesis-drf</a> - infer strategies from a <a class="reference external" href="https://pypi.org/project/djangorestframework">djangorestframework</a> serialiser.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-mongoengine">hypothesis-mongoengine</a> - infer strategies from a <a class="reference external" href="https://pypi.org/project/mongoengine">mongoengine</a> model.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/hypothesis-pb">hypothesis-pb</a> - infer strategies from <a class="reference external" href="https://developers.google.com/protocol-buffers/">Protocol Buffer</a> schemas.</p></li>
+</ul>
+</div>
+<div class="section" id="other-cool-things">
+<h2>Other Cool Things<a class="headerlink" href="#other-cool-things" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://pypi.org/project/swagger-conformance">swagger-conformance</a> is powered by Hypothesis and <a class="reference external" href="https://pypi.org/project/pyswagger">pyswagger</a>.
+Based on a <a class="reference external" href="https://swagger.io/">Swagger specification</a>, it can build and
+run an entire test suite to check that the implementation matches the spec.
+The command-line version can test apps written in any language, simply by
+passing the file or URL path to the schema to check!</p>
+<p><a class="reference external" href="https://trio.readthedocs.io/">Trio</a> is an async framework with “an obsessive
+focus on usability and correctness”, so naturally it works with Hypothesis!
+<a class="reference external" href="https://pypi.org/project/pytest-trio">pytest-trio</a> includes <a class="reference internal" href="details.html#custom-function-execution"><span class="std std-ref">a custom hook</span></a>
+that allows <code class="docutils literal notranslate"><span class="pre">&#64;given(...)</span></code> to work with Trio-style async test functions, and
+<a class="reference external" href="https://pypi.org/project/hypothesis-trio">hypothesis-trio</a> includes stateful testing extensions to support
+concurrent programs.</p>
+<p><a class="reference external" href="https://pypi.org/project/libarchimedes">libarchimedes</a> makes it easy to use Hypothesis in
+<a class="reference external" href="https://github.com/hylang/hy">the Hy language</a>, a Lisp embedded in Python.</p>
+<p><a class="reference external" href="https://pypi.org/project/battle_tested">battle_tested</a> is a fuzzing tool that will show you how your code can
+fail - by trying all kinds of inputs and reporting whatever happens.</p>
+<p><a class="reference external" href="https://pypi.org/project/pytest-subtesthack">pytest-subtesthack</a> functions as a workaround for <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/issues/377">issue #377</a>.</p>
+</div>
+<div class="section" id="writing-an-extension">
+<h2>Writing an Extension<a class="headerlink" href="#writing-an-extension" title="Permalink to this headline">¶</a></h2>
+<p><em>See</em> <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/CONTRIBUTING.rst">CONTRIBUTING.rst</a> <em>for more information.</em></p>
+<p>New strategies can be added to Hypothesis, or published as an external package
+on PyPI - either is fine for most strategies. If in doubt, ask!</p>
+<p>It’s generally much easier to get things working outside, because there’s more
+freedom to experiment and fewer requirements in stability and API style. We’re
+happy to review and help with external packages as well as pull requests!</p>
+<p>If you’re thinking about writing an extension, please name it
+<code class="docutils literal notranslate"><span class="pre">hypothesis-{something}</span></code> - a standard prefix makes the community more
+visible and searching for extensions easier.  And make sure you use the
+<code class="docutils literal notranslate"><span class="pre">Framework</span> <span class="pre">::</span> <span class="pre">Hypothesis</span></code> trove classifier!</p>
+<p>On the other hand, being inside gets you access to some deeper implementation
+features (if you need them) and better long-term guarantees about maintenance.
+We particularly encourage pull requests for new composable primitives that
+make implementing other strategies easier, or for widely used types in the
+standard library. Strategies for other things are also welcome; anything with
+external dependencies just goes in hypothesis.extra.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="changes.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral float-left" title="Open Source Projects using Hypothesis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

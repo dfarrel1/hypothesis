@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Details and advanced features &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Settings" href="settings.html" />
+    <link rel="prev" title="Quick start guide" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Details and advanced features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#additional-test-output">Additional test output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-statistics">Test Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-assumptions">Making assumptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-good-is-assume">How good is assume?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-strategies">Defining strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-gory-details-of-given-parameters">The gory details of given parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-function-execution">Custom function execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-random-code-deterministic">Making random code deterministic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inferred-strategies">Inferred Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#type-annotations-in-hypothesis">Type Annotations in Hypothesis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#writing-downstream-type-hints">Writing downstream type hints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hypothesis-pytest-plugin">The Hypothesis pytest Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Details and advanced features</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/details.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="details-and-advanced-features">
+<h1>Details and advanced features<a class="headerlink" href="#details-and-advanced-features" title="Permalink to this headline">¶</a></h1>
+<p>This is an account of slightly less common Hypothesis features that you don’t need
+to get started but will nevertheless make your life easier.</p>
+<div class="section" id="additional-test-output">
+<h2>Additional test output<a class="headerlink" href="#additional-test-output" title="Permalink to this headline">¶</a></h2>
+<p>Normally the output of a failing test will look something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">test_a_thing</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the <code class="docutils literal notranslate"><span class="pre">repr</span></code> of each keyword argument being printed.</p>
+<p>Sometimes this isn’t enough, either because you have values with a <code class="docutils literal notranslate"><span class="pre">repr</span></code> that
+isn’t very descriptive or because you need to see the output of some
+intermediate steps of your test. That’s where the <code class="docutils literal notranslate"><span class="pre">note</span></code> function comes in:</p>
+<dl class="function">
+<dt id="hypothesis.note">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">note</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/control.html#note"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report this value in the final execution.</p>
+</dd></dl>
+
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">()),</span> <span class="n">st</span><span class="o">.</span><span class="n">randoms</span><span class="p">())</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test_shuffle_is_noop</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">ls2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">r</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">ls2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">note</span><span class="p">(</span><span class="s2">&quot;Shuffle: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ls2</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="n">ls</span> <span class="o">==</span> <span class="n">ls2</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">test_shuffle_is_noop</span><span class="p">()</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;ls != ls2&#39;</span><span class="p">)</span>
+<span class="go">Falsifying example: test_shuffle_is_noop(ls=[0, 1], r=RandomWithSeed(1))</span>
+<span class="go">Shuffle: [1, 0]</span>
+<span class="go">ls != ls2</span>
+</pre></div>
+</div>
+<p>The note is printed in the final run of the test in order to include any
+additional information you might need in your test.</p>
+</div>
+<div class="section" id="test-statistics">
+<span id="statistics"></span><h2>Test Statistics<a class="headerlink" href="#test-statistics" title="Permalink to this headline">¶</a></h2>
+<p>If you are using <a class="reference external" href="https://pypi.org/project/pytest">pytest</a> you can see a number of statistics about the executed tests
+by passing the command line argument <code class="docutils literal notranslate"><span class="pre">--hypothesis-show-statistics</span></code>. This will include
+some general statistics about the test:</p>
+<p>For example if you ran the following with <code class="docutils literal notranslate"><span class="pre">--hypothesis-show-statistics</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_integers</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>You would see:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>test_integers:
+
+  - 100 passing examples, 0 failing examples, 0 invalid examples
+  - Typical runtimes: ~ 1ms
+  - Fraction of time spent in data generation: ~ 12%
+  - Stopped because settings.max_examples=100
+</pre></div>
+</div>
+<p>The final “Stopped because” line is particularly important to note: It tells you the
+setting value that determined when the test should stop trying new examples. This
+can be useful for understanding the behaviour of your tests. Ideally you’d always want
+this to be <a class="reference internal" href="settings.html#hypothesis.settings.max_examples" title="hypothesis.settings.max_examples"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_examples</span></code></a>.</p>
+<p>In some cases (such as filtered and recursive strategies) you will see events mentioned
+which describe some aspect of the data generation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_even_integers</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>You would see something like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>test_even_integers:
+
+    - 100 passing examples, 0 failing examples, 36 invalid examples
+    - Typical runtimes: 0-1 ms
+    - Fraction of time spent in data generation: ~ 16%
+    - Stopped because settings.max_examples=100
+    - Events:
+      * 80.88%, Retried draw from integers().filter(lambda x: &lt;unknown&gt;) to satisfy filter
+      * 26.47%, Aborted test because unable to satisfy integers().filter(lambda x: &lt;unknown&gt;)
+</pre></div>
+</div>
+<p>You can also mark custom events in a test using the <code class="docutils literal notranslate"><span class="pre">event</span></code> function:</p>
+<dl class="function">
+<dt id="hypothesis.event">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">event</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/control.html#event"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Record an event that occurred this test. Statistics on number of test
+runs with each event will be reported at the end if you run Hypothesis in
+statistics reporting mode.</p>
+<p>Events should be strings or convertible to them.</p>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">integers</span><span class="p">()</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_even_integers</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">(</span><span class="s2">&quot;i mod 3 = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">,))</span>
+</pre></div>
+</div>
+<p>You will then see output like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>test_even_integers:
+
+  - 100 passing examples, 0 failing examples, 38 invalid examples
+  - Typical runtimes: 0-1 ms
+  - Fraction of time spent in data generation: ~ 16%
+  - Stopped because settings.max_examples=100
+  - Events:
+    * 80.43%, Retried draw from integers().filter(lambda x: &lt;unknown&gt;) to satisfy filter
+    * 31.88%, i mod 3 = 0
+    * 27.54%, Aborted test because unable to satisfy integers().filter(lambda x: &lt;unknown&gt;)
+    * 21.74%, i mod 3 = 1
+    * 18.84%, i mod 3 = 2
+</pre></div>
+</div>
+<p>Arguments to <code class="docutils literal notranslate"><span class="pre">event</span></code> can be any hashable type, but two events will be considered the same
+if they are the same when converted to a string with <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">str</span></code></a>.</p>
+</div>
+<div class="section" id="making-assumptions">
+<h2>Making assumptions<a class="headerlink" href="#making-assumptions" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes Hypothesis doesn’t give you exactly the right sort of data you want - it’s
+mostly of the right shape, but some examples won’t work and you don’t want to care about
+them. You <em>can</em> just ignore these by aborting the test early, but this runs the risk of
+accidentally testing a lot less than you think you are. Also it would be nice to spend
+less time on bad examples - if you’re running 100 examples per test (the default) and
+it turns out 70 of those examples don’t match your needs, that’s a lot of wasted time.</p>
+<dl class="function">
+<dt id="hypothesis.assume">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">assume</code><span class="sig-paren">(</span><em class="sig-param">condition</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/control.html#assume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.assume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calling <code class="docutils literal notranslate"><span class="pre">assume</span></code> is like an <a class="reference external" href="https://docs.python.org/3/reference/simple_stmts.html#assert" title="(in Python v3.7)"><span class="xref std std-ref">assert</span></a> that marks
+the example as bad, rather than failing the test.</p>
+<p>This allows you to specify properties that you <em>assume</em> will be
+true, and let Hypothesis try to avoid similar examples in future.</p>
+</dd></dl>
+
+<p>For example suppose you had the following test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_negation_is_self_inverse</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Running this gives us:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Falsifying</span> <span class="n">example</span><span class="p">:</span> <span class="n">test_negation_is_self_inverse</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;nan&#39;</span><span class="p">))</span>
+<span class="ne">AssertionError</span>
+</pre></div>
+</div>
+<p>This is annoying. We know about NaN and don’t really care about it, but as soon as Hypothesis
+finds a NaN example it will get distracted by that and tell us about it. Also the test will
+fail and we want it to pass.</p>
+<p>So lets block off this particular example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">isnan</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_negation_is_self_inverse_for_non_nan</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">assume</span><span class="p">(</span><span class="ow">not</span> <span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And this passes without a problem.</p>
+<p>In order to avoid the easy trap where you assume a lot more than you intended, Hypothesis
+will fail a test when it can’t find enough examples passing the assumption.</p>
+<p>If we’d written:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">floats</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_negation_is_self_inverse_for_non_nan</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">assume</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">x</span> <span class="o">==</span> <span class="o">-</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then on running we’d have got the exception:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unsatisfiable</span><span class="p">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">satisfy</span> <span class="n">assumptions</span> <span class="n">of</span> <span class="n">hypothesis</span> <span class="n">test_negation_is_self_inverse_for_non_nan</span><span class="o">.</span> <span class="n">Only</span> <span class="mi">0</span> <span class="n">examples</span> <span class="n">considered</span> <span class="n">satisfied</span> <span class="n">assumptions</span>
+</pre></div>
+</div>
+<div class="section" id="how-good-is-assume">
+<h3>How good is assume?<a class="headerlink" href="#how-good-is-assume" title="Permalink to this headline">¶</a></h3>
+<p>Hypothesis has an adaptive exploration strategy to try to avoid things which falsify
+assumptions, which should generally result in it still being able to find examples in
+hard to find situations.</p>
+<p>Suppose we had the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sum_is_positive</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+  <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Unsurprisingly this fails and gives the falsifying example <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">assume(xs)</span></code> to this removes the trivial empty example and gives us <code class="docutils literal notranslate"><span class="pre">[0]</span></code>.</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">assume(all(x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">xs))</span></code> and it passes: the sum of a list of
+positive integers is positive.</p>
+<p>The reason that this should be surprising is not that it doesn’t find a
+counter-example, but that it finds enough examples at all.</p>
+<p>In order to make sure something interesting is happening, suppose we wanted to
+try this for long lists. e.g. suppose we added an <code class="docutils literal notranslate"><span class="pre">assume(len(xs)</span> <span class="pre">&gt;</span> <span class="pre">10)</span></code> to it.
+This should basically never find an example: a naive strategy would find fewer
+than one in a thousand examples, because if each element of the list is
+negative with probability one-half, you’d have to have ten of these go the right
+way by chance. In the default configuration Hypothesis gives up long before
+it’s tried 1000 examples (by default it tries 200).</p>
+<p>Here’s what happens if we try to run this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">integers</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">test_sum_is_positive</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="n">assume</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">assume</span><span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">In</span><span class="p">:</span> <span class="n">test_sum_is_positive</span><span class="p">()</span>
+<span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">2.</span><span class="o">..</span>
+<span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">39</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="o">...</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>As you can see, Hypothesis doesn’t find <em>many</em> examples here, but it finds some - enough to
+keep it happy.</p>
+<p>In general if you <em>can</em> shape your strategies better to your tests you should - for example
+<a class="reference internal" href="data.html#hypothesis.strategies.integers" title="hypothesis.strategies.integers"><code class="xref py py-func docutils literal notranslate"><span class="pre">integers(1,</span> <span class="pre">1000)</span></code></a> is a lot better than
+<code class="docutils literal notranslate"><span class="pre">assume(1</span> <span class="pre">&lt;=</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">1000)</span></code>, but <code class="docutils literal notranslate"><span class="pre">assume</span></code> will take you a long way if you can’t.</p>
+</div>
+</div>
+<div class="section" id="defining-strategies">
+<h2>Defining strategies<a class="headerlink" href="#defining-strategies" title="Permalink to this headline">¶</a></h2>
+<p>The type of object that is used to explore the examples given to your test
+function is called a <a class="reference internal" href="#hypothesis.strategies.SearchStrategy" title="hypothesis.strategies.SearchStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchStrategy</span></code></a>.
+These are created using the functions
+exposed in the <a class="reference internal" href="data.html#module-hypothesis.strategies" title="hypothesis.strategies"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hypothesis.strategies</span></code></a> module.</p>
+<p>Many of these strategies expose a variety of arguments you can use to customize
+generation. For example for integers you can specify <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> values of
+integers you want.
+If you want to see exactly what a strategy produces you can ask for an example:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">integers</span><span class="p">(</span><span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>Many strategies are built out of other strategies. For example, if you want
+to define a tuple you need to say what goes in each element:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">tuples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tuples</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">())</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">(-24597, 12566)</span>
+</pre></div>
+</div>
+<p>Further details are <a class="reference internal" href="data.html"><span class="doc">available in a separate document</span></a>.</p>
+</div>
+<div class="section" id="the-gory-details-of-given-parameters">
+<h2>The gory details of given parameters<a class="headerlink" href="#the-gory-details-of-given-parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="hypothesis.given">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">given</code><span class="sig-paren">(</span><em class="sig-param">*given_arguments</em>, <em class="sig-param">**given_kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/core.html#given"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.given" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator for turning a test function that accepts arguments into a
+randomized test.</p>
+<p>This is the main entry point to Hypothesis.</p>
+</dd></dl>
+
+<p>The <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> decorator may be used to specify
+which arguments of a function should be parametrized over. You can use
+either positional or keyword arguments, but not a mixture of both.</p>
+<p>For example all of the following are valid uses:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">integers</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">e</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">integers</span><span class="p">(),</span> <span class="n">y</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">SomeTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">test_a_thing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>The following are not:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">x</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">i</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@given</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">j</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>The rules for determining what are valid uses of <code class="docutils literal notranslate"><span class="pre">given</span></code> are as follows:</p>
+<ol class="arabic simple">
+<li><p>You may pass any keyword argument to <code class="docutils literal notranslate"><span class="pre">given</span></code>.</p></li>
+<li><p>Positional arguments to <code class="docutils literal notranslate"><span class="pre">given</span></code> are equivalent to the rightmost named
+arguments for the test function.</p></li>
+<li><p>Positional arguments may not be used if the underlying test function has
+varargs, arbitrary keywords, or keyword-only arguments.</p></li>
+<li><p>Functions tested with <code class="docutils literal notranslate"><span class="pre">given</span></code> may not have any defaults.</p></li>
+</ol>
+<p>The reason for the “rightmost named arguments” behaviour is so that
+using <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> with instance methods works: <code class="docutils literal notranslate"><span class="pre">self</span></code>
+will be passed to the function as normal and not be parametrized over.</p>
+<p>The function returned by given has all the same arguments as the original
+test, minus those that are filled in by <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>.
+Check <a class="reference internal" href="supported.html#framework-compatibility"><span class="std std-ref">the notes on framework compatibility</span></a>
+to see how this affects other testing libraries you may be using.</p>
+</div>
+<div class="section" id="custom-function-execution">
+<span id="id1"></span><h2>Custom function execution<a class="headerlink" href="#custom-function-execution" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis provides you with a hook that lets you control how it runs
+examples.</p>
+<p>This lets you do things like set up and tear down around each example, run
+examples in a subprocess, transform coroutine tests into normal tests, etc.
+For example, <a class="reference internal" href="django.html#hypothesis.extra.django.TransactionTestCase" title="hypothesis.extra.django.TransactionTestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionTestCase</span></code></a> in the
+Django extra runs each example in a separate database transaction.</p>
+<p>The way this works is by introducing the concept of an executor. An executor
+is essentially a function that takes a block of code and run it. The default
+executor is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">default_executor</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">function</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You define executors by defining a method <code class="docutils literal notranslate"><span class="pre">execute_example</span></code> on a class. Any
+test methods on that class with <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> used on them will use
+<code class="docutils literal notranslate"><span class="pre">self.execute_example</span></code> as an executor with which to run tests. For example,
+the following executor runs all its code twice:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="k">class</span> <span class="nc">TestTryReallyHard</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="n">perform_some_unreliable_operation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute_example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="n">f</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note: The functions you use in map, etc. will run <em>inside</em> the executor. i.e.
+they will not be called until you invoke the function passed to <code class="docutils literal notranslate"><span class="pre">execute_example</span></code>.</p>
+<p>An executor must be able to handle being passed a function which returns None,
+otherwise it won’t be able to run normal test cases. So for example the following
+executor is invalid:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="k">class</span> <span class="nc">TestRunTwice</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute_example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">()()</span>
+</pre></div>
+</div>
+<p>and should be rewritten as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="k">class</span> <span class="nc">TestRunTwice</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">execute_example</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>An alternative hook is provided for use by test runner extensions such as
+<a class="reference external" href="https://pypi.org/project/pytest-trio">pytest-trio</a>, which cannot use the <code class="docutils literal notranslate"><span class="pre">execute_example</span></code> method.
+This is <strong>not</strong> recommended for end-users - it is better to write a complete
+test function directly, perhaps by using a decorator to perform the same
+transformation before applying <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="nd">@pytest.mark.trio</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="o">...</span>
+<span class="c1"># Illustrative code, inside the pytest-trio plugin</span>
+<span class="n">test</span><span class="o">.</span><span class="n">hypothesis</span><span class="o">.</span><span class="n">inner_test</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">trio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For authors of test runners however, assigning to the <code class="docutils literal notranslate"><span class="pre">inner_test</span></code> attribute
+of the <code class="docutils literal notranslate"><span class="pre">hypothesis</span></code> attribute of the test will replace the interior test.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The new <code class="docutils literal notranslate"><span class="pre">inner_test</span></code> must accept and pass through all the <code class="docutils literal notranslate"><span class="pre">*args</span></code>
+and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> expected by the original test.</p>
+</div>
+<p>If the end user has also specified a custom executor using the
+<code class="docutils literal notranslate"><span class="pre">execute_example</span></code> method, it - and all other execution-time logic - will
+be applied to the <em>new</em> inner test assigned by the test runner.</p>
+</div>
+<div class="section" id="making-random-code-deterministic">
+<h2>Making random code deterministic<a class="headerlink" href="#making-random-code-deterministic" title="Permalink to this headline">¶</a></h2>
+<p>While Hypothesis’ example generation can be used for nondeterministic tests,
+debugging anything nondeterministic is usually a very frustrating excercise.
+To make things worse, our example <em>shrinking</em> relies on the same input
+causing the same failure each time - though we show the un-shrunk failure
+and a decent error message if it doesn’t.</p>
+<p>By default, Hypothesis will handle the global <code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>
+random number generators for you, and you can register others:</p>
+<dl class="function">
+<dt id="hypothesis.register_random">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">register_random</code><span class="sig-paren">(</span><em class="sig-param">r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hypothesis/internal/entropy.html#register_random"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#hypothesis.register_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register the given Random instance for management by Hypothesis.</p>
+<p>You can pass <code class="docutils literal notranslate"><span class="pre">random.Random</span></code> instances (or other objects with seed,
+getstate, and setstate methods) to <code class="docutils literal notranslate"><span class="pre">register_random(r)</span></code> to have their
+states seeded and restored in the same way as the global PRNGs from the
+<code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> modules.</p>
+<p>All global PRNGs, from e.g. simulation or scheduling frameworks, should
+be registered to prevent flaky tests.  Hypothesis will ensure that the
+PRNG state is consistent for all test runs, or reproducibly varied if you
+choose to use the <a class="reference internal" href="data.html#hypothesis.strategies.random_module" title="hypothesis.strategies.random_module"><code class="xref py py-func docutils literal notranslate"><span class="pre">random_module()</span></code></a> strategy.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="inferred-strategies">
+<span id="type-inference"></span><h2>Inferred Strategies<a class="headerlink" href="#inferred-strategies" title="Permalink to this headline">¶</a></h2>
+<p>In some cases, Hypothesis can work out what to do when you omit arguments.
+This is based on introspection, <em>not</em> magic, and therefore has well-defined
+limits.</p>
+<p><a class="reference internal" href="data.html#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a> will check the signature of the
+<code class="docutils literal notranslate"><span class="pre">target</span></code> (using <a class="reference external" href="https://docs.python.org/3/library/inspect.html#inspect.getfullargspec" title="(in Python v3.7)"><code class="xref py py-func docutils literal notranslate"><span class="pre">getfullargspec()</span></code></a>).
+If there are required arguments with type annotations and
+no strategy was passed to <a class="reference internal" href="data.html#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a>,
+<a class="reference internal" href="data.html#hypothesis.strategies.from_type" title="hypothesis.strategies.from_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_type()</span></code></a> is used to fill them in.
+You can also pass the special value <a class="reference internal" href="#hypothesis.infer" title="hypothesis.infer"><code class="xref py py-const docutils literal notranslate"><span class="pre">hypothesis.infer</span></code></a> as a keyword
+argument, to force this inference for arguments with a default value.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">builds</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">example</span><span class="p">()</span>
+<span class="go">[-6993, &#39;&#39;]</span>
+</pre></div>
+</div>
+<dl class="data">
+<dt id="hypothesis.infer">
+<code class="sig-prename descclassname">hypothesis.</code><code class="sig-name descname">infer</code><a class="headerlink" href="#hypothesis.infer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a> does not perform any implicit inference
+for required arguments, as this would break compatibility with pytest fixtures.
+<a class="reference internal" href="#hypothesis.infer" title="hypothesis.infer"><code class="xref py py-const docutils literal notranslate"><span class="pre">infer</span></code></a> can be used as a keyword argument to explicitly
+fill in an argument from its type annotation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">infer</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span> <span class="k">pass</span>
+<span class="c1"># is equivalent to</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">a</span><span class="p">):</span> <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<p><span class="target" id="index-0"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3107"><strong>PEP 3107</strong></a> type annotations are not supported on Python 2, and Hypothesis
+does not inspect <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0484"><strong>PEP 484</strong></a> type comments at runtime.  While
+<a class="reference internal" href="data.html#hypothesis.strategies.from_type" title="hypothesis.strategies.from_type"><code class="xref py py-func docutils literal notranslate"><span class="pre">from_type()</span></code></a> will work as usual, inference in
+<a class="reference internal" href="data.html#hypothesis.strategies.builds" title="hypothesis.strategies.builds"><code class="xref py py-func docutils literal notranslate"><span class="pre">builds()</span></code></a> and <a class="reference internal" href="#hypothesis.given" title="hypothesis.given"><code class="xref py py-func docutils literal notranslate"><span class="pre">&#64;given</span></code></a>
+will only work if you manually create the <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> attribute
+(e.g. by using <code class="docutils literal notranslate"><span class="pre">&#64;annotations(...)</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;returns(...)</span></code> decorators).
+The <a class="reference external" href="https://docs.python.org/3/library/typing.html#module-typing" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">typing</span></code></a> module is fully supported on Python 2 if you have
+the backport installed.</p>
+<p>The <a class="reference external" href="https://docs.python.org/3/library/typing.html#module-typing" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">typing</span></code></a> module is provisional and has a number of internal
+changes between Python 3.5.0 and 3.6.1, including at minor versions.  These
+are all supported on a best-effort basis, but you may encounter problems with
+an old version of the module.  Please report them to us, and consider
+updating to a newer version of Python as a workaround.</p>
+</div>
+</div>
+<div class="section" id="type-annotations-in-hypothesis">
+<span id="our-type-hints"></span><h2>Type Annotations in Hypothesis<a class="headerlink" href="#type-annotations-in-hypothesis" title="Permalink to this headline">¶</a></h2>
+<p>If you install Hypothesis and use <a class="reference external" href="https://pypi.org/project/mypy">mypy</a> 0.590+, or another
+<span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0561"><strong>PEP 561</strong></a>-compatible tool, the type checker should automatically pick
+up our type hints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hypothesis’ type hints may make breaking changes between minor releases.</p>
+<p>Upstream tools and conventions about type hints remain in flux - for
+example the <a class="reference external" href="https://docs.python.org/3/library/typing.html#module-typing" title="(in Python v3.7)"><code class="docutils literal notranslate"><span class="pre">typing</span></code></a> module itself is provisional, and Mypy
+has not yet reached version 1.0 - and we plan to support the latest
+version of this ecosystem, as well as older versions where practical.</p>
+<p>We may also find more precise ways to describe the type of various
+interfaces, or change their type and runtime behaviour togther in a way
+which is otherwise backwards-compatible.  We often omit type hints for
+deprecated features or arguments, as an additional form of warning.</p>
+</div>
+<p>There are known issues inferring the type of examples generated by
+<a class="reference internal" href="data.html#hypothesis.strategies.deferred" title="hypothesis.strategies.deferred"><code class="xref py py-func docutils literal notranslate"><span class="pre">deferred()</span></code></a>, <a class="reference internal" href="data.html#hypothesis.strategies.recursive" title="hypothesis.strategies.recursive"><code class="xref py py-func docutils literal notranslate"><span class="pre">recursive()</span></code></a>,
+<a class="reference internal" href="data.html#hypothesis.strategies.one_of" title="hypothesis.strategies.one_of"><code class="xref py py-func docutils literal notranslate"><span class="pre">one_of()</span></code></a>, <a class="reference internal" href="data.html#hypothesis.strategies.dictionaries" title="hypothesis.strategies.dictionaries"><code class="xref py py-func docutils literal notranslate"><span class="pre">dictionaries()</span></code></a>,
+and <a class="reference internal" href="data.html#hypothesis.strategies.fixed_dictionaries" title="hypothesis.strategies.fixed_dictionaries"><code class="xref py py-func docutils literal notranslate"><span class="pre">fixed_dictionaries()</span></code></a>.
+We will fix these, and require correspondingly newer versions of Mypy for type
+hinting, as the ecosystem improves.</p>
+<div class="section" id="writing-downstream-type-hints">
+<h3>Writing downstream type hints<a class="headerlink" href="#writing-downstream-type-hints" title="Permalink to this headline">¶</a></h3>
+<p>Projects that <a class="reference internal" href="strategies.html"><span class="doc">provide Hypothesis strategies</span></a> and use
+type hints may wish to annotate their strategies too.  This <em>is</em> a
+supported use-case, again on a best-effort provisional basis.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo_strategy</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">SearchStrategy</span><span class="p">[</span><span class="n">Foo</span><span class="p">]:</span> <span class="o">...</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="hypothesis.strategies.SearchStrategy">
+<em class="property">class </em><code class="sig-prename descclassname">hypothesis.strategies.</code><code class="sig-name descname">SearchStrategy</code><a class="headerlink" href="#hypothesis.strategies.SearchStrategy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p><a class="reference internal" href="#hypothesis.strategies.SearchStrategy" title="hypothesis.strategies.SearchStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchStrategy</span></code></a> is the type of all strategy
+objects.  It is a generic type, and covariant in the type of the examples
+it creates.  For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integers()</span></code> is of type <code class="docutils literal notranslate"><span class="pre">SearchStrategy[int]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lists(integers())</span></code> is of type <code class="docutils literal notranslate"><span class="pre">SearchStrategy[List[int]]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SearchStrategy[Dog]</span></code> is a subtype of <code class="docutils literal notranslate"><span class="pre">SearchStrategy[Animal]</span></code>
+if <code class="docutils literal notranslate"><span class="pre">Dog</span></code> is a subtype of <code class="docutils literal notranslate"><span class="pre">Animal</span></code> (as seems likely).</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a class="reference internal" href="#hypothesis.strategies.SearchStrategy" title="hypothesis.strategies.SearchStrategy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SearchStrategy</span></code></a> <strong>should only be used
+in type hints.</strong>  Please do not inherit from, compare to, or otherwise
+use it in any way outside of type hints.  The only supported way to
+construct objects of this type is to use the functions provided by the
+<a class="reference internal" href="data.html#module-hypothesis.strategies" title="hypothesis.strategies"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hypothesis.strategies</span></code></a> module!</p>
+</div>
+</div>
+</div>
+<div class="section" id="the-hypothesis-pytest-plugin">
+<span id="pytest-plugin"></span><h2>The Hypothesis pytest Plugin<a class="headerlink" href="#the-hypothesis-pytest-plugin" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis includes a tiny plugin to improve integration with <a class="reference external" href="https://pypi.org/project/pytest">pytest</a>,
+which is activated by default (but does not affect other test runners).
+It aims to improve the integration between Hypothesis and Pytest by
+providing extra information and convenient access to config options.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--hypothesis-show-statistics</span></code> can be used to
+<a class="reference internal" href="#statistics"><span class="std std-ref">display test and data generation statistics</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--hypothesis-profile=&lt;profile</span> <span class="pre">name&gt;</span></code> can be used to
+<a class="reference internal" href="settings.html#settings-profiles"><span class="std std-ref">load a settings profile</span></a>.
+<code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--hypothesis-verbosity=&lt;level</span> <span class="pre">name&gt;</span></code> can be used to
+<a class="reference internal" href="settings.html#verbose-output"><span class="std std-ref">override the current verbosity level</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">--hypothesis-seed=&lt;an</span> <span class="pre">int&gt;</span></code> can be used to
+<a class="reference internal" href="reproducing.html#reproducing-with-seed"><span class="std std-ref">reproduce a failure with a particular seed</span></a>.</p></li>
+</ul>
+<p>Finally, all tests that are defined with Hypothesis automatically have
+<code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.hypothesis</span></code> applied to them.  See <a class="reference external" href="https://docs.pytest.org/en/stable/example/markers.html#mark-examples" title="(in pytest v5.0.1)"><span class="xref std std-ref">here for information
+on working with markers</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pytest will load the plugin automatically if Hypothesis is installed.
+You don’t need to do anything at all to use it.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="settings.html" class="btn btn-neutral float-right" title="Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick start guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

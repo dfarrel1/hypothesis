@@ -1,0 +1,589 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Some more examples &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Community" href="community.html" />
+    <link rel="prev" title="Compatibility" href="supported.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Some more examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-not-to-sort-by-a-partial-order">How not to sort by a partial order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time-zone-arithmetic">Time zone arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#condorcet-s-paradox">Condorcet’s Paradox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fuzzing-an-http-api">Fuzzing an HTTP API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Some more examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="some-more-examples">
+<h1>Some more examples<a class="headerlink" href="#some-more-examples" title="Permalink to this headline">¶</a></h1>
+<p>This is a collection of examples of how to use Hypothesis in interesting ways.
+It’s small for now but will grow over time.</p>
+<p>All of these examples are designed to be run under <a class="reference external" href="https://pypi.org/project/pytest">pytest</a>,
+and <a class="reference external" href="https://pypi.org/project/nose">nose</a> should work too.</p>
+<div class="section" id="how-not-to-sort-by-a-partial-order">
+<h2>How not to sort by a partial order<a class="headerlink" href="#how-not-to-sort-by-a-partial-order" title="Permalink to this headline">¶</a></h2>
+<p>The following is an example that’s been extracted and simplified from a real
+bug that occurred in an earlier version of Hypothesis. The real bug was a lot
+harder to find.</p>
+<p>Suppose we’ve got the following type:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Node(</span><span class="si">%r</span><span class="s2">, </span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sorts_before</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+<p>Each node is a label and a sequence of some data, and we have the relationship
+sorts_before meaning the data of the left is an initial segment of the right.
+So e.g. a node with value <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> will sort before a node with value <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>,
+but neither of <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> nor <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3]</span></code> will sort before the other.</p>
+<p>We have a list of nodes, and we want to topologically sort them with respect to
+this ordering. That is, we want to arrange the list so that if <code class="docutils literal notranslate"><span class="pre">x.sorts_before(y)</span></code>
+then x appears earlier in the list than y. We naively think that the easiest way
+to do this is to extend the  partial order defined here to a total order by
+breaking ties arbitrarily and then using a normal sorting algorithm. So we
+define the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">total_ordering</span>
+
+
+<span class="nd">@total_ordering</span>
+<span class="k">class</span> <span class="nc">TopoKey</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">sorts_before</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">sorts_before</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">label</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">label</span>
+
+
+<span class="k">def</span> <span class="nf">sort_nodes</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="n">xs</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">TopoKey</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This takes the order defined by <code class="docutils literal notranslate"><span class="pre">sorts_before</span></code> and extends it by breaking ties by
+comparing the node labels.</p>
+<p>But now we want to test that it works.</p>
+<p>First we write a function to verify that our desired outcome holds:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_prefix_sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">sorts_before</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+                <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>This will return false if it ever finds a pair in the wrong order and
+return true otherwise.</p>
+<p>Given this function, what we want to do with Hypothesis is assert that for all
+sequences of nodes, the result of calling <code class="docutils literal notranslate"><span class="pre">sort_nodes</span></code> on it is sorted.</p>
+<p>First we need to define a strategy for Node:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">settings</span><span class="p">,</span> <span class="n">strategies</span>
+<span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="kn">as</span> <span class="nn">s</span>
+
+<span class="n">NodeStrategy</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">builds</span><span class="p">(</span>
+  <span class="n">Node</span><span class="p">,</span>
+  <span class="n">s</span><span class="o">.</span><span class="n">integers</span><span class="p">(),</span>
+  <span class="n">s</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">booleans</span><span class="p">(),</span> <span class="n">max_size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We want to generate <em>short</em> lists of values so that there’s a decent chance of
+one being a prefix of the other (this is also why the choice of bool as the
+elements). We then define a strategy which builds a node out of an integer and
+one of those short lists of booleans.</p>
+<p>We can now write a test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">NodeStrategy</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_sorting_nodes_is_prefix_sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="n">sort_nodes</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">is_prefix_sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>this immediately fails with the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">)),</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="bp">True</span><span class="p">,)),</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="bp">False</span><span class="p">,))]</span>
+</pre></div>
+</div>
+<p>The reason for this is that because False is not a prefix of (True, True) nor vice
+versa, sorting things the first two nodes are equal because they have equal labels.
+This makes the whole order non-transitive and produces basically nonsense results.</p>
+<p>But this is pretty unsatisfying. It only works because they have the same label. Perhaps
+we actually wanted our labels to be unique. Lets change the test to do that.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">deduplicate_nodes_by_label</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="o">.</span><span class="n">label</span><span class="p">:</span> <span class="n">node</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>We define a function to deduplicate nodes by labels, and can now map that over a strategy
+for lists of nodes to give us a strategy for lists of nodes with unique labels:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lists</span><span class="p">(</span><span class="n">NodeStrategy</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">deduplicate_nodes_by_label</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_sorting_nodes_is_prefix_sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="n">sort_nodes</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">is_prefix_sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hypothesis quickly gives us an example of this <em>still</em> being wrong:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="bp">False</span><span class="p">,)),</span> <span class="n">Node</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="bp">True</span><span class="p">,)),</span> <span class="n">Node</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="bp">False</span><span class="p">))])</span>
+</pre></div>
+</div>
+<p>Now this is a more interesting example. None of the nodes will sort equal. What is
+happening here is that the first node is strictly less than the last node because
+(False,) is a prefix of (False, False). This is in turn strictly less than the middle
+node because neither is a prefix of the other and -2 &lt; -1. The middle node is then
+less than the first node because -1 &lt; 0.</p>
+<p>So, convinced that our implementation is broken, we write a better one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sort_nodes</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">hrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">sorts_before</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">break</span>
+            <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This is just insertion sort slightly modified - we swap a node backwards until swapping
+it further would violate the order constraints. The reason this works is because our
+order is a partial order already (this wouldn’t produce a valid result for a general
+topological sorting - you need the transitivity).</p>
+<p>We now run our test again and it passes, telling us that this time we’ve successfully
+managed to sort some nodes without getting it completely wrong. Go us.</p>
+</div>
+<div class="section" id="time-zone-arithmetic">
+<h2>Time zone arithmetic<a class="headerlink" href="#time-zone-arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>This is an example of some tests for <a class="reference external" href="https://pypi.org/project/pytz">pytz</a> which check that various timezone
+conversions behave as you would expect them to. These tests should all pass,
+and are mostly a demonstration of some useful sorts of thing to test with
+Hypothesis, and how the <a class="reference internal" href="data.html#hypothesis.strategies.datetimes" title="hypothesis.strategies.datetimes"><code class="xref py py-func docutils literal notranslate"><span class="pre">datetimes()</span></code></a> strategy works.</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.extra.pytz</span> <span class="kn">import</span> <span class="n">timezones</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">datetimes</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The datetimes strategy is naive by default, so tell it to use timezones</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aware_datetimes</span> <span class="o">=</span> <span class="n">datetimes</span><span class="p">(</span><span class="n">timezones</span><span class="o">=</span><span class="n">timezones</span><span class="p">())</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">aware_datetimes</span><span class="p">,</span> <span class="n">timezones</span><span class="p">(),</span> <span class="n">timezones</span><span class="p">())</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test_convert_via_intermediary</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">tz1</span><span class="p">,</span> <span class="n">tz2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;Test that converting between timezones is not affected</span>
+<span class="gp">... </span><span class="sd">    by a detour via another timezone.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="n">dt</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz1</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz2</span><span class="p">)</span> <span class="o">==</span> <span class="n">dt</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz2</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">aware_datetimes</span><span class="p">,</span> <span class="n">timezones</span><span class="p">())</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test_convert_to_and_fro</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">tz2</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;If we convert to a new timezone and back to the old one</span>
+<span class="gp">... </span><span class="sd">    this should leave the result unchanged.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">tz1</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="n">dt</span> <span class="o">==</span> <span class="n">dt</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz2</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">aware_datetimes</span><span class="p">,</span> <span class="n">timezones</span><span class="p">())</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test_adding_an_hour_commutes</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">tz</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;When converting between timezones it shouldn&#39;t matter</span>
+<span class="gp">... </span><span class="sd">    if we add an hour here or add an hour there.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">an_hour</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="p">(</span><span class="n">dt</span> <span class="o">+</span> <span class="n">an_hour</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span> <span class="o">==</span> <span class="n">dt</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span> <span class="o">+</span> <span class="n">an_hour</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@given</span><span class="p">(</span><span class="n">aware_datetimes</span><span class="p">,</span> <span class="n">timezones</span><span class="p">())</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">test_adding_a_day_commutes</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">tz</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;When converting between timezones it shouldn&#39;t matter</span>
+<span class="gp">... </span><span class="sd">    if we add a day here or add a day there.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">a_day</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">assert</span> <span class="p">(</span><span class="n">dt</span> <span class="o">+</span> <span class="n">a_day</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span> <span class="o">==</span> <span class="n">dt</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span> <span class="o">+</span> <span class="n">a_day</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And we can check that our tests pass</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_convert_via_intermediary</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_convert_to_and_fro</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_adding_an_hour_commutes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_adding_a_day_commutes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="condorcet-s-paradox">
+<h2>Condorcet’s Paradox<a class="headerlink" href="#condorcet-s-paradox" title="Permalink to this headline">¶</a></h2>
+<p>A classic paradox in voting theory, called Condorcet’s paradox, is that
+majority preferences are not transitive. That is, there is a population
+and a set of three candidates A, B and C such that the majority of the
+population prefer A to B, B to C and C to A.</p>
+<p>Wouldn’t it be neat if we could use Hypothesis to provide an example of this?</p>
+<p>Well as you can probably guess from the presence of this section, we can!
+The main trick is to decide how we want to represent the result of an
+election - for this example, we’ll use a list of “votes”, where each
+vote is a list of candidates in the voters preferred order.
+Without further ado, here is the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">assume</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">lists</span><span class="p">,</span> <span class="n">permutations</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="c1"># We need at least three candidates and at least three voters to have a</span>
+<span class="c1"># paradox; anything less can only lead to victories or at worst ties.</span>
+<span class="nd">@given</span><span class="p">(</span><span class="n">lists</span><span class="p">(</span><span class="n">permutations</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]),</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">test_elections_are_transitive</span><span class="p">(</span><span class="n">election</span><span class="p">):</span>
+    <span class="n">all_candidates</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">}</span>
+
+    <span class="c1"># First calculate the pairwise counts of how many prefer each candidate</span>
+    <span class="c1"># to the other</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">vote</span> <span class="ow">in</span> <span class="n">election</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vote</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">vote</span><span class="p">)):</span>
+                <span class="n">counts</span><span class="p">[(</span><span class="n">vote</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vote</span><span class="p">[</span><span class="n">j</span><span class="p">])]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Now look at which pairs of candidates one has a majority over the</span>
+    <span class="c1"># other and store that.</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">all_candidates</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">all_candidates</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">counts</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">counts</span><span class="p">[(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">)]:</span>
+                <span class="n">graph</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+    <span class="c1"># Now for each triple assert that it is transitive.</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">all_candidates</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">()):</span>
+            <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">()):</span>
+                <span class="k">assert</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="p">())</span>
+</pre></div>
+</div>
+<p>The example Hypothesis gives me on my first run (your mileage may of course
+vary) is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Which does indeed do the job: The majority (votes 0 and 1) prefer B to C, the
+majority (votes 0 and 2) prefer A to B and the majority (votes 1 and 2) prefer
+C to A. This is in fact basically the canonical example of the voting paradox.</p>
+</div>
+<div class="section" id="fuzzing-an-http-api">
+<h2>Fuzzing an HTTP API<a class="headerlink" href="#fuzzing-an-http-api" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis’s support for testing HTTP services is somewhat nascent. There are
+plans for some fully featured things around this, but right now they’re
+probably quite far down the line.</p>
+<p>But you can do a lot yourself without any explicit support! Here’s a script
+I wrote to throw arbitrary data against the API for an entirely fictitious service
+called Waspfinder (this is only lightly obfuscated and you can easily figure
+out who I’m actually talking about, but I don’t want you to run this code and
+hammer their API without their permission).</p>
+<p>All this does is use Hypothesis to generate arbitrary JSON data matching the
+format their API asks for and check for 500 errors. More advanced tests which
+then use the result and go on to do other things are definitely also possible.
+The <a class="reference external" href="https://pypi.org/project/swagger-conformance">swagger-conformance</a> package provides an excellent example of this!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">assume</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+
+<span class="n">Goal</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Goal&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;slug&quot;</span><span class="p">,))</span>
+
+
+<span class="c1"># We just pass in our API credentials via environment variables.</span>
+<span class="n">waspfinder_token</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;WASPFINDER_TOKEN&#39;</span><span class="p">)</span>
+<span class="n">waspfinder_user</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;WASPFINDER_USER&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">waspfinder_token</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+<span class="k">assert</span> <span class="n">waspfinder_user</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+<span class="n">GoalData</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">({</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
+    <span class="s1">&#39;goal_type&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">([</span>
+        <span class="s2">&quot;hustler&quot;</span><span class="p">,</span> <span class="s2">&quot;biker&quot;</span><span class="p">,</span> <span class="s2">&quot;gainer&quot;</span><span class="p">,</span> <span class="s2">&quot;fatloser&quot;</span><span class="p">,</span> <span class="s2">&quot;inboxer&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;drinker&quot;</span><span class="p">,</span> <span class="s2">&quot;custom&quot;</span><span class="p">]),</span>
+    <span class="s1">&#39;goaldate&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">one_of</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">none</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">()),</span>
+    <span class="s1">&#39;goalval&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">one_of</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">none</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">()),</span>
+    <span class="s1">&#39;rate&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">one_of</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">none</span><span class="p">(),</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">()),</span>
+    <span class="s1">&#39;initval&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(),</span>
+    <span class="s1">&#39;panic&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">floats</span><span class="p">(),</span>
+    <span class="s1">&#39;secret&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">(),</span>
+    <span class="s1">&#39;datapublic&#39;</span><span class="p">:</span> <span class="n">st</span><span class="o">.</span><span class="n">booleans</span><span class="p">(),</span>
+<span class="p">})</span>
+
+
+<span class="n">needs2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;goaldate&#39;</span><span class="p">,</span> <span class="s1">&#39;goalval&#39;</span><span class="p">,</span> <span class="s1">&#39;rate&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">WaspfinderTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="nd">@given</span><span class="p">(</span><span class="n">GoalData</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">test_create_goal_dry_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># We want slug to be unique for each run so that multiple test runs</span>
+        <span class="c1"># don&#39;t interfere with each other. If for some reason some slugs trigger</span>
+        <span class="c1"># an error and others don&#39;t we&#39;ll get a Flaky error, but that&#39;s OK.</span>
+        <span class="n">slug</span> <span class="o">=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">32</span><span class="p">))[</span><span class="mi">2</span><span class="p">:]</span>
+
+        <span class="c1"># Use assume to guide us through validation we know about, otherwise</span>
+        <span class="c1"># we&#39;ll spend a lot of time generating boring examples.</span>
+
+        <span class="c1"># Title must not be empty</span>
+        <span class="n">assume</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+
+        <span class="c1"># Exactly two of these values should be not None. The other will be</span>
+        <span class="c1"># inferred by the API.</span>
+
+        <span class="n">assume</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">needs2</span> <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">])</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="n">assume</span><span class="p">(</span><span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;slug&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">slug</span>
+
+        <span class="c1"># The API nicely supports a dry run option, which means we don&#39;t have</span>
+        <span class="c1"># to worry about the user account being spammed with lots of fake goals</span>
+        <span class="c1"># Otherwise we would have to make sure we cleaned up after ourselves</span>
+        <span class="c1"># in this test.</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;dryrun&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;auth_token&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">waspfinder_token</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;null&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s2">&quot;https://waspfinder.example.com/api/v1/users/&quot;</span>
+            <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/goals.json&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">waspfinder_user</span><span class="p">,),</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="c1"># Lets not hammer the API too badly. This will of course make the</span>
+        <span class="c1"># tests even slower than they otherwise would have been, but that&#39;s</span>
+        <span class="c1"># life.</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+
+        <span class="c1"># For the moment all we&#39;re testing is that this doesn&#39;t generate an</span>
+        <span class="c1"># internal error. If we didn&#39;t use the dry run option we could have</span>
+        <span class="c1"># then tried doing more with the result, but this is a good start.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertNotEqual</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="community.html" class="btn btn-neutral float-right" title="Community" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="supported.html" class="btn btn-neutral float-left" title="Compatibility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1028 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>hypothesis.stateful &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Ongoing Hypothesis Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>hypothesis.stateful</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for hypothesis.stateful</h1><div class="highlight"><pre>
+<span></span><span class="c1"># coding=utf-8</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Hypothesis, which may be found at</span>
+<span class="c1"># https://github.com/HypothesisWorks/hypothesis/</span>
+<span class="c1">#</span>
+<span class="c1"># Most of this work is copyright (C) 2013-2019 David R. MacIver</span>
+<span class="c1"># (david@drmaciver.com), but it contains contributions by others. See</span>
+<span class="c1"># CONTRIBUTING.rst for a full list of people who may hold copyright, and</span>
+<span class="c1"># consult the git log if you need to determine who owns an individual</span>
+<span class="c1"># contribution.</span>
+<span class="c1">#</span>
+<span class="c1"># This Source Code Form is subject to the terms of the Mozilla Public License,</span>
+<span class="c1"># v. 2.0. If a copy of the MPL was not distributed with this file, You can</span>
+<span class="c1"># obtain one at https://mozilla.org/MPL/2.0/.</span>
+<span class="c1">#</span>
+<span class="c1"># END HEADER</span>
+
+<span class="sd">&quot;&quot;&quot;This module provides support for a stateful style of testing, where tests</span>
+<span class="sd">attempt to find a sequence of operations that cause a breakage rather than just</span>
+<span class="sd">a single value.</span>
+
+<span class="sd">Notably, the set of steps available at any point may depend on the</span>
+<span class="sd">execution to date.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="k">import</span> <span class="n">TestCase</span>
+
+<span class="kn">import</span> <span class="nn">attr</span>
+
+<span class="kn">import</span> <span class="nn">hypothesis.internal.conjecture.utils</span> <span class="k">as</span> <span class="nn">cu</span>
+<span class="kn">import</span> <span class="nn">hypothesis.strategies</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">hypothesis._settings</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">HealthCheck</span><span class="p">,</span>
+    <span class="n">Verbosity</span><span class="p">,</span>
+    <span class="n">note_deprecation</span><span class="p">,</span>
+    <span class="n">settings</span> <span class="k">as</span> <span class="n">Settings</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">hypothesis.control</span> <span class="k">import</span> <span class="n">current_build_context</span>
+<span class="kn">from</span> <span class="nn">hypothesis.core</span> <span class="k">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.errors</span> <span class="k">import</span> <span class="n">HypothesisException</span><span class="p">,</span> <span class="n">InvalidArgument</span><span class="p">,</span> <span class="n">InvalidDefinition</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.compat</span> <span class="k">import</span> <span class="n">quiet_raise</span><span class="p">,</span> <span class="n">string_types</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.reflection</span> <span class="k">import</span> <span class="n">function_digest</span><span class="p">,</span> <span class="n">nicerepr</span><span class="p">,</span> <span class="n">proxies</span>
+<span class="kn">from</span> <span class="nn">hypothesis.internal.validation</span> <span class="k">import</span> <span class="n">check_type</span>
+<span class="kn">from</span> <span class="nn">hypothesis.reporting</span> <span class="k">import</span> <span class="n">current_verbosity</span><span class="p">,</span> <span class="n">report</span>
+<span class="kn">from</span> <span class="nn">hypothesis.searchstrategy.strategies</span> <span class="k">import</span> <span class="n">OneOfStrategy</span><span class="p">,</span> <span class="n">SearchStrategy</span>
+<span class="kn">from</span> <span class="nn">hypothesis.vendor.pretty</span> <span class="k">import</span> <span class="n">CUnicodeIO</span><span class="p">,</span> <span class="n">RepresentationPrinter</span>
+
+<span class="n">STATE_MACHINE_RUN_LABEL</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">calc_label_from_name</span><span class="p">(</span><span class="s2">&quot;another state machine step&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Text</span>  <span class="c1"># noqa</span>
+
+
+<span class="k">class</span> <span class="nc">TestCaseProperty</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">typ</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">typ</span><span class="o">.</span><span class="n">_to_test_case</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Cannot set TestCase&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Cannot delete TestCase&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">run_state_machine_as_test</span><span class="p">(</span><span class="n">state_machine_factory</span><span class="p">,</span> <span class="n">settings</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Run a state machine definition as a test, either silently doing nothing</span>
+<span class="sd">    or printing a minimal breaking program and raising an exception.</span>
+
+<span class="sd">    state_machine_factory is anything which returns an instance of</span>
+<span class="sd">    GenericStateMachine when called with no arguments - it can be a class or a</span>
+<span class="sd">    function. settings will be used to control the execution of the test.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">settings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="n">state_machine_factory</span><span class="o">.</span><span class="n">TestCase</span><span class="o">.</span><span class="n">settings</span>
+            <span class="n">check_type</span><span class="p">(</span><span class="n">Settings</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;state_machine_factory.TestCase.settings&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">deadline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suppress_health_check</span><span class="o">=</span><span class="n">HealthCheck</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="n">Settings</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="s2">&quot;settings&quot;</span><span class="p">)</span>
+
+    <span class="nd">@settings</span>
+    <span class="nd">@given</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">data</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">run_state_machine</span><span class="p">(</span><span class="n">factory</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">machine</span> <span class="o">=</span> <span class="n">factory</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">machine</span><span class="p">,</span> <span class="n">GenericStateMachine</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">machine</span><span class="p">,</span> <span class="n">RuleBasedStateMachine</span>
+        <span class="p">):</span>
+            <span class="n">note_deprecation</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> inherits from GenericStateMachine, which is deprecated.  Use a &quot;</span>
+                <span class="s2">&quot;RuleBasedStateMachine, or a test function with st.data(), instead.&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">machine</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,),</span>
+                <span class="n">since</span><span class="o">=</span><span class="s2">&quot;2019-05-29&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">check_type</span><span class="p">(</span><span class="n">RuleBasedStateMachine</span><span class="p">,</span> <span class="n">machine</span><span class="p">,</span> <span class="s2">&quot;state_machine_factory()&quot;</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">conjecture_data</span><span class="o">.</span><span class="n">hypothesis_runner</span> <span class="o">=</span> <span class="n">machine</span>
+
+        <span class="n">n_steps</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">stateful_step_count</span>
+        <span class="n">should_continue</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">many</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">conjecture_data</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">average_size</span><span class="o">=</span><span class="n">n_steps</span>
+        <span class="p">)</span>
+
+        <span class="n">print_steps</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">current_build_context</span><span class="p">()</span><span class="o">.</span><span class="n">is_final</span> <span class="ow">or</span> <span class="n">current_verbosity</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">debug</span>
+        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">print_steps</span><span class="p">:</span>
+                <span class="n">machine</span><span class="o">.</span><span class="n">print_start</span><span class="p">()</span>
+            <span class="n">machine</span><span class="o">.</span><span class="n">check_invariants</span><span class="p">()</span>
+
+            <span class="k">while</span> <span class="n">should_continue</span><span class="o">.</span><span class="n">more</span><span class="p">():</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">conjecture_data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">steps</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">print_steps</span><span class="p">:</span>
+                    <span class="n">machine</span><span class="o">.</span><span class="n">print_step</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">machine</span><span class="o">.</span><span class="n">execute_step</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">machine</span><span class="o">.</span><span class="n">check_invariants</span><span class="p">()</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">print_steps</span><span class="p">:</span>
+                <span class="n">machine</span><span class="o">.</span><span class="n">print_end</span><span class="p">()</span>
+            <span class="n">machine</span><span class="o">.</span><span class="n">teardown</span><span class="p">()</span>
+
+    <span class="c1"># Use a machine digest to identify stateful tests in the example database</span>
+    <span class="n">run_state_machine</span><span class="o">.</span><span class="n">hypothesis</span><span class="o">.</span><span class="n">inner_test</span><span class="o">.</span><span class="n">_hypothesis_internal_add_digest</span> <span class="o">=</span> <span class="n">function_digest</span><span class="p">(</span>
+        <span class="n">state_machine_factory</span>
+    <span class="p">)</span>
+    <span class="c1"># Copy some attributes so @seed and @reproduce_failure &quot;just work&quot;</span>
+    <span class="n">run_state_machine</span><span class="o">.</span><span class="n">_hypothesis_internal_use_seed</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+        <span class="n">state_machine_factory</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_seed&quot;</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="p">)</span>
+    <span class="n">run_state_machine</span><span class="o">.</span><span class="n">_hypothesis_internal_use_reproduce_failure</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span>
+        <span class="n">state_machine_factory</span><span class="p">,</span> <span class="s2">&quot;_hypothesis_internal_use_reproduce_failure&quot;</span><span class="p">,</span> <span class="kc">None</span>
+    <span class="p">)</span>
+
+    <span class="n">run_state_machine</span><span class="p">(</span><span class="n">state_machine_factory</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">GenericStateMachineMeta</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GenericStateMachineMeta</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;settings&quot;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Settings</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;Assigning </span><span class="si">{cls}</span><span class="s2">.settings = </span><span class="si">{value}</span><span class="s2"> does nothing. Assign &quot;</span>
+                    <span class="s2">&quot;to </span><span class="si">{cls}</span><span class="s2">.TestCase.settings, or use @</span><span class="si">{value}</span><span class="s2"> as a decorator &quot;</span>
+                    <span class="s2">&quot;on the </span><span class="si">{cls}</span><span class="s2"> class.&quot;</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="GenericStateMachine"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.GenericStateMachine">[docs]</a><span class="k">class</span> <span class="nc">GenericStateMachine</span><span class="p">(</span>
+    <span class="n">GenericStateMachineMeta</span><span class="p">(</span><span class="s2">&quot;GenericStateMachine&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">object</span><span class="p">,),</span> <span class="p">{})</span>  <span class="c1"># type: ignore</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A GenericStateMachine is a deprecated approach to stateful testing.</span>
+
+<span class="sd">    In earlier versions of Hypothesis, you would define ``steps``,</span>
+<span class="sd">    ``execute_step``, ``teardown``, and ``check_invariants`` methods;</span>
+<span class="sd">    and the engine would then run something like the following::</span>
+
+<span class="sd">        @given(st.data())</span>
+<span class="sd">        def test_the_stateful_thing(data):</span>
+<span class="sd">            x = MyStatemachineSubclass()</span>
+<span class="sd">            x.check_invariants()</span>
+<span class="sd">            try:</span>
+<span class="sd">                for _ in range(50):</span>
+<span class="sd">                    step = data.draw(x.steps())</span>
+<span class="sd">                    x.execute_step(step)</span>
+<span class="sd">                    x.check_invariants()</span>
+<span class="sd">            finally:</span>
+<span class="sd">                x.teardown()</span>
+
+<span class="sd">    We now recommend using rule-based stateful testing instead wherever</span>
+<span class="sd">    possible.  If your test is better expressed in the above format than</span>
+<span class="sd">    as a rule-based state machine, we suggest &quot;unrolling&quot; your method</span>
+<span class="sd">    definitions into a simple test function with the above control flow.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a SearchStrategy instance the defines the available next</span>
+<span class="sd">        steps.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2">.steps()&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">execute_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Execute a step that has been previously drawn from self.steps()&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2">.execute_step()&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">print_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called right at the start of printing.</span>
+
+<span class="sd">        By default does nothing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">print_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called right at the end of printing.</span>
+
+<span class="sd">        By default does nothing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">print_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print a step to the current reporter.</span>
+
+<span class="sd">        This is called right before a step is executed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;step_count&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Step #</span><span class="si">%d</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">step_count</span><span class="p">,</span> <span class="n">nicerepr</span><span class="p">(</span><span class="n">step</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called after a run has finished executing to clean up any necessary</span>
+<span class="sd">        state.</span>
+
+<span class="sd">        Does nothing by default.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">check_invariants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Called after initializing and after executing each step.&quot;&quot;&quot;</span>
+
+    <span class="n">_test_case_cache</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: dict</span>
+
+    <span class="n">TestCase</span> <span class="o">=</span> <span class="n">TestCaseProperty</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_to_test_case</span><span class="p">(</span><span class="n">state_machine_class</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">state_machine_class</span><span class="o">.</span><span class="n">_test_case_cache</span><span class="p">[</span><span class="n">state_machine_class</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">class</span> <span class="nc">StateMachineTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+            <span class="n">settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">(</span><span class="n">deadline</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suppress_health_check</span><span class="o">=</span><span class="n">HealthCheck</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+
+        <span class="c1"># We define this outside of the class and assign it because you can&#39;t</span>
+        <span class="c1"># assign attributes to instance method values in Python 2</span>
+        <span class="k">def</span> <span class="nf">runTest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">run_state_machine_as_test</span><span class="p">(</span><span class="n">state_machine_class</span><span class="p">)</span>
+
+        <span class="n">runTest</span><span class="o">.</span><span class="n">is_hypothesis_test</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">StateMachineTestCase</span><span class="o">.</span><span class="n">runTest</span> <span class="o">=</span> <span class="n">runTest</span>
+        <span class="n">base_name</span> <span class="o">=</span> <span class="n">state_machine_class</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">StateMachineTestCase</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">base_name</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;.TestCase&quot;</span><span class="p">)</span>
+        <span class="n">StateMachineTestCase</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">state_machine_class</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;__qualname__&quot;</span><span class="p">,</span> <span class="n">base_name</span><span class="p">)</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;.TestCase&quot;</span>
+        <span class="p">)</span>
+        <span class="n">state_machine_class</span><span class="o">.</span><span class="n">_test_case_cache</span><span class="p">[</span><span class="n">state_machine_class</span><span class="p">]</span> <span class="o">=</span> <span class="n">StateMachineTestCase</span>
+        <span class="k">return</span> <span class="n">StateMachineTestCase</span></div>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">Rule</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">function</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">precondition</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">bundles</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__attrs_post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">bundles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">BundleReferenceStrategy</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Bundle</span><span class="p">):</span>
+                <span class="n">bundles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="n">consume</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">BundleConsumer</span><span class="p">)</span>
+                <span class="n">arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">BundleReferenceStrategy</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">consume</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bundles</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">bundles</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arguments_strategy</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+
+<span class="n">self_strategy</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">runner</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">BundleReferenceStrategy</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">consume</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">consume</span> <span class="o">=</span> <span class="n">consume</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">machine</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">self_strategy</span><span class="p">)</span>
+        <span class="n">bundle</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bundle</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">mark_invalid</span><span class="p">()</span>
+        <span class="c1"># Shrink towards the right rather than the left. This makes it easier</span>
+        <span class="c1"># to delete data generated earlier, as when the error is towards the</span>
+        <span class="c1"># end there can be a lot of hard to remove padding.</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">integer_range</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">bundle</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">consume</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">bundle</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">bundle</span><span class="p">[</span><span class="n">position</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">Bundle</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">consume</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__reference_strategy</span> <span class="o">=</span> <span class="n">BundleReferenceStrategy</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">consume</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">machine</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">self_strategy</span><span class="p">)</span>
+        <span class="n">reference</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reference_strategy</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">machine</span><span class="o">.</span><span class="n">names_to_values</span><span class="p">[</span><span class="n">reference</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">BundleConsumer</span><span class="p">(</span><span class="n">Bundle</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bundle</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BundleConsumer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bundle</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">consume</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="consumes"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.consumes">[docs]</a><span class="k">def</span> <span class="nf">consumes</span><span class="p">(</span><span class="n">bundle</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;When introducing a rule in a RuleBasedStateMachine, this function can</span>
+<span class="sd">    be used to mark bundles from which each value used in a step with the</span>
+<span class="sd">    given rule should be removed. This function returns a strategy object</span>
+<span class="sd">    that can be manipulated and combined like any other.</span>
+
+<span class="sd">    For example, a rule declared with</span>
+
+<span class="sd">    ``@rule(value1=b1, value2=consumes(b2), value3=lists(consumes(b3)))``</span>
+
+<span class="sd">    will consume a value from Bundle ``b2`` and several values from Bundle</span>
+<span class="sd">    ``b3`` to populate ``value2`` and ``value3`` each time it is executed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bundle</span><span class="p">,</span> <span class="n">Bundle</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to be consumed must be a bundle.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">BundleConsumer</span><span class="p">(</span><span class="n">bundle</span><span class="p">)</span></div>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">MultipleResults</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="multiple"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.multiple">[docs]</a><span class="k">def</span> <span class="nf">multiple</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function can be used to pass multiple results to the target(s) of</span>
+<span class="sd">    a rule. Just use ``return multiple(result1, result2, ...)`` in your rule.</span>
+
+<span class="sd">    It is also possible to use ``return multiple()`` with no arguments in</span>
+<span class="sd">    order to end a rule without passing any result.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">MultipleResults</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_convert_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Single validator and convertor for target arguments.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="n">note_deprecation</span><span class="p">(</span>
+                <span class="s2">&quot;Passing both targets=</span><span class="si">%r</span><span class="s2"> and target=</span><span class="si">%r</span><span class="s2"> is redundant, and &quot;</span>
+                <span class="s2">&quot;will become an error in a future version of Hypothesis.  &quot;</span>
+                <span class="s2">&quot;Pass targets=</span><span class="si">%r</span><span class="s2"> instead.&quot;</span>
+                <span class="o">%</span> <span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">target</span><span class="p">,)),</span>
+                <span class="n">since</span><span class="o">=</span><span class="s2">&quot;2018-08-18&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">targets</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">targets</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">target</span><span class="p">,)</span>
+
+    <span class="n">converted_targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">note_deprecation</span><span class="p">(</span>
+                <span class="s2">&quot;Got </span><span class="si">%r</span><span class="s2"> as a target, but passing the name of a Bundle is &quot;</span>
+                <span class="s2">&quot;deprecated - please pass the Bundle directly.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,),</span>
+                <span class="n">since</span><span class="o">=</span><span class="s2">&quot;2018-08-18&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Bundle</span><span class="p">):</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="s2">&quot;Got invalid target </span><span class="si">%r</span><span class="s2"> of type </span><span class="si">%r</span><span class="s2">, but all targets must &quot;</span>
+                <span class="s2">&quot;be either a Bundle or the name of a Bundle.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">OneOfStrategy</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">It looks like you passed `one_of(a, b)` or `a | b` as &quot;</span>
+                    <span class="s2">&quot;a target.  You should instead pass `targets=(a, b)` to &quot;</span>
+                    <span class="s2">&quot;add the return value of this rule to both the `a` and &quot;</span>
+                    <span class="s2">&quot;`b` bundles, or define a rule for each target if it &quot;</span>
+                    <span class="s2">&quot;should be added to exactly one.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">InvalidArgument</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span>
+        <span class="k">while</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Bundle</span><span class="p">):</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">converted_targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">converted_targets</span><span class="p">)</span>
+
+
+<span class="n">RULE_MARKER</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;hypothesis_stateful_rule&quot;</span>
+<span class="n">INITIALIZE_RULE_MARKER</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;hypothesis_stateful_initialize_rule&quot;</span>
+<span class="n">PRECONDITION_MARKER</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;hypothesis_stateful_precondition&quot;</span>
+<span class="n">INVARIANT_MARKER</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;hypothesis_stateful_invariant&quot;</span>
+
+
+<div class="viewcode-block" id="rule"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.rule">[docs]</a><span class="k">def</span> <span class="nf">rule</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">(),</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator for RuleBasedStateMachine. Any name present in target or</span>
+<span class="sd">    targets will define where the end result of this function should go. If</span>
+<span class="sd">    both are empty then the end result will be discarded.</span>
+
+<span class="sd">    ``target`` must be a Bundle, or if the result should go to multiple</span>
+<span class="sd">    bundles you can pass a tuple of them as the ``targets`` argument.</span>
+<span class="sd">    It is invalid to use both arguments for a single rule.  If the result</span>
+<span class="sd">    should go to exactly one of several bundles, define a separate rule for</span>
+<span class="sd">    each case.</span>
+
+<span class="sd">    kwargs then define the arguments that will be passed to the function</span>
+<span class="sd">    invocation. If their value is a Bundle, or if it is ``consumes(b)``</span>
+<span class="sd">    where ``b`` is a Bundle, then values that have previously been produced</span>
+<span class="sd">    for that bundle will be provided. If ``consumes`` is used, the value</span>
+<span class="sd">    will also be removed from the bundle.</span>
+
+<span class="sd">    Any other kwargs should be strategies and values from them will be</span>
+<span class="sd">    provided.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">converted_targets</span> <span class="o">=</span> <span class="n">_convert_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">existing_rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">existing_initialize_rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">INITIALIZE_RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">existing_initialize_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="s2">&quot;A function cannot be used for two distinct rules. &quot;</span><span class="p">,</span> <span class="n">Settings</span><span class="o">.</span><span class="n">default</span>
+            <span class="p">)</span>
+        <span class="n">precondition</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PRECONDITION_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">rule</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span>
+            <span class="n">targets</span><span class="o">=</span><span class="n">converted_targets</span><span class="p">,</span>
+            <span class="n">arguments</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="n">function</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+            <span class="n">precondition</span><span class="o">=</span><span class="n">precondition</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="nd">@proxies</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">rule_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">rule_wrapper</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rule_wrapper</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<div class="viewcode-block" id="initialize"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.initialize">[docs]</a><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">targets</span><span class="o">=</span><span class="p">(),</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator for RuleBasedStateMachine.</span>
+
+<span class="sd">    An initialize decorator behaves like a rule, but the decorated</span>
+<span class="sd">    method is called at most once in a run. All initialize decorated</span>
+<span class="sd">    methods will be called before any rule decorated methods, in an</span>
+<span class="sd">    arbitrary order.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">converted_targets</span> <span class="o">=</span> <span class="n">_convert_targets</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">existing_rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">existing_initialize_rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">INITIALIZE_RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">existing_initialize_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="s2">&quot;A function cannot be used for two distinct rules. &quot;</span><span class="p">,</span> <span class="n">Settings</span><span class="o">.</span><span class="n">default</span>
+            <span class="p">)</span>
+        <span class="n">precondition</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PRECONDITION_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">precondition</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="s2">&quot;An initialization rule cannot have a precondition. &quot;</span><span class="p">,</span> <span class="n">Settings</span><span class="o">.</span><span class="n">default</span>
+            <span class="p">)</span>
+        <span class="n">rule</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span>
+            <span class="n">targets</span><span class="o">=</span><span class="n">converted_targets</span><span class="p">,</span>
+            <span class="n">arguments</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="n">function</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+            <span class="n">precondition</span><span class="o">=</span><span class="n">precondition</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="nd">@proxies</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">rule_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">rule_wrapper</span><span class="p">,</span> <span class="n">INITIALIZE_RULE_MARKER</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rule_wrapper</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">VarReference</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="precondition"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.precondition">[docs]</a><span class="k">def</span> <span class="nf">precondition</span><span class="p">(</span><span class="n">precond</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator to apply a precondition for rules in a RuleBasedStateMachine.</span>
+<span class="sd">    Specifies a precondition for a rule to be considered as a valid step in the</span>
+<span class="sd">    state machine. The given function will be called with the instance of</span>
+<span class="sd">    RuleBasedStateMachine and should return True or False. Usually it will need</span>
+<span class="sd">    to look at attributes on that instance.</span>
+
+<span class="sd">    For example::</span>
+
+<span class="sd">        class MyTestMachine(RuleBasedStateMachine):</span>
+<span class="sd">            state = 1</span>
+
+<span class="sd">            @precondition(lambda self: self.state != 0)</span>
+<span class="sd">            @rule(numerator=integers())</span>
+<span class="sd">            def divide_with(self, numerator):</span>
+<span class="sd">                self.state = numerator / self.state</span>
+
+<span class="sd">    This is better than using assume in your rule since more valid rules</span>
+<span class="sd">    should be able to be run.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="nd">@proxies</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">precondition_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">existing_initialize_rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">INITIALIZE_RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_initialize_rule</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="s2">&quot;An initialization rule cannot have a precondition. &quot;</span><span class="p">,</span> <span class="n">Settings</span><span class="o">.</span><span class="n">default</span>
+            <span class="p">)</span>
+
+        <span class="n">rule</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rule</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">precondition_wrapper</span><span class="p">,</span> <span class="n">PRECONDITION_MARKER</span><span class="p">,</span> <span class="n">precond</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_rule</span> <span class="o">=</span> <span class="n">Rule</span><span class="p">(</span>
+                <span class="n">targets</span><span class="o">=</span><span class="n">rule</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span>
+                <span class="n">arguments</span><span class="o">=</span><span class="n">rule</span><span class="o">.</span><span class="n">arguments</span><span class="p">,</span>
+                <span class="n">function</span><span class="o">=</span><span class="n">rule</span><span class="o">.</span><span class="n">function</span><span class="p">,</span>
+                <span class="n">precondition</span><span class="o">=</span><span class="n">precond</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">precondition_wrapper</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="n">new_rule</span><span class="p">)</span>
+
+        <span class="n">invariant</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">INVARIANT_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">invariant</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">new_invariant</span> <span class="o">=</span> <span class="n">Invariant</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="n">invariant</span><span class="o">.</span><span class="n">function</span><span class="p">,</span> <span class="n">precondition</span><span class="o">=</span><span class="n">precond</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">precondition_wrapper</span><span class="p">,</span> <span class="n">INVARIANT_MARKER</span><span class="p">,</span> <span class="n">new_invariant</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">precondition_wrapper</span>
+
+    <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+<span class="nd">@attr</span><span class="o">.</span><span class="n">s</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">Invariant</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">function</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+    <span class="n">precondition</span> <span class="o">=</span> <span class="n">attr</span><span class="o">.</span><span class="n">ib</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="invariant"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.invariant">[docs]</a><span class="k">def</span> <span class="nf">invariant</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Decorator to apply an invariant for rules in a RuleBasedStateMachine.</span>
+<span class="sd">    The decorated function will be run after every rule and can raise an</span>
+<span class="sd">    exception to indicate failed invariants.</span>
+
+<span class="sd">    For example::</span>
+
+<span class="sd">        class MyTestMachine(RuleBasedStateMachine):</span>
+<span class="sd">            state = 1</span>
+
+<span class="sd">            @invariant()</span>
+<span class="sd">            def is_nonzero(self):</span>
+<span class="sd">                assert self.state != 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">accept</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="n">existing_invariant</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">INVARIANT_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_invariant</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="s2">&quot;A function cannot be used for two distinct invariants.&quot;</span><span class="p">,</span>
+                <span class="n">Settings</span><span class="o">.</span><span class="n">default</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">precondition</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PRECONDITION_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">rule</span> <span class="o">=</span> <span class="n">Invariant</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">precondition</span><span class="o">=</span><span class="n">precondition</span><span class="p">)</span>
+
+        <span class="nd">@proxies</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">invariant_wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">invariant_wrapper</span><span class="p">,</span> <span class="n">INVARIANT_MARKER</span><span class="p">,</span> <span class="n">rule</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">invariant_wrapper</span>
+
+    <span class="k">return</span> <span class="n">accept</span></div>
+
+
+<span class="n">LOOP_LABEL</span> <span class="o">=</span> <span class="n">cu</span><span class="o">.</span><span class="n">calc_label_from_name</span><span class="p">(</span><span class="s2">&quot;RuleStrategy loop iteration&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">RuleStrategy</span><span class="p">(</span><span class="n">SearchStrategy</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">machine</span><span class="p">):</span>
+        <span class="n">SearchStrategy</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">machine</span> <span class="o">=</span> <span class="n">machine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rules</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">rules</span><span class="p">())</span>
+
+        <span class="c1"># The order is a bit arbitrary. Primarily we&#39;re trying to group rules</span>
+        <span class="c1"># that write to the same location together, and to put rules with no</span>
+        <span class="c1"># target first as they have less effect on the structure. We order from</span>
+        <span class="c1"># fewer to more arguments on grounds that it will plausibly need less</span>
+        <span class="c1"># data. This probably won&#39;t work especially well and we could be</span>
+        <span class="c1"># smarter about it, but it&#39;s better than just doing it in definition</span>
+        <span class="c1"># order.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">rule</span><span class="p">:</span> <span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">targets</span><span class="p">),</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">arguments</span><span class="p">),</span>
+                <span class="n">rule</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">do_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">rule</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">sampled_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">is_valid</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">HypothesisException</span><span class="p">:</span>
+            <span class="c1"># FailedHealthCheck or UnsatisfiedAssumption depending on user settings.</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;No progress can be made from state </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">machine</span><span class="p">,)</span>
+            <span class="n">quiet_raise</span><span class="p">(</span><span class="n">InvalidDefinition</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rule</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">arguments_strategy</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rule</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">precondition</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rule</span><span class="o">.</span><span class="n">precondition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">machine</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">rule</span><span class="o">.</span><span class="n">bundles</span><span class="p">:</span>
+            <span class="n">bundle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">bundle</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+
+<div class="viewcode-block" id="RuleBasedStateMachine"><a class="viewcode-back" href="../../stateful.html#hypothesis.stateful.RuleBasedStateMachine">[docs]</a><span class="k">class</span> <span class="nc">RuleBasedStateMachine</span><span class="p">(</span><span class="n">GenericStateMachine</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A RuleBasedStateMachine gives you a more structured way to define state</span>
+<span class="sd">    machines.</span>
+
+<span class="sd">    The idea is that a state machine carries a bunch of types of data</span>
+<span class="sd">    divided into Bundles, and has a set of rules which may read data</span>
+<span class="sd">    from bundles (or just from normal strategies) and push data onto</span>
+<span class="sd">    bundles. At any given point a random applicable rule will be</span>
+<span class="sd">    executed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_rules_per_class</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[type, List[classmethod]]</span>
+    <span class="n">_invariants_per_class</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[type, List[classmethod]]</span>
+    <span class="n">_base_rules_per_class</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[type, List[classmethod]]</span>
+    <span class="n">_initializers_per_class</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[type, List[classmethod]]</span>
+    <span class="n">_base_initializers_per_class</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[type, List[classmethod]]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">rules</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">InvalidDefinition</span><span class="p">(</span>
+                <span class="sa">u</span><span class="s2">&quot;Type </span><span class="si">%s</span><span class="s2"> defines no rules&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,)</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bundles</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[Text, list]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_counter</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">names_to_values</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># type: Dict[Text, Any]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stream</span> <span class="o">=</span> <span class="n">CUnicodeIO</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span> <span class="o">=</span> <span class="n">RepresentationPrinter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__stream</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_rules_to_run</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">initialize_rules</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rules_strategy</span> <span class="o">=</span> <span class="n">RuleStrategy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__pretty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">VarReference</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stream</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stream</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">output_width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">buffer_width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">buffer</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">pretty</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">nicerepr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bundles</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">upcoming_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">u</span><span class="s2">&quot;v</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_counter</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">new_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">upcoming_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span> <span class="nf">bundle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bundles</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">[])</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">initialize_rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_initializers_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">INITIALIZE_RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">define_initialize_rule</span><span class="p">(</span>
+                    <span class="n">r</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">function</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">arguments</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">precondition</span>
+                <span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_initializers_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_base_initializers_per_class</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_initializers_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">rules</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">RULE_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">cls</span><span class="o">.</span><span class="n">define_rule</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">function</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">arguments</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">precondition</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_base_rules_per_class</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">invariants</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_invariants_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="n">target</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">INVARIANT_MARKER</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_invariants_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_invariants_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">define_initialize_rule</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">precondition</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">converted_arguments</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arguments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">converted_arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_initializers_per_class</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_initializers_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_base_initializers_per_class</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="k">return</span> <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">converted_arguments</span><span class="p">,</span> <span class="n">precondition</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">define_rule</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">precondition</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">converted_arguments</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">arguments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">converted_arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_per_class</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_rules_per_class</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_base_rules_per_class</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="p">[])</span>
+
+        <span class="k">return</span> <span class="n">target</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Rule</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">converted_arguments</span><span class="p">,</span> <span class="n">precondition</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Pick initialize rules first</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_rules_to_run</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">st</span><span class="o">.</span><span class="n">one_of</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">st</span><span class="o">.</span><span class="n">tuples</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">just</span><span class="p">(</span><span class="n">rule</span><span class="p">),</span> <span class="n">st</span><span class="o">.</span><span class="n">fixed_dictionaries</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">arguments</span><span class="p">))</span>
+                    <span class="k">for</span> <span class="n">rule</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_rules_to_run</span>
+                <span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rules_strategy</span>
+
+    <span class="k">def</span> <span class="nf">print_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;state = </span><span class="si">%s</span><span class="s2">()&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,))</span>
+
+    <span class="k">def</span> <span class="nf">print_end</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">report</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;state.teardown()&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">print_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="n">rule</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">step</span>
+        <span class="n">data_repr</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">data_repr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pretty</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_count</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;step_count&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">report</span><span class="p">(</span>
+            <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">state.</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span>
+            <span class="o">%</span> <span class="p">(</span>
+                <span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> = &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upcoming_name</span><span class="p">(),)</span> <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">targets</span> <span class="k">else</span> <span class="sa">u</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                <span class="n">rule</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                <span class="sa">u</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kv</span> <span class="k">for</span> <span class="n">kv</span> <span class="ow">in</span> <span class="n">data_repr</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_result_to_targets</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_name</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__printer</span><span class="o">.</span><span class="n">singleton_pprinters</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span>
+            <span class="nb">id</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">obj</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">cycle</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">names_to_values</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bundle</span><span class="p">(</span><span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">VarReference</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">execute_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+        <span class="n">rule</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">step</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">VarReference</span><span class="p">):</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">names_to_values</span><span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">rule</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rule</span><span class="o">.</span><span class="n">targets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">MultipleResults</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">single_result</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_add_result_to_targets</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">single_result</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_add_result_to_targets</span><span class="p">(</span><span class="n">rule</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_rules_to_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_rules_to_run</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">check_invariants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">invar</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">invariants</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">invar</span><span class="o">.</span><span class="n">precondition</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">invar</span><span class="o">.</span><span class="n">precondition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="n">invar</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

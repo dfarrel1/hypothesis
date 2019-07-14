@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ongoing Hypothesis Development &mdash; Hypothesis 4.28.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Help and Support" href="support.html" />
+    <link rel="prev" title="Changelog" href="changes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Hypothesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.28.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="details.html">Details and advanced features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data.html">What you can generate and how</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extras.html">First-party extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django.html">Hypothesis for Django users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">Hypothesis for the Scientific Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="healthchecks.html">Health checks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">The Hypothesis Example Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stateful.html">Stateful testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Some more examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manifesto.html">The Purpose of Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="endorsements.html">Testimonials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Open Source Projects using Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strategies.html">Projects extending Hypothesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ongoing Hypothesis Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#release-policy">Release Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-roadmap">Project Roadmap</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reproducing.html">Reproducing Failures</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Hypothesis</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Ongoing Hypothesis Development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/development.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ongoing-hypothesis-development">
+<h1>Ongoing Hypothesis Development<a class="headerlink" href="#ongoing-hypothesis-development" title="Permalink to this headline">¶</a></h1>
+<p>Hypothesis development is managed by me, <a class="reference external" href="https://www.drmaciver.com">David R. MacIver</a>.
+I am the primary author of Hypothesis.</p>
+<p><em>However</em>, I no longer do unpaid feature development on Hypothesis. My roles as leader of the project are:</p>
+<ol class="arabic simple">
+<li><p>Helping other people do feature development on Hypothesis</p></li>
+<li><p>Fixing bugs and other code health issues</p></li>
+<li><p>Improving documentation</p></li>
+<li><p>General release management work</p></li>
+<li><p>Planning the general roadmap of the project</p></li>
+<li><p>Doing sponsored development on tasks that are too large or in depth for other people to take on</p></li>
+</ol>
+<p>So all new features must either be sponsored or implemented by someone else.
+That being said, the maintenance team takes an active role in shepherding pull requests and
+helping people write a new feature (see <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/blob/master/CONTRIBUTING.rst">CONTRIBUTING.rst</a> for
+details and <a class="reference external" href="https://github.com/HypothesisWorks/hypothesis/pull/154">pull request #154</a> for an example of how the process goes). This isn’t
+“patches welcome”, it’s “we will help you write a patch”.</p>
+<div class="section" id="release-policy">
+<span id="id1"></span><h2>Release Policy<a class="headerlink" href="#release-policy" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis releases follow <a class="reference external" href="https://semver.org/">semantic versioning</a>.</p>
+<p>We maintain backwards-compatibility wherever possible, and use deprecation
+warnings to mark features that have been superseded by a newer alternative.
+If you want to detect this, you can
+<a class="reference external" href="https://docs.python.org/3/library/warnings.html#module-warnings" title="(in Python v3.7)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">upgrade</span> <span class="pre">warnings</span> <span class="pre">to</span> <span class="pre">errors</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">usual</span> <span class="pre">ways</span></code></a>.</p>
+<p>We use continuous deployment to ensure that you can always use our newest and
+shiniest features - every change to the source tree is automatically built and
+published on PyPI as soon as it’s merged onto master, after code review and
+passing our extensive test suite.</p>
+</div>
+<div class="section" id="project-roadmap">
+<h2>Project Roadmap<a class="headerlink" href="#project-roadmap" title="Permalink to this headline">¶</a></h2>
+<p>Hypothesis does not have a long-term release plan.  However some visibility
+into our plans for future <a class="reference internal" href="supported.html"><span class="doc">compatibility</span></a> may be useful:</p>
+<ul class="simple">
+<li><p>We value compatibility, and maintain it as far as practical.  This generally
+excludes things which are end-of-life upstream, or have an unstable API.</p></li>
+<li><p>We would like to drop Python 2 support when it reaches end of life in
+2020.  Ongoing support is likely to depend on commercial funding.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="support.html" class="btn btn-neutral float-right" title="Help and Support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="changes.html" class="btn btn-neutral float-left" title="Changelog" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2013-2019, David R. MacIver
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
