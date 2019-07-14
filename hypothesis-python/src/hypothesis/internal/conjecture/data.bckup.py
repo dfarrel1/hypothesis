@@ -874,23 +874,23 @@ class ConjectureData(object):
         self.depth -= 1
         assert self.depth >= -1
         self.__example_record.stop_example(discard)
-        # if self.consecutive_discard_counts:
-        #     # We block long sequences of discards. This helps us avoid performance
-        #     # problems where there is rejection sampling. In particular tests which
-        #     # have a very small actual state space but use rejection sampling will
-        #     # play badly with generate_novel_prefix() in DataTree, and will end up
-        #     # generating very long tests with long runs of the rejection sample.
-        #     if discard:
-        #         self.consecutive_discard_counts[-1] += 1
-        #         # 20 is a fairly arbitrary limit chosen mostly so that all of the
-        #         # existing tests passed under it. Essentially no reasonable
-        #         # generation should hit this limit when running in purely random
-        #         # mode, but unreasonable generation is fairly widespread, and our
-        #         # manipulation of the bitstream can make it more likely.
-        #         if self.consecutive_discard_counts[-1] > 20:
-        #             self.mark_invalid()
-        #     else:
-        #         self.consecutive_discard_counts[-1] = 0
+        if self.consecutive_discard_counts:
+            # We block long sequences of discards. This helps us avoid performance
+            # problems where there is rejection sampling. In particular tests which
+            # have a very small actual state space but use rejection sampling will
+            # play badly with generate_novel_prefix() in DataTree, and will end up
+            # generating very long tests with long runs of the rejection sample.
+            if discard:
+                self.consecutive_discard_counts[-1] += 1
+                # 20 is a fairly arbitrary limit chosen mostly so that all of the
+                # existing tests passed under it. Essentially no reasonable
+                # generation should hit this limit when running in purely random
+                # mode, but unreasonable generation is fairly widespread, and our
+                # manipulation of the bitstream can make it more likely.
+                if self.consecutive_discard_counts[-1] > 20:
+                    self.mark_invalid()
+            else:
+                self.consecutive_discard_counts[-1] = 0
 
     def note_event(self, event):
         self.events.add(event)
