@@ -34,6 +34,7 @@ import attr
 from hypothesis._settings import note_deprecation
 from hypothesis.control import cleanup, note, reject
 from hypothesis.errors import InvalidArgument, ResolutionFailed
+from hypothesis.errors import HypothesisException, UnsatisfiedAssumption
 from hypothesis.internal.cache import LRUReusedCache
 from hypothesis.internal.cathetus import cathetus
 from hypothesis.internal.charmap import as_general_categories
@@ -708,6 +709,9 @@ def sampled_from(elements):
         return sets(sampled_from(values), min_size=1).map(
             lambda s: reduce(operator.or_, s)
         )
+    
+    # values = SampledFromStrategy.transform(1, values)
+
     return SampledFromStrategy(values)
 
 

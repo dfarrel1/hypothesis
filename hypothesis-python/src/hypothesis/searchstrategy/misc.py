@@ -20,7 +20,7 @@ from __future__ import absolute_import, division, print_function
 import hypothesis.internal.conjecture.utils as d
 from hypothesis.internal.compat import bit_length, hrange
 from hypothesis.searchstrategy.strategies import SearchStrategy, filter_not_satisfied
-
+from hypothesis.errors import HypothesisException, UnsatisfiedAssumption
 
 class BoolStrategy(SearchStrategy):
     """A strategy that produces Booleans with a Bernoulli conditional
@@ -86,6 +86,14 @@ class SampledFromStrategy(SearchStrategy):
 
     def do_draw(self, data):
         return d.choice(data, self.elements)
+
+    def transform(self, data):
+        try:
+            len(data)<100
+            return data
+        except UnsatisfiedAssumption:            
+                raise            
+        raise UnsatisfiedAssumption()
 
     def do_filtered_draw(self, data, filter_strategy):
         # Set of indices that have been tried so far, so that we never test
